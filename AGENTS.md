@@ -12,9 +12,9 @@ Deployed via GitHub Pages from `main`.
 
 | File | Role |
 |---|---|
-| `data.js` | Single source of truth — global `const TRIP`. Edit this to update people, costs, itinerary. |
+| `data.js` | Single source of truth — global `const TRIP`. Edit this to update people, costs, days, resources. |
 | `app.js` | Renders `TRIP` into the DOM and computes splits/settlement. No data lives here. |
-| `index.html` | Static shell: five empty `<section>`s (`#overview`, `#itinerary`, `#costs`, `#split`, `#settlement`), loads `data.js` then `app.js` at end of body. |
+| `index.html` | Static shell: six empty `<section>`s (`#overview`, `#itinerary`, `#costs`, `#split`, `#settlement`, `#resources`), loads `data.js` then `app.js` at end of body. |
 | `styles.css` | All styling. CSS variables on `:root`, dark mode via `prefers-color-scheme`. Mobile-first. |
 | `tracker.md` | Original planning brief (source doc — do not edit). |
 
@@ -38,10 +38,15 @@ Deployed via GitHub Pages from `main`.
 - `app.js` builds DOM via `createElement`/`textContent` — never `innerHTML`
   with data values.
 - Money is USD, `$` + `toFixed(2)`, `.money` class, tabular numerals.
+- `TRIP.days` holds per-day plans: `morning`/`afternoon`/`evening` blocks
+  (null = nothing planned), `stay`, `notes`, and `checklist` items
+  (`{t, task}` — t is a rough start time). Checklist state persists in
+  localStorage (`hkcheck:{date}:{index}`).
 - Shared class vocabulary (styled in `styles.css`, emitted by `app.js`):
   `.table-wrap`, `.money`, `.tbd`, `.badge`, `.badge-booked`,
   `.badge-to-book`, `.total-row`, `.pos`, `.neg`, `.muted`, `.cards`,
-  `.card`, `.picker`.
+  `.card`, `.picker`, `.day-chips`, `.day-chip`, `.day-detail`, `.block`,
+  `.block-label`, `.checklist`, `.time`.
 - Commits: small, one concern each, imperative subject lines.
 
 ## Verify
