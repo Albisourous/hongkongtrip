@@ -1,0 +1,343 @@
+/* HK · Shenzhen · Macau — Group Trip 2026
+   Static shell styles. Mobile-first, light by default,
+   dark via prefers-color-scheme. No external assets. */
+
+:root {
+  --bg: #fbfbfc;
+  --surface: #ffffff;
+  --text: #17181c;
+  --muted: #646a76;
+  --border: #e6e7eb;
+  --accent: #4f46e5;
+  --green: #15803d;
+  --green-bg: #e5f4eb;
+  --amber: #b45309;
+  --amber-bg: #fbf0dd;
+  --red: #dc2626;
+  --code-bg: #f0f1f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1013;
+    --surface: #16191f;
+    --text: #e8eaef;
+    --muted: #9aa1ad;
+    --border: #2a2e37;
+    --accent: #8b93ff;
+    --green: #4ade80;
+    --green-bg: rgba(74, 222, 128, 0.13);
+    --amber: #fbbf24;
+    --amber-bg: rgba(251, 191, 36, 0.13);
+    --red: #f87171;
+    --code-bg: #1f232b;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------- Header ---------- */
+
+header {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 2.5rem 0 2rem;
+  margin-bottom: 2.5rem;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 4.5vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Sections ---------- */
+
+section {
+  margin: 0 0 3rem;
+}
+
+section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+section h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+section p {
+  margin: 0 0 0.75rem;
+}
+
+section p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Lists ---------- */
+
+ul,
+ol {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+}
+
+li {
+  margin: 0.25rem 0;
+}
+
+li::marker {
+  color: var(--muted);
+}
+
+/* ---------- Tables ---------- */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  margin: 0 0 1rem;
+}
+
+.table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table-wrap th,
+.table-wrap td {
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Long text columns (labels, plans, notes) wrap rather than scroll forever */
+.table-wrap td {
+  white-space: normal;
+  min-width: 0;
+}
+
+.table-wrap th {
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.table-wrap tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.money {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.total-row td {
+  font-weight: 700;
+  border-top: 2px solid var(--border);
+  background: var(--surface);
+}
+
+/* ---------- Status / amounts ---------- */
+
+.tbd {
+  color: var(--amber);
+  font-weight: 600;
+  font-size: 0.82em;
+  letter-spacing: 0.03em;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.badge-booked {
+  color: var(--green);
+  background: var(--green-bg);
+  border-color: transparent;
+}
+
+.badge-to-book {
+  color: var(--amber);
+  background: var(--amber-bg);
+  border-color: transparent;
+}
+
+.pos {
+  color: var(--green);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.neg {
+  color: var(--red);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- Cards (legs overview) ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  padding: 0.9rem 1rem;
+}
+
+.card h3,
+.card .card-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.card p {
+  margin: 0.15rem 0;
+  font-size: 0.85rem;
+}
+
+/* ---------- Person picker ---------- */
+
+.picker {
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.picker:hover {
+  border-color: var(--muted);
+}
+
+.picker:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ---------- Misc ---------- */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 0.3rem;
+}
+
+.noscript {
+  border: 1px solid var(--amber);
+  background: var(--amber-bg);
+  color: var(--text);
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  margin: 0 0 2rem;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0 2.5rem;
+  font-size: 0.85rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ---------- Wider screens ---------- */
+
+@media (min-width: 40rem) {
+  header {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  section {
+    margin-bottom: 3.5rem;
+  }
+
+  .table-wrap th,
+  .table-wrap td {
+    padding: 0.65rem 1rem;
+  }
+}
