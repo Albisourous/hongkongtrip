@@ -123,17 +123,20 @@ const TRIP = {
       ],
     },
     {
-      date: "Oct 1", day: "Thu", base: "SZ → Macau", stay: "Macau hotel (TBD)",
-      morning: "Metro Futian → Shekou Port (~40 min) · ferry Shekou → Macau (~60–70 min, arrive 45 min early)",
-      afternoon: "Check in · Senado Sq → Ruins of St Paul's → Rua da Felicidade",
-      evening: "Cotai resort-hop (Venetian/Londoner) + Galaxy",
-      notes: "⚠ Golden Week Day 1 — peak crowds. Carry pre-booked ferry ticket (240-hr transit requires onward ticket).",
+      date: "Oct 1", day: "Thu", base: "SZ → Macau", stay: "Macau Peninsula hotel (TBD)",
+      morning: "Metro Futian → Shekou Port (~40 min) · ferry → Macau Outer Harbour (~60–70 min, arrive 45 min early) · 5-min taxi/shuttle to Peninsula hotel, drop bags",
+      afternoon: "Historic walking tour: Senado Sq → Ruins of St Paul's → Mount Fortress → Rua da Felicidade + Macanese street food",
+      evening: "Free casino shuttle from Grand Lisboa/StarWorld (or 15-min taxi) → Cotai: Venetian, Londoner, Studio City, Galaxy",
+      notes: "⚠ Golden Week Day 1 — peak crowds. Carry pre-booked ferry ticket (240-hr transit requires onward ticket). Stay on the Peninsula near the historic centre for easy bag drop.",
       checklist: [
         { t: "8:00am", task: "Metro Futian → Shekou Port (~40 min)" },
-        { t: "9:15am", task: "Arrive port 45 min early · ferry → Macau" },
-        { t: "11:00am", task: "Check in" },
-        { t: "1:00pm", task: "Senado Sq → Ruins of St Paul's → Rua da Felicidade" },
-        { t: "7:00pm", task: "Cotai resort-hop + Galaxy" },
+        { t: "9:15am", task: "Arrive port 45 min early · ferry → Macau Outer Harbour" },
+        { t: "10:45am", task: "Taxi/shuttle 5 min → Peninsula hotel, drop bags" },
+        { t: "11:30am", task: "Senado Sq → Ruins of St Paul's → Mount Fortress" },
+        { t: "2:00pm", task: "Rua da Felicidade + Macanese street food" },
+        { t: "6:30pm", task: "Free shuttle from Grand Lisboa/StarWorld → Cotai" },
+        { t: "7:30pm", task: "Cotai: Venetian · Londoner · Studio City · Galaxy" },
+        { t: "late", task: "Shuttle/taxi back to Peninsula hotel" },
       ],
     },
     {
@@ -194,7 +197,7 @@ const TRIP = {
   costs: [
     { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158, perPerson: null, frontedBy: "albin", status: "booked", note: "4BR, Yau Ma Tei / Nathan Rd" },
     { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "TBD — Hyatt Place Shenzhen Dongmen (points) or Kapok Shenzhen Luohu (cash)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "4 rooms · if points, record points + cash-equivalent" },
-    { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "TBD — near Outer Harbour/Senado or Cotai", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "4 rooms · Golden Week — book ASAP" },
+    { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "TBD — Hotel Central (San Ma Lo, closest to UNESCO), Sofitel Ponte 16 (waterfront), or Caravel (budget boutique)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "Peninsula near historic centre for morning bag drop · Golden Week — book ASAP" },
     { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: null, perPerson: null, frontedBy: "albin", status: "booked", note: "2 rooms · cash price TBD" },
 
     { id: "a21", leg: "hk1", cat: "Transport", label: "Bus A21 · HKG → Yau Ma Tei", total: null, perPerson: 4.30, frontedBy: null, status: null, note: "~HK$34 · first bus ~05:30" },
