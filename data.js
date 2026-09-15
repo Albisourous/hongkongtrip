@@ -6,13 +6,14 @@ const TRIP = {
 
   // legs a person attends; remove a leg id to exclude them from that leg's split
   people: [
-    { id: "p1", name: "You", legs: ["hk1", "sz", "mo", "hk2"] },
-    { id: "p2", name: "Friend 2", legs: ["hk1", "sz", "mo", "hk2"] },
-    { id: "p3", name: "Friend 3", legs: ["hk1", "sz", "mo", "hk2"] },
-    { id: "p4", name: "Friend 4", legs: ["hk1", "sz", "mo", "hk2"] },
-    { id: "p5", name: "Friend 5", legs: ["hk1", "sz", "mo", "hk2"] },
-    { id: "p6", name: "Friend 6", legs: ["hk1", "sz", "mo", "hk2"] },
-    { id: "p7", name: "Friend 7", legs: ["hk1", "sz", "mo", "hk2"] },
+    { id: "albin", name: "Albin", legs: ["hk1", "sz", "mo", "hk2"] },
+    { id: "kj", name: "Kevin Jacob", legs: ["hk1", "sz", "mo", "hk2"] },
+    { id: "maas", name: "Maas", legs: ["hk1", "sz", "mo", "hk2"] },
+    { id: "ehsan", name: "Ehsan", legs: ["hk1", "mo", "hk2"] }, // solo in China
+    { id: "brendan", name: "Brendan", legs: ["hk1", "hk2"] }, // HK legs only
+    { id: "kli", name: "Kevin Li", legs: ["hk1", "sz", "mo", "hk2"] },
+    { id: "shruthik", name: "Shruthik", legs: ["hk1", "sz", "mo", "hk2"] },
+    { id: "wesley", name: "Wesley", legs: ["hk1", "sz", "mo", "hk2"] },
   ],
 
   legs: [
@@ -44,10 +45,10 @@ const TRIP = {
   // leg attendees; perPerson => each attendee owes that amount to frontedBy.
   // No frontedBy => informational only (everyone pays their own).
   costs: [
-    { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158, perPerson: null, frontedBy: "p1", status: "booked", note: "Sleeps all 7 · ~$165/pax" },
+    { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158, perPerson: null, frontedBy: "albin", status: "booked", note: "4BR, Yau Ma Tei / Nathan Rd" },
     { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "TBD — Hyatt Place Shenzhen Dongmen (points) or Kapok Shenzhen Luohu (cash)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "4 rooms · if points, record points + cash-equivalent" },
     { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "TBD — near Outer Harbour/Senado or Cotai", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "4 rooms · Golden Week — book ASAP" },
-    { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: null, perPerson: null, frontedBy: "p1", status: "booked", note: "2 rooms (4+3 guests) · cash price TBD" },
+    { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: null, perPerson: null, frontedBy: "albin", status: "booked", note: "2 rooms · cash price TBD" },
 
     { id: "a21", leg: "hk1", cat: "Transport", label: "Bus A21 · HKG → Yau Ma Tei", total: null, perPerson: 4.30, frontedBy: null, status: null, note: "~HK$34 · first bus ~05:30" },
     { id: "hsr", leg: "sz", cat: "Transport", label: "HSR West Kowloon → Futian", total: null, perPerson: 10, frontedBy: null, status: null, note: "~HK$78 · ~14 min · passport ticket" },
