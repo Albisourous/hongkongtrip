@@ -36,8 +36,9 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   - `perPerson` set → each leg attendee owes `perPerson` to the fronter.
 - `frontedBy: null` → informational only (everyone pays their own).
 - `null` = TBD. Render as "TBD", exclude from all math.
-- Excluded from the group split by default: flights (booked individually),
-  the Sep 29–30 medical block, and Sam's Tailor (all personal spend).
+- Excluded from the group split: the Sep 29–30 medical block and Sam's
+  Tailor (all personal spend). Flights are fronted by Ehsan and sit on
+  `hk1` so they split across all 9 (~$450/person placeholder).
 - Points bookings: record points used AND a cash-equivalent `total` so the
   fronter is reimbursed fairly.
 

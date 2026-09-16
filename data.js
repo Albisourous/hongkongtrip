@@ -187,7 +187,7 @@ const TRIP = {
   ],
 
   flights: {
-    note: "Booked individually (Delta Main Basic) — not a shared cost.",
+    note: "Fronted by Ehsan (Delta Main Basic) — ~$450/person placeholder, split across the group.",
     out: "DL2861 SEA→LAX + DL0089 LAX→HKG",
     back: "DL0088 HKG→LAX + DL1714 LAX→SEA",
   },
@@ -196,6 +196,7 @@ const TRIP = {
   // leg attendees; perPerson => each attendee owes that amount to frontedBy.
   // No frontedBy => informational only (everyone pays their own).
   costs: [
+    { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 450, frontedBy: "ehsan", status: "booked", note: "~$450/person placeholder — update to actual fare · everyone attends hk1 so it splits across all 9" },
     { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158, perPerson: null, frontedBy: "albin", status: "booked", note: "4BR, Yau Ma Tei / Nathan Rd" },
     { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "TBD — Hyatt Place Shenzhen Dongmen (points) or Kapok Shenzhen Luohu (cash)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "4 rooms · if points, record points + cash-equivalent" },
     { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "TBD — Hotel Central (San Ma Lo, closest to UNESCO), Sofitel Ponte 16 (waterfront), or Caravel (budget boutique)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "Peninsula near historic centre for morning bag drop · Golden Week — book ASAP" },
@@ -210,7 +211,7 @@ const TRIP = {
   ],
 
   notes: [
-    "Flights booked individually — excluded from the split.",
+    "Flights fronted by Ehsan — ~$450/person placeholder, split across everyone; update when the real fare lands.",
     "Sep 29–30 medical block and Sam's Tailor are personal spend — excluded.",
     "Points bookings: record points used AND cash-equivalent so the fronter is reimbursed fairly.",
     "Split is per leg: each person owes (leg shared costs) / (people on that leg).",
