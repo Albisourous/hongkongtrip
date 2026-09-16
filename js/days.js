@@ -13,7 +13,7 @@
     return node;
   }
 
-  var store = {
+  var store = window.SyncStore || {
     get: function (k) {
       try { return localStorage.getItem(k); } catch (e) { return null; }
     },
@@ -52,7 +52,7 @@
   app.appendChild(section);
 
   var foot = el("footer");
-  foot.appendChild(el("p", "muted", "Checklist marks are saved on this device only."));
+  foot.appendChild(el("p", "muted", "Checklist marks sync across devices (30s refresh)."));
   app.appendChild(foot);
 
   var chipButtons = [];
@@ -170,6 +170,12 @@
     if (Math.abs(dx) < 50 || Math.abs(dx) <= Math.abs(dy)) return;
     show(current + (dx < 0 ? 1 : -1), true);
   }, { passive: true });
+
+  // Re-render when another device's marks arrive.
+  if (window.SyncStore) SyncStore.onChange(function () {
+    TRIP.days.forEach(function (_, i) { refreshProgress(i); });
+    show(current, false);
+  });
 
   show(0, false);
 })();

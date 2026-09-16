@@ -7,7 +7,7 @@
     if (text != null) n.textContent = text;
     return n;
   };
-  const store = {
+  const store = window.SyncStore || {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} },
   };
@@ -107,7 +107,7 @@
   const summary = el("p", "book-summary");
   const secToBook = el("section"), secOpt = el("section"), secDone = el("section");
   const foot = el("footer");
-  foot.append(el("p", "muted", "Booked marks are saved on this device only."));
+  foot.append(el("p", "muted", "Booked marks sync across devices (30s refresh)."));
   app.append(head, summary, secToBook, secOpt, secDone, foot);
 
   const isDone = it => store.get(`hkbooked:${it.id}`) === "1";
@@ -197,5 +197,6 @@
     }
   }
 
+  if (window.SyncStore) SyncStore.onChange(render);
   render();
 })();

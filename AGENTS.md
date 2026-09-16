@@ -52,6 +52,12 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   (`{t, task}` — t is a rough start time). Checklist state persists in
   localStorage (`hkcheck:{date}:{index}`). Payment marks use
   `hkpaid:{from}>{to}`; booking marks use `hkbooked:{costId}`.
+- `js/sync.js` (`window.SyncStore`, loaded on Days/Bookings/Payments)
+  syncs those marks across devices via a free JSON bin
+  (extendsclass json-storage — no auth, anyone with the URL can write).
+  Keys merge last-write-wins by timestamp; localStorage mirrors state so
+  pages work offline. Pages call `SyncStore.onChange(rerender)`; if the
+  script is unreachable they fall back to a localStorage-only shim.
 - Shared class vocabulary (styled in `styles.css`): `.table-wrap`,
   `.money`, `.tbd`, `.badge`, `.badge-booked`, `.badge-to-book` (red),
   `.total-row`, `.pos`, `.neg`, `.muted`, `.cards`, `.card`, `.picker`,

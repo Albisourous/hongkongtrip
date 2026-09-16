@@ -28,7 +28,7 @@
     section.append(wrap);
     return tb;
   };
-  const store = {
+  const store = window.SyncStore || {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} },
   };
@@ -246,11 +246,13 @@
   }
 
   const run = () => {
+    app.textContent = "";
     header(); costs(); split(); settlement();
     const foot = el("footer");
-    foot.append(el("p", "muted", "Paid marks are saved on this device only."));
+    foot.append(el("p", "muted", "Paid marks sync across devices (30s refresh)."));
     app.append(foot);
   };
+  if (window.SyncStore) SyncStore.onChange(run);
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
   else run();
 })();
