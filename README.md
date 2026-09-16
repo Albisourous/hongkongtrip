@@ -1,6 +1,6 @@
 # hongkongtrip
 
-Group trip tracker — Hong Kong · Shenzhen · Macau, Sep 25 – Oct 3, 2026.
+Group trip tracker — Hong Kong · Guangzhou · Shenzhen · Macau, Sep 25 – Oct 3, 2026.
 
 A dependency-free static site that shows the itinerary, shared costs,
 per-person splits by leg, and who owes whom.

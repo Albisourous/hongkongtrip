@@ -13,7 +13,7 @@
   }
 
   var totalPeople = TRIP.people.length;
-  var LEG_SHORT = { hk1: "Hong Kong", sz: "Shenzhen", mo: "Macau", hk2: "HK airport" };
+  var LEG_SHORT = { hk1: "Hong Kong", gz: "Guangzhou", sz: "Shenzhen", mo: "Macau", hk2: "HK airport" };
 
   function legShort(leg) {
     return LEG_SHORT[leg.id] || leg.name;

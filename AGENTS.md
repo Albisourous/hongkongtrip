@@ -4,8 +4,8 @@ Guidance for agents working on this repo.
 
 ## What this is
 
-Static, dependency-free trip tracker for HK · Shenzhen · Macau
-(Sep 25 – Oct 3, 2026, 9 people). No build step, no frameworks.
+Static, dependency-free trip tracker for HK · Guangzhou · Shenzhen ·
+Macau (Sep 25 – Oct 3, 2026, 9 people). No build step, no frameworks.
 Deployed via GitHub Pages from `main`.
 
 ## Architecture
@@ -39,6 +39,10 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 - Excluded from the group split: the Sep 29–30 medical block and Sam's
   Tailor (all personal spend). Flights are fronted by Ehsan and sit on
   `hk1` so they split across all 9 (~$450/person placeholder).
+- Sep 28–30 the group splits: 4 (KJ, Kevin Li, Shruthik, Wesley) take the
+  `gz` leg in Guangzhou while Albin & Maas hold `sz` in Shenzhen — both
+  groups attend `sz`, but the GZ crew only needs the Sep 30 hotel night.
+  Brendan attends `hk1` only; Ehsan & Scott skip mainland (solo).
 - Points bookings: record points used AND a cash-equivalent `total` so the
   fronter is reimbursed fairly.
 
@@ -82,7 +86,8 @@ sums match the cost table, settlement balances sum to ~$0.
 
 ## Outstanding TBDs (collect from trip owner)
 
-- Shenzhen hotel choice + total (Hyatt Place Dongmen points vs Kapok Luohu cash)
+- Guangzhou hotel + total (Sep 28–30, GZ crew of 4)
+- Shenzhen hotel choice + total (Hyatt Place Dongmen points vs Kapok Luohu cash) — GZ crew only needs Sep 30 night; Albin/Maas need all 3
 - Macau hotel + total (book ASAP — Golden Week)
 - SkyCity Marriott cash total
 - HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming

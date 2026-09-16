@@ -34,7 +34,7 @@
   };
 
   const legName = id => (TRIP.legs.find(l => l.id === id) || {}).name || id;
-  const legShort = id => ({ hk1: "HK", sz: "SZ", mo: "MO", hk2: "HKG" }[id] || legName(id));
+  const legShort = id => ({ hk1: "HK", gz: "GZ", sz: "SZ", mo: "MO", hk2: "HKG" }[id] || legName(id));
   const personName = id => (TRIP.people.find(p => p.id === id) || {}).name || id;
   const attendees = leg => TRIP.people.filter(p => p.legs.includes(leg));
 
@@ -138,7 +138,7 @@
     });
     fr.append(td("money", fmt(grand)));
     tb.append(fr);
-    s.append(el("p", "muted", "Each leg splits only among the people on it. HK = Sep 25–28 · SZ = Shenzhen · MO = Macau · HKG = airport night."));
+    s.append(el("p", "muted", "Each leg splits only among the people on it. HK = Sep 25–28 · GZ = Guangzhou · SZ = Shenzhen · MO = Macau · HKG = airport night."));
     app.append(s);
   }
 
