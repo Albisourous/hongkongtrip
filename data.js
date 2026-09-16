@@ -10,6 +10,7 @@ const TRIP = {
     { id: "kj", name: "Kevin Jacob", legs: ["hk1", "sz", "mo", "hk2"] },
     { id: "maas", name: "Maas", legs: ["hk1", "sz", "mo", "hk2"] },
     { id: "ehsan", name: "Ehsan", legs: ["hk1", "mo", "hk2"] }, // solo in China
+    { id: "scott", name: "Scott", legs: ["hk1", "mo", "hk2"] }, // same as Ehsan
     { id: "brendan", name: "Brendan", legs: ["hk1", "hk2"] }, // HK legs only
     { id: "kli", name: "Kevin Li", legs: ["hk1", "sz", "mo", "hk2"] },
     { id: "shruthik", name: "Shruthik", legs: ["hk1", "sz", "mo", "hk2"] },

@@ -5,7 +5,7 @@ Guidance for agents working on this repo.
 ## What this is
 
 Static, dependency-free trip tracker for HK · Shenzhen · Macau
-(Sep 25 – Oct 3, 2026, 8 people). No build step, no frameworks.
+(Sep 25 – Oct 3, 2026, 9 people). No build step, no frameworks.
 Deployed via GitHub Pages from `main`.
 
 ## Architecture
@@ -78,5 +78,5 @@ sums match the cost table, settlement balances sum to ~$0.
 - Shenzhen hotel choice + total (Hyatt Place Dongmen points vs Kapok Luohu cash)
 - Macau hotel + total (book ASAP — Golden Week)
 - SkyCity Marriott cash total
-- HK1 Airbnb sleeps 7 but 8 people attend that leg — confirm rooming
+- HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming
 - Who fronts remaining bookings
