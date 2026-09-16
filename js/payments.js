@@ -245,7 +245,12 @@
     app.append(s);
   }
 
-  const run = () => { header(); costs(); split(); settlement(); };
+  const run = () => {
+    header(); costs(); split(); settlement();
+    const foot = el("footer");
+    foot.append(el("p", "muted", "Paid marks are saved on this device only."));
+    app.append(foot);
+  };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
   else run();
 })();

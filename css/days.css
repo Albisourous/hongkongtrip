@@ -1,11 +1,6 @@
 /* Days page (days.html) — page-specific styles only.
    Shared styles live in ../styles.css. Prefix new classes with .day- */
 
-.day-hint {
-  margin: -0.5rem 0 1rem;
-  font-size: 0.85rem;
-}
-
 /* Horizontal swipe on the card; vertical scroll stays native. */
 .day-detail {
   touch-action: pan-y;
