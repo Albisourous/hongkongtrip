@@ -1,2 +1,64 @@
 /* Days page (days.html) — page-specific styles only.
    Shared styles live in ../styles.css. Prefix new classes with .day- */
+
+.day-hint {
+  margin: -0.5rem 0 1rem;
+  font-size: 0.85rem;
+}
+
+/* Horizontal swipe on the card; vertical scroll stays native. */
+.day-detail {
+  touch-action: pan-y;
+}
+
+.day-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.day-head h3 {
+  margin-top: 0;
+}
+
+.day-progress {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Per-day checklist progress inside each chip. */
+.day-chip-prog {
+  margin-left: 0.45rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.day-chip.active .day-chip-prog {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.day-chip.day-chip-done {
+  border-color: var(--green);
+}
+
+.day-chip.day-chip-done .day-chip-prog {
+  color: var(--green);
+}
+
+.day-chip.active.day-chip-done .day-chip-prog {
+  color: inherit;
+}
+
+.day-notes {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+}
