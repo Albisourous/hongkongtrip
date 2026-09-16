@@ -34,6 +34,7 @@
   };
 
   const legName = id => (TRIP.legs.find(l => l.id === id) || {}).name || id;
+  const legShort = id => ({ hk1: "HK", sz: "SZ", mo: "MO", hk2: "HKG" }[id] || legName(id));
   const personName = id => (TRIP.people.find(p => p.id === id) || {}).name || id;
   const attendees = leg => TRIP.people.filter(p => p.legs.includes(leg));
 
@@ -53,6 +54,10 @@
     return sh == null ? s : s + sh;
   }, 0);
 
+  // Rows needing action sort first: to-book, booked, then informational.
+  const STATUS_ORDER = { "to-book": 0, booked: 1 };
+  const statusRank = c => c.status in STATUS_ORDER ? STATUS_ORDER[c.status] : 2;
+
   const app = $("#app");
 
   function header() {
@@ -65,45 +70,51 @@
   function costs() {
     const s = el("section");
     s.append(el("h2", null, "Shared costs"));
-    const tb = mkTable(["Item", "Leg", "Total", "Per person", "Fronted by", "Status"], s);
+
+    const todo = TRIP.costs.filter(c => c.status === "to-book");
+    if (todo.length) {
+      const alert = el("p", "pay-alert");
+      alert.append(el("strong", null, `To book (${todo.length}): `));
+      todo.forEach((c, i) => {
+        if (i) alert.append(" · ");
+        alert.append(`${c.cat} — ${legName(c.leg)}`);
+      });
+      alert.append(" ");
+      const link = el("a", null, "Open Bookings →");
+      link.href = "bookings.html";
+      alert.append(link);
+      s.append(alert);
+    }
+
+    const tb = mkTable(["Item", "Total", "Per person", "Status"], s);
     let sum = 0;
-    TRIP.costs.forEach(c => {
+    [...TRIP.costs].sort((a, b) => statusRank(a) - statusRank(b)).forEach(c => {
       const n = attendees(c.leg).length;
       const pp = c.perPerson != null ? c.perPerson : (c.total != null && n ? c.total / n : null);
       const sh = share(c);
       if (sh != null) sum += sh * n;
-      const tr = el("tr");
-      tr.append(td(null, c.label), td(null, legName(c.leg)),
+      const tr = el("tr", c.status === "to-book" ? "pay-need" : null);
+      const item = td(null);
+      item.append(el("div", "pay-item", c.label),
+        el("div", "pay-sub", `${legName(c.leg)} · ${c.frontedBy ? "fronted by " + personName(c.frontedBy) : "pay your own"}`));
+      tr.append(item,
         td("money", c.total == null ? tbd() : fmt(c.total)),
         td("money", pp == null ? tbd() : `~$${pp.toFixed(2)}/pax`),
-        td(null, c.frontedBy ? personName(c.frontedBy) : "—"),
         td(null, c.status == null ? "—" : el("span", `badge badge-${c.status}`, c.status)));
       tb.append(tr);
     });
     const fr = el("tr", "total-row"), a = td(null, "Shared total (fronted only)"), z = td(null, "");
-    a.colSpan = 2;
-    z.colSpan = 3;
+    z.colSpan = 2;
     fr.append(a, td("money", fmt(sum)), z);
     tb.append(fr);
-    s.append(el("p", "muted", "Rows with no fronter are informational — everyone pays their own. TBD rows are excluded from the split until totals land."));
+    s.append(el("p", "muted", "Red rows still need booking. “Pay your own” rows are informational — excluded from the split."));
     app.append(s);
   }
 
   function split() {
-    const s = el("section"), picker = el("select", "picker"), pw = el("p");
+    const s = el("section");
     s.append(el("h2", null, "Per-person split"));
-    const o0 = el("option", null, "Highlight a person…");
-    o0.value = "";
-    picker.append(o0);
-    TRIP.people.forEach(p => {
-      const o = el("option", null, p.name);
-      o.value = p.id;
-      picker.append(o);
-    });
-    pw.append(picker);
-    s.append(pw);
-    const tb = mkTable(["Person", ...TRIP.legs.map(l => l.name), "Total"], s);
-    const rows = {};
+    const tb = mkTable(["Person", ...TRIP.legs.map(l => legShort(l.id)), "Total"], s);
     TRIP.people.forEach(p => {
       const tr = el("tr");
       tr.append(td(null, p.name));
@@ -115,7 +126,6 @@
         tr.append(td("money", fmt(v)));
       });
       tr.append(td("money", fmt(tot)));
-      rows[p.id] = tr;
       tb.append(tr);
     });
     const fr = el("tr", "total-row");
@@ -128,11 +138,7 @@
     });
     fr.append(td("money", fmt(grand)));
     tb.append(fr);
-    s.append(el("p", "muted", "Each leg splits only among the people on that leg."));
-    picker.addEventListener("change", () => {
-      Object.values(rows).forEach(r => r.classList.remove("total-row"));
-      if (rows[picker.value]) rows[picker.value].classList.add("total-row");
-    });
+    s.append(el("p", "muted", "Each leg splits only among the people on it. HK = Sep 25–28 · SZ = Shenzhen · MO = Macau · HKG = airport night."));
     app.append(s);
   }
 
@@ -154,7 +160,8 @@
     }
 
     // Suggested payments via greedy netting on current balances.
-    const nets = TRIP.people.map(p => ({ id: p.id, net: fronted[p.id] - owes[p.id] }));
+    const net = p => fronted[p.id] - owes[p.id];
+    const nets = TRIP.people.map(p => ({ id: p.id, net: net(p) }));
     const debt = nets.filter(x => x.net < -0.01).map(x => ({ id: x.id, amt: -x.net })).sort((a, b) => b.amt - a.amt);
     const cred = nets.filter(x => x.net > 0.01).map(x => ({ id: x.id, amt: x.net })).sort((a, b) => b.amt - a.amt);
     const pays = [];
@@ -170,20 +177,21 @@
 
     // Remaining = net adjusted by payments already marked paid.
     const remaining = {}, remCells = {};
-    TRIP.people.forEach(p => { remaining[p.id] = fronted[p.id] - owes[p.id]; });
+    TRIP.people.forEach(p => { remaining[p.id] = net(p); });
     const updateRemaining = () => TRIP.people.forEach(p => {
       const v = remaining[p.id], cell = remCells[p.id];
       cell.className = "money" + (v > 0.004 ? " pos" : v < -0.004 ? " neg" : "");
       cell.textContent = fmt(v);
     });
 
+    // Creditors first so it's clear who's waiting on money.
     const tb = mkTable(["Person", "Fronted", "Owes", "Net", "Remaining"], s);
-    TRIP.people.forEach(p => {
-      const net = fronted[p.id] - owes[p.id];
-      const tr = el("tr"), rem = td("money", fmt(net));
+    [...TRIP.people].sort((a, b) => net(b) - net(a)).forEach(p => {
+      const n = net(p);
+      const tr = el("tr"), rem = td("money", fmt(n));
       remCells[p.id] = rem;
       tr.append(td(null, p.name), td("money", fmt(fronted[p.id])), td("money", fmt(owes[p.id])),
-        td("money" + (net > 0.004 ? " pos" : net < -0.004 ? " neg" : ""), fmt(net)), rem);
+        td("money" + (n > 0.004 ? " pos" : n < -0.004 ? " neg" : ""), fmt(n)), rem);
       tb.append(tr);
     });
     s.append(el("p", "muted", "Net = fronted − owes. Remaining updates as payments are checked off."));
