@@ -16,6 +16,12 @@
   --red: #dc2626;
   --red-bg: rgba(220, 38, 38, 0.1);
   --code-bg: #f0f1f4;
+  /* Per-leg colors */
+  --hk1: #e11d48;
+  --gz: #d97706;
+  --sz: #0284c7;
+  --mo: #059669;
+  --hk2: #7c3aed;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,6 +39,11 @@
     --red: #f87171;
     --red-bg: rgba(248, 113, 113, 0.15);
     --code-bg: #1f232b;
+    --hk1: #fb7185;
+    --gz: #fbbf24;
+    --sz: #38bdf8;
+    --mo: #34d399;
+    --hk2: #a78bfa;
   }
 }
 
@@ -195,7 +206,9 @@ li::marker {
 }
 
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
   font-size: 0.72rem;
@@ -217,6 +230,30 @@ li::marker {
   color: var(--red);
   background: var(--red-bg);
   border-color: transparent;
+}
+
+/* ---------- Leg colors ---------- */
+
+/* A leg-* class on any element sets --leg; .leg-dot picks it up. */
+.leg-hk1 { --leg: var(--hk1); }
+.leg-gz { --leg: var(--gz); }
+.leg-sz { --leg: var(--sz); }
+.leg-mo { --leg: var(--mo); }
+.leg-hk2 { --leg: var(--hk2); }
+
+.leg-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22rem;
+}
+
+.leg-dot {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 999px;
+  background: var(--leg, var(--muted));
 }
 
 .pos {
@@ -362,6 +399,9 @@ footer p {
   font-weight: 600;
   white-space: nowrap;
   flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   color: var(--text);
   background: var(--surface);
   border: 1px solid var(--border);

@@ -47,7 +47,7 @@
   var legCards = el("div", "cards");
 
   TRIP.legs.forEach(function (leg) {
-    var card = el("div", "card");
+    var card = el("div", "card home-leg leg-" + leg.id);
     card.appendChild(el("h3", null, leg.name));
     card.appendChild(el("p", "muted",
       leg.dates + " · " + leg.nights + (leg.nights === 1 ? " night" : " nights")));
@@ -80,8 +80,10 @@
     var badges = el("span", "home-person-legs");
     TRIP.legs.forEach(function (leg) {
       var on = person.legs.indexOf(leg.id) !== -1;
-      badges.appendChild(el("span",
-        "badge" + (on ? "" : " home-leg-off"), legShort(leg)));
+      var b = el("span", "badge leg-" + leg.id + (on ? "" : " home-leg-off"));
+      b.appendChild(el("span", "leg-dot"));
+      b.appendChild(document.createTextNode(legShort(leg)));
+      badges.appendChild(b);
     });
     row.appendChild(badges);
     roster.appendChild(row);

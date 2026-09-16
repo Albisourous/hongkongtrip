@@ -25,9 +25,14 @@
   white-space: nowrap;
 }
 
+/* Leg color dots inside the day heading. */
+.day-head .leg-dots {
+  margin-right: 0.5rem;
+}
+
 /* Per-day checklist progress inside each chip. */
 .day-chip-prog {
-  margin-left: 0.45rem;
+  margin-left: 0.05rem;
   color: var(--muted);
   font-size: 0.7rem;
   font-weight: 650;

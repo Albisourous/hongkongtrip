@@ -13,6 +13,14 @@
     return node;
   }
 
+  function legDots(ids) {
+    var s = el("span", "leg-dots");
+    (ids || []).forEach(function (id) {
+      s.appendChild(el("span", "leg-dot leg-" + id));
+    });
+    return s;
+  }
+
   var store = window.SyncStore || {
     get: function (k) {
       try { return localStorage.getItem(k); } catch (e) { return null; }
@@ -88,8 +96,11 @@
     detail.textContent = "";
 
     var head = el("div", "day-head");
-    head.appendChild(el("h3", null,
+    var h3 = el("h3");
+    if (day.legs && day.legs.length) h3.appendChild(legDots(day.legs));
+    h3.appendChild(document.createTextNode(
       day.date + " · " + day.day + " — " + day.base));
+    head.appendChild(h3);
     progressEl = day.checklist.length ? el("span", "day-progress") : null;
     if (progressEl) head.appendChild(progressEl);
     detail.appendChild(head);
@@ -144,6 +155,7 @@
   TRIP.days.forEach(function (day, i) {
     var b = el("button", "day-chip");
     b.type = "button";
+    if (day.legs && day.legs.length) b.appendChild(legDots(day.legs));
     b.appendChild(document.createTextNode(day.date + " · " + day.day));
     if (day.checklist.length) {
       chipProgs[i] = el("span", "day-chip-prog");

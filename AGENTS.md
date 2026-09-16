@@ -63,6 +63,11 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   Keys merge last-write-wins by timestamp; localStorage mirrors state so
   pages work offline. Pages call `SyncStore.onChange(rerender)`; if the
   script is unreachable they fall back to a localStorage-only shim.
+- Leg colors: each leg id has a color (`--hk1`, `--gz`, `--sz`, `--mo`,
+  `--hk2` in `styles.css`). Put `leg-{id}` on an element to set `--leg`;
+  `.leg-dot` renders the dot, `.leg-dots` groups several. Used in roster
+  badges, leg-card top strips, day chips/headings (`days[].legs`),
+  payment rows/headers, and booking titles.
 - Shared class vocabulary (styled in `styles.css`): `.table-wrap`,
   `.money`, `.tbd`, `.badge`, `.badge-booked`, `.badge-to-book` (red),
   `.total-row`, `.pos`, `.neg`, `.muted`, `.cards`, `.card`, `.picker`,

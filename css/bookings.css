@@ -77,6 +77,11 @@
   text-decoration: line-through;
 }
 
+/* Leg color dots before the item title */
+.book-title .leg-dots {
+  margin-right: 0.4rem;
+}
+
 .book-right {
   display: flex;
   align-items: center;

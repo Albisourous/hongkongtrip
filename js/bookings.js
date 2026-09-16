@@ -7,6 +7,11 @@
     if (text != null) n.textContent = text;
     return n;
   };
+  const legDots = ids => {
+    const s = el("span", "leg-dots");
+    ids.forEach(id => s.append(el("span", "leg-dot leg-" + id)));
+    return s;
+  };
   const store = window.SyncStore || {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} },
@@ -25,7 +30,7 @@
   const REQUIRED_CATS = ["Visa/legal", "HSR", "Ferry SZ→Macau", "Ferry Macau→HK"];
 
   const hotelItem = c => ({
-    id: c.id, urgent: true,
+    id: c.id, urgent: true, legs: [c.leg],
     title: `${legName(c.leg)} hotel`,
     cost: null,
     when: legDates(c.leg),
@@ -42,7 +47,7 @@
   const REQUIRED = [
     ...TRIP.costs.filter(c => c.status === "to-book").map(hotelItem),
     {
-      id: "transit-onward", urgent: true,
+      id: "transit-onward", urgent: true, legs: ["gz", "sz"],
       title: "Onward ticket — 240-hr transit",
       cost: transit.cost,
       when: "Show at the mainland border · Sep 28",
@@ -50,7 +55,7 @@
       url: transit.url, linkLabel: transit.linkLabel,
     },
     {
-      id: "hsr-ticket", urgent: true,
+      id: "hsr-ticket", urgent: true, legs: ["gz", "sz"],
       title: "HSR tickets · West Kowloon → Guangzhou South / Futian",
       cost: hsr.cost,
       when: "Opens 15 days out (~Sep 13) · travel Sep 28 · GZ→SZ leg Sep 30",
@@ -58,7 +63,7 @@
       url: hsr.url, linkLabel: hsr.linkLabel,
     },
     {
-      id: "ferry-sz-mo", urgent: true,
+      id: "ferry-sz-mo", urgent: true, legs: ["mo"],
       title: "Ferry · Shekou → Macau Outer Harbour",
       cost: ferryIn.cost,
       when: "Travel Oct 1 · arrive port 45 min early",
@@ -66,7 +71,7 @@
       url: ferryIn.url, linkLabel: ferryIn.linkLabel,
     },
     {
-      id: "ferry-mo-hk", urgent: true,
+      id: "ferry-mo-hk", urgent: true, legs: ["hk2"],
       title: "Ferry · Macau → Hong Kong",
       cost: ferryOut.cost,
       when: `${dayNote("Oct 2", "ferry") || "Book ahead"} Travel Oct 2`,
@@ -74,7 +79,7 @@
       url: ferryOut.url, linkLabel: ferryOut.linkLabel,
     },
     {
-      id: "walled-city", urgent: true,
+      id: "walled-city", urgent: true, legs: ["hk1"],
       title: "Kowloon Walled City exhibition — timed ticket",
       cost: "free",
       when: `Sep 27 · ${walled.t || "morning"}`,
@@ -83,12 +88,21 @@
     },
   ];
 
+  // Map a resource category to a leg color, when it's place-specific.
+  const CAT_LEGS = [["hong kong", "hk1"], ["hk", "hk1"], ["shenzhen", "sz"],
+    ["sz", "sz"], ["macau", "mo"], ["guangzhou", "gz"], ["gz", "gz"]];
+  const catLegs = cat => {
+    const lc = cat.toLowerCase();
+    const hit = CAT_LEGS.find(([k]) => lc.includes(k));
+    return hit ? [hit[1]] : [];
+  };
+
   // Every other resource with a booking/reference link.
   const OPTIONAL = TRIP.resources
     .filter(r => r.url && !REQUIRED_CATS.includes(r.cat))
     .map(r => ({
       id: `res-${r.cat.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
-      urgent: false,
+      urgent: false, legs: catLegs(r.cat),
       title: r.cat,
       cost: r.cost,
       when: null,
@@ -129,7 +143,10 @@
       store.set(`hkbooked:${it.id}`, cb.checked ? "1" : null);
       render();
     });
-    lab.append(cb, el("span", "book-title", it.title));
+    const title = el("span", "book-title");
+    if (it.legs && it.legs.length) title.append(legDots(it.legs));
+    title.append(it.title);
+    lab.append(cb, title);
 
     const right = el("div", "book-right");
     right.append(costNode(it), el("span",

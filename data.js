@@ -29,7 +29,7 @@ const TRIP = {
   // checklist items get a rough start time; notes = timing/booking warnings.
   days: [
     {
-      date: "Sep 23", day: "Wed", base: "In transit", stay: "Overnight flight",
+      date: "Sep 23", day: "Wed", base: "In transit", stay: "Overnight flight", legs: [],
       morning: null, afternoon: null,
       evening: "DL2861 SEA→LAX 5:40pm → DL0089 LAX→HKG",
       notes: "Redeye over the Pacific.",
@@ -40,7 +40,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Sep 25", day: "Fri", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei",
+      date: "Sep 25", day: "Fri", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei", legs: ["hk1"],
       morning: "Land HKG 5:05am → Bus A21 to YMT → drop bags + nap",
       afternoon: "Cha chaan teng lunch · (opt) Sam's Tailor measure · Star Ferry / TST harbourfront",
       evening: "Victoria Park lanterns 7pm → Tai Hang Fire Dragon 8:15pm",
@@ -56,7 +56,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Sep 26", day: "Sat", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei",
+      date: "Sep 26", day: "Sat", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei", legs: ["hk1"],
       morning: "🥾 Dragon's Back trail run/hike → Shek O beach + village lunch",
       afternoon: "Sham Shui Po: Apliu St + Golden Computer Arcade + streetwear/coffee",
       evening: "Temple St Night Market OR rooftop bar",
@@ -70,7 +70,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Sep 27", day: "Sun", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei",
+      date: "Sep 27", day: "Sun", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei", legs: ["hk1"],
       morning: "Kowloon Walled City exhibition (go early, free timed ticket) → Kowloon City Thai lunch",
       afternoon: "Peak Tram + Lugard loop · Sneaker St + Sino Centre · Mid-Levels Escalator",
       evening: "LKF night out",
@@ -85,7 +85,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Sep 28", day: "Mon", base: "HK → Guangzhou / Shenzhen", stay: "GZ hotel TBD (KJ, KLi, Shruthik, Wes) · SZ hotel TBD (Albin, Maas)",
+      date: "Sep 28", day: "Mon", base: "HK → Guangzhou / Shenzhen", stay: "GZ hotel TBD (KJ, KLi, Shruthik, Wes) · SZ hotel TBD (Albin, Maas)", legs: ["gz", "sz"],
       morning: "Check out · MTR to West Kowloon",
       afternoon: "Midday HSR West Kowloon → Guangzhou South ~1h (GZ crew) / → Futian ~14 min (SZ crew) · check in",
       evening: "GZ: Beijing Rd + Pearl River · SZ: Huaqiangbei electronics + COCO Park",
@@ -99,7 +99,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Sep 29", day: "Tue", base: "Guangzhou / Shenzhen", stay: "GZ hotel TBD (KJ, KLi, Shruthik, Wes) · SZ hotel TBD (Albin, Maas)",
+      date: "Sep 29", day: "Tue", base: "Guangzhou / Shenzhen", stay: "GZ hotel TBD (KJ, KLi, Shruthik, Wes) · SZ hotel TBD (Albin, Maas)", legs: ["gz", "sz"],
       morning: "GZ: dim sum + Shamian Island · SZ: 🩺 FASTING exec checkup + cancer screen + derm + wisdom-tooth eval @ HKU-Shenzhen (~8am)",
       afternoon: "GZ: Chen Clan Academy + Canton Tower · SZ: post-checkup lunch · wisdom-tooth extraction if flagged, else OCT-LOFT",
       evening: "GZ: Pearl River cruise / Beijing Rd · SZ: rest or COCO Park",
@@ -113,7 +113,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Sep 30", day: "Wed", base: "Guangzhou → Shenzhen", stay: "Shenzhen hotel (TBD), Futian",
+      date: "Sep 30", day: "Wed", base: "Guangzhou → Shenzhen", stay: "Shenzhen hotel (TBD), Futian", legs: ["gz", "sz"],
       morning: "GZ crew: check out, HSR Guangzhou → Shenzhen (~1h) · SZ: 🩺 LASIK/SMILE consult + pre-op ONLY @ Aier Eye (no procedure)",
       afternoon: "Reunite in Shenzhen — OCT-LOFT / Shenzhen Bay boardwalk / Nantou",
       evening: "Sea World plaza (Shekou) nightlife",
@@ -127,7 +127,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Oct 1", day: "Thu", base: "SZ → Macau", stay: "Macau Peninsula hotel (TBD)",
+      date: "Oct 1", day: "Thu", base: "SZ → Macau", stay: "Macau Peninsula hotel (TBD)", legs: ["mo"],
       morning: "Metro Futian → Shekou Port (~40 min) · ferry → Macau Outer Harbour (~60–70 min, arrive 45 min early) · 5-min taxi/shuttle to Peninsula hotel, drop bags",
       afternoon: "Historic walking tour: Senado Sq → Ruins of St Paul's → Mount Fortress → Rua da Felicidade + Macanese street food",
       evening: "Free casino shuttle from Grand Lisboa/StarWorld (or 15-min taxi) → Cotai: Venetian, Londoner, Studio City, Galaxy",
@@ -144,7 +144,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Oct 2", day: "Fri", base: "Macau → HK", stay: "SkyCity Marriott (airport)",
+      date: "Oct 2", day: "Fri", base: "Macau → HK", stay: "SkyCity Marriott (airport)", legs: ["hk2"],
       morning: "Last Macau AM — Senado / Lord Stow's egg tarts",
       afternoon: "Ferry Macau → TST · (opt) Sam's Tailor pickup · taxi/AEL to SkyCity Marriott, Lantau",
       evening: "Low-key dinner near TST or SkyCity · early night",
@@ -158,7 +158,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Oct 3", day: "Sat", base: "Fly home", stay: "—",
+      date: "Oct 3", day: "Sat", base: "Fly home", stay: "—", legs: ["hk2"],
       morning: "Wake ~6am · shuttle SkyCity → HKG T1 · check in by ~7am",
       afternoon: "DL0088 HKG→LAX 9:25am",
       evening: null,

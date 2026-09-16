@@ -21,13 +21,24 @@
   };
   const mkTable = (cols, section) => {
     const wrap = el("div", "table-wrap"), t = el("table"), tb = el("tbody"), hr = el("tr"), thd = el("thead");
-    cols.forEach(c => hr.append(el("th", null, c)));
+    cols.forEach(c => {
+      const th = el("th");
+      if (c != null && c.nodeType) th.append(c);
+      else th.textContent = c;
+      hr.append(th);
+    });
     thd.append(hr);
     t.append(thd, tb);
     wrap.append(t);
     section.append(wrap);
     return tb;
   };
+  const legTag = (id, label) => {
+    const s = el("span", "pay-legtag leg-" + id);
+    s.append(el("span", "leg-dot"), document.createTextNode(label));
+    return s;
+  };
+  const legDot = id => el("span", "leg-dot leg-" + id);
   const store = window.SyncStore || {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} },
@@ -77,7 +88,7 @@
       alert.append(el("strong", null, `To book (${todo.length}): `));
       todo.forEach((c, i) => {
         if (i) alert.append(" · ");
-        alert.append(`${c.cat} — ${legName(c.leg)}`);
+        alert.append(legDot(c.leg), `${c.cat} — ${legName(c.leg)}`);
       });
       alert.append(" ");
       const link = el("a", null, "Open Bookings →");
@@ -95,8 +106,10 @@
       if (sh != null) sum += sh * n;
       const tr = el("tr", c.status === "to-book" ? "pay-need" : null);
       const item = td(null);
-      item.append(el("div", "pay-item", c.label),
-        el("div", "pay-sub", `${legName(c.leg)} · ${c.frontedBy ? "fronted by " + personName(c.frontedBy) : "pay your own"}`));
+      const sub = el("div", "pay-sub leg-" + c.leg);
+      sub.append(el("span", "leg-dot"),
+        `${legName(c.leg)} · ${c.frontedBy ? "fronted by " + personName(c.frontedBy) : "pay your own"}`);
+      item.append(el("div", "pay-item", c.label), sub);
       tr.append(item,
         td("money", c.total == null ? tbd() : fmt(c.total)),
         td("money", pp == null ? tbd() : `~$${pp.toFixed(2)}/pax`),
@@ -114,7 +127,7 @@
   function split() {
     const s = el("section");
     s.append(el("h2", null, "Per-person split"));
-    const tb = mkTable(["Person", ...TRIP.legs.map(l => legShort(l.id)), "Total"], s);
+    const tb = mkTable(["Person", ...TRIP.legs.map(l => legTag(l.id, legShort(l.id))), "Total"], s);
     TRIP.people.forEach(p => {
       const tr = el("tr");
       tr.append(td(null, p.name));
@@ -138,7 +151,14 @@
     });
     fr.append(td("money", fmt(grand)));
     tb.append(fr);
-    s.append(el("p", "muted", "Each leg splits only among the people on it. HK = Sep 25–28 · GZ = Guangzhou · SZ = Shenzhen · MO = Macau · HKG = airport night."));
+    const legend = el("p", "muted", "Each leg splits only among the people on it. ");
+    const LEGEND = { hk1: "Sep 25–28", gz: "Guangzhou", sz: "Shenzhen", mo: "Macau", hk2: "airport night" };
+    TRIP.legs.forEach((l, i) => {
+      if (i) legend.append(" · ");
+      legend.append(el("span", "pay-abbr leg-" + l.id, legShort(l.id)),
+        " = " + (LEGEND[l.id] || l.name));
+    });
+    s.append(legend);
     app.append(s);
   }
 

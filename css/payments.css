@@ -39,9 +39,30 @@
 }
 
 .pay-sub {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.72rem;
   color: var(--muted);
   margin-top: 0.1rem;
+}
+
+/* Leg dots in the to-book alert and split-table headers */
+.pay-alert .leg-dot {
+  margin-right: 0.25rem;
+}
+
+.pay-legtag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+/* Colored abbreviations in the split legend */
+.pay-abbr {
+  color: var(--leg);
+  font-weight: 650;
 }
 
 /* Suggested payments */
