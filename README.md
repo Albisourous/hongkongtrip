@@ -7,13 +7,15 @@ per-person splits by leg, and who owes whom.
 
 ## View it
 
-Open `index.html` in a browser, or serve locally:
+Live site: **https://albisourous.github.io/hongkongtrip**
+
+Or run locally — open `index.html` in a browser, or serve:
 
 ```sh
 python3 -m http.server 8000
 ```
 
-To publish, enable GitHub Pages (Settings → Pages → deploy from `main`).
+Deployed via GitHub Pages from `main`.
 
 ## Update trip data
 
