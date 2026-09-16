@@ -58,7 +58,10 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   `.day-chips`, `.day-chip`, `.day-detail`, `.block`, `.block-label`,
   `.checklist`, `.time`, `.tabs`. Page-specific classes go in
   `css/<page>.css`, prefixed `.home-`, `.day-`, `.book-`, `.pay-`.
-- Commits: small, one concern each, imperative subject lines.
+- Commits: small, one concern each, imperative subject lines. Author as
+  the repo-local identity (`Albisourous <albinshrestha01@gmail.com>`) —
+  GitHub attributes by email. Do NOT add `Co-Authored-By` or
+  `Generated with` trailers; they make the bot show up as a contributor.
 
 ## Verify
 
