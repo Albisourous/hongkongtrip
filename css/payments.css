@@ -1,2 +1,70 @@
 /* Payments page (payments.html) — page-specific styles only.
    Shared styles live in ../styles.css. Prefix new classes with .pay- */
+
+.pay-progress {
+  display: inline-block;
+  padding: 0.12rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.pay-progress.done {
+  color: var(--green);
+  background: var(--green-bg);
+  border-color: transparent;
+}
+
+.pay-pays {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.pay-pays li {
+  margin: 0;
+}
+
+.pay-pays li + li {
+  border-top: 1px solid var(--border);
+}
+
+.pay-pays label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.pay-pays label:hover {
+  background: var(--code-bg);
+}
+
+.pay-pays input {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.pay-pays .money {
+  margin-left: auto;
+}
+
+.pay-pays li.pay-paid label {
+  color: var(--muted);
+  text-decoration: line-through;
+  opacity: 0.75;
+}
