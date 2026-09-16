@@ -1,2 +1,92 @@
 /* Home page (index.html) — page-specific styles only.
    Shared styles live in ../styles.css. Prefix new classes with .home- */
+
+.home-hero {
+  padding: 2.25rem 0 0.5rem;
+}
+
+.home-hero h1 {
+  margin-bottom: 0.75rem;
+}
+
+.home-dates {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+}
+
+.home-route {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.home-explainer {
+  margin: 0;
+  max-width: 42rem;
+}
+
+.home-leg-out {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.home-roster {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.home-roster li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  padding: 0.6rem 0.9rem;
+}
+
+.home-person {
+  font-weight: 650;
+  font-size: 0.95rem;
+}
+
+.home-person-legs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-left: auto;
+}
+
+.home-leg-off {
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+
+.home-links .home-link {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-links .home-link:hover {
+  border-color: var(--muted);
+  text-decoration: none;
+}
+
+.home-link-arrow {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  color: var(--muted);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.home-link:hover .home-link-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}
