@@ -23,11 +23,15 @@ splits and settlement automatically. `null` means TBD.
 
 ## Layout
 
-| File | Purpose |
+Four pages, each a shell + its own JS/CSS, sharing `data.js` and
+`styles.css`:
+
+| Page | What it shows |
 |---|---|
-| `index.html` | Page structure |
-| `styles.css` | Styling (mobile-first, dark mode via `prefers-color-scheme`) |
-| `data.js` | Single source of truth for trip data |
-| `app.js` | Renders tables, computes per-leg splits and settlement |
-| `tracker.md` | Original planning brief |
-| `AGENTS.md` | Conventions for agents working on this repo |
+| `index.html` | Home — what the trip is, legs, who's on which leg |
+| `days.html` | Day-by-day plans with swipe + checklists |
+| `bookings.html` | What still needs booking (red = to book) |
+| `payments.html` | Per-leg splits, settlement, paid ledger |
+
+`data.js` is the single source of truth — edit values there; `null` = TBD.
+`tracker.md` is the original brief, `AGENTS.md` the contributor contract.

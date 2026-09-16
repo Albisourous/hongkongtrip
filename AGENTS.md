@@ -10,13 +10,22 @@ Deployed via GitHub Pages from `main`.
 
 ## Architecture
 
-| File | Role |
-|---|---|
-| `data.js` | Single source of truth — global `const TRIP`. Edit this to update people, costs, days, resources. |
-| `app.js` | Renders `TRIP` into the DOM and computes splits/settlement. No data lives here. |
-| `index.html` | Static shell: six empty `<section>`s (`#overview`, `#itinerary`, `#costs`, `#split`, `#settlement`, `#resources`), loads `data.js` then `app.js` at end of body. |
-| `styles.css` | All styling. CSS variables on `:root`, dark mode via `prefers-color-scheme`. Mobile-first. |
-| `tracker.md` | Original planning brief (source doc — do not edit). |
+Multi-page static site — one HTML shell per page, one JS + one CSS each.
+Every page loads `data.js` + `styles.css`, renders into `<main id="app">`,
+and shares the fixed bottom tab nav (`.tabs`).
+
+| Page | Shell | JS | Page CSS | Owns |
+|---|---|---|---|---|
+| Home | `index.html` | `js/home.js` | `css/home.css` | What/where/when, leg cards, roster |
+| Days | `days.html` | `js/days.js` | `css/days.css` | Day-by-day plan, swipe, checklists |
+| Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking (red) |
+| Payments | `payments.html` | `js/payments.js` | `css/payments.css` | Splits, settlement, paid ledger |
+
+Shared files (coordinate before editing): `data.js`, `styles.css`,
+`tracker.md` (source brief — do not edit), this file.
+
+The previous single-page `app.js` was removed; its split/settlement and
+checklist logic can be recovered with `git show aec6870:app.js`.
 
 ## Cost/split model (important)
 
@@ -41,12 +50,14 @@ Deployed via GitHub Pages from `main`.
 - `TRIP.days` holds per-day plans: `morning`/`afternoon`/`evening` blocks
   (null = nothing planned), `stay`, `notes`, and `checklist` items
   (`{t, task}` — t is a rough start time). Checklist state persists in
-  localStorage (`hkcheck:{date}:{index}`).
-- Shared class vocabulary (styled in `styles.css`, emitted by `app.js`):
-  `.table-wrap`, `.money`, `.tbd`, `.badge`, `.badge-booked`,
-  `.badge-to-book`, `.total-row`, `.pos`, `.neg`, `.muted`, `.cards`,
-  `.card`, `.picker`, `.day-chips`, `.day-chip`, `.day-detail`, `.block`,
-  `.block-label`, `.checklist`, `.time`.
+  localStorage (`hkcheck:{date}:{index}`). Payment marks use
+  `hkpaid:{from}>{to}`; booking marks use `hkbooked:{costId}`.
+- Shared class vocabulary (styled in `styles.css`): `.table-wrap`,
+  `.money`, `.tbd`, `.badge`, `.badge-booked`, `.badge-to-book` (red),
+  `.total-row`, `.pos`, `.neg`, `.muted`, `.cards`, `.card`, `.picker`,
+  `.day-chips`, `.day-chip`, `.day-detail`, `.block`, `.block-label`,
+  `.checklist`, `.time`, `.tabs`. Page-specific classes go in
+  `css/<page>.css`, prefixed `.home-`, `.day-`, `.book-`, `.pay-`.
 - Commits: small, one concern each, imperative subject lines.
 
 ## Verify

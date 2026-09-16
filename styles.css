@@ -14,6 +14,7 @@
   --amber: #b45309;
   --amber-bg: #fbf0dd;
   --red: #dc2626;
+  --red-bg: rgba(220, 38, 38, 0.1);
   --code-bg: #f0f1f4;
 }
 
@@ -30,6 +31,7 @@
     --amber: #fbbf24;
     --amber-bg: rgba(251, 191, 36, 0.13);
     --red: #f87171;
+    --red-bg: rgba(248, 113, 113, 0.15);
     --code-bg: #1f232b;
   }
 }
@@ -212,8 +214,8 @@ li::marker {
 }
 
 .badge-to-book {
-  color: var(--amber);
-  background: var(--amber-bg);
+  color: var(--red);
+  background: var(--red-bg);
   border-color: transparent;
 }
 
@@ -465,4 +467,40 @@ footer p {
 
 .checklist li.done .time {
   opacity: 0.65;
+}
+
+/* ---------- Bottom tab nav (shared across pages) ---------- */
+
+body {
+  padding-bottom: calc(3.5rem + env(safe-area-inset-bottom));
+}
+
+.tabs {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+
+.tabs a {
+  flex: 1;
+  padding: 0.7rem 0.25rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.tabs a:hover {
+  color: var(--text);
+}
+
+.tabs a[aria-current="page"] {
+  color: var(--accent);
 }
