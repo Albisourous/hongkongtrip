@@ -59,6 +59,12 @@
   white-space: nowrap;
 }
 
+/* Names list in the "who paid for what" ledger */
+.pay-who {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 /* Colored abbreviations in the split legend */
 .pay-abbr {
   color: var(--leg);

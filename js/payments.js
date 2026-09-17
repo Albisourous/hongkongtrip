@@ -140,6 +140,39 @@
     app.append(s);
   }
 
+  // One row per fronted cost: who paid it and who owes a share back.
+  function ledger() {
+    const s = el("section");
+    s.append(el("h2", null, "Who paid for what"));
+    const fronted = TRIP.costs.filter(c => c.frontedBy);
+    if (!fronted.length) {
+      s.append(el("p", "muted", "Nothing fronted yet."));
+      app.append(s);
+      return;
+    }
+    const tb = mkTable(["Item", "Paid by", "Split among", "Each"], s);
+    fronted.forEach(c => {
+      const at = payers(c), sh = share(c);
+      const tr = el("tr");
+      const item = td(null);
+      const sub = el("div", "pay-sub leg-" + (isFlight(c) ? "flight" : c.leg));
+      sub.append(el("span", "leg-dot"),
+        `${isFlight(c) ? "Flights" : legName(c.leg)} · ${at.length} pax`);
+      item.append(el("div", "pay-item", c.label), sub);
+      const who = td("pay-who");
+      at.forEach((p, i) => {
+        if (i) who.append(" · ");
+        who.append(p.name);
+      });
+      tr.append(item, td(null, personName(c.frontedBy)), who,
+        td("money", sh == null ? tbd() : fmt(sh)));
+      tb.append(tr);
+    });
+    s.append(el("p", "muted",
+      "Each person's share of what someone else fronted — the fronter's own share is included in the split."));
+    app.append(s);
+  }
+
   function split() {
     const s = el("section");
     s.append(el("h2", null, "Per-person split"));
@@ -286,7 +319,7 @@
 
   const run = () => {
     app.textContent = "";
-    header(); costs(); split(); settlement();
+    header(); costs(); ledger(); split(); settlement();
     const foot = el("footer");
     foot.append(el("p", "muted", "Paid marks sync across devices (30s refresh)."));
     app.append(foot);
