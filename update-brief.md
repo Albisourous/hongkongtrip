@@ -5,11 +5,13 @@
 
 ## Applied
 
-- **Guangzhou day trip for Albin & Maas** — Sep 29 PM, *separate* from the
-  GZ crew's itinerary (not Sep 30 — that would swap cities as the GZ crew
-  leaves for Shenzhen). Conditional: skipped if the morning checkup flags
-  a wisdom-tooth extraction (fallback: OCT-LOFT). HSR round trip ~¥150/person,
-  informational only (`frontedBy: null`).
+- **Albin & Maas join the GZ leg** — they sleep in Guangzhou with the crew
+  Sep 28–30 (GZ hotel now needs 6) and commute to Shenzhen on the early HSR
+  for both medical mornings: Sep 29 ~6:30am train for the 8am fasting
+  checkup, Sep 30 ~7am train for the 9am Aier consult. If the checkup flags
+  an extraction they stay in SZ that evening. The SZ hotel is now needed
+  only for Sep 30 — all 6, one night. Shenzhen sights (Huaqiangbei,
+  OCT-LOFT, Sea World) land on the Sep 30 reunite afternoon/evening.
 - **Kevin Li skips Macau** — legs now `["hk1", "gz", "sz", "hk2"]`. He
   transits back to HK on his own Oct 1 and rejoins the group for the airport
   leg (SkyCity Marriott Oct 2 → flight home Oct 3). Note: hk2 headcount is 8
@@ -35,11 +37,12 @@
 
 | Item | Where it lands in `data.js` |
 |---|---|
-| Guangzhou hotel + total (Sep 28–30, GZ crew of 4) | `costs["gz-hotel"]` |
-| Shenzhen hotel choice + total — Hyatt Place Dongmen (points) vs Kapok Luohu (cash) | `costs["sz-hotel"]` — GZ crew needs only Sep 30 night; Albin & Maas all 3. If points: record points + cash-equivalent `total` |
+| Guangzhou hotel + total (Sep 28–30, all 6, ~3 rooms) | `costs["gz-hotel"]` |
+| Shenzhen hotel choice + total — Hyatt Place Dongmen (points) vs Kapok Luohu (cash) | `costs["sz-hotel"]` — all 6 need only the Sep 30 night. If points: record points + cash-equivalent `total` |
 | Macau hotel book + total — Casa Real picked on Expedia (~$330 for 2 rooms), waiting on family discount; also confirm room count (2 rooms sleep 6, 7 attend) | `costs["mo-hotel"].total` + `frontedBy` + `status` |
 | SkyCity Marriott rooming — reservation lists 7 adults, 8 attend hk2 | `costs["hk2-hotel"].note` + maybe `people` |
 | HK1 Airbnb rooming — sleeps 7, 9 attend | `costs["hk1-hotel"].note` + maybe `people` |
+| HK2 SkyCity rooming — 8 attend, booked 4+3 | `costs["hk2-hotel"].note` |
 | Actual Delta fare (currently $450/person placeholder) | `costs["flights"].perPerson` |
 | Who fronts remaining bookings | `frontedBy` on the above |
 

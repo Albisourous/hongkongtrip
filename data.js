@@ -6,9 +6,9 @@ const TRIP = {
 
   // legs a person attends; remove a leg id to exclude them from that leg's split
   people: [
-    { id: "albin", name: "Albin", legs: ["hk1", "sz", "mo", "hk2"] }, // SZ all 3 nights, own GZ day trip Sep 29
+    { id: "albin", name: "Albin", legs: ["hk1", "gz", "sz", "mo", "hk2"] }, // GZ with the crew, commutes to SZ for medical
     { id: "kj", name: "Kevin Jacob", legs: ["hk1", "gz", "sz", "mo", "hk2"] },
-    { id: "maas", name: "Maas", legs: ["hk1", "sz", "mo", "hk2"] }, // SZ all 3 nights, own GZ day trip Sep 29
+    { id: "maas", name: "Maas", legs: ["hk1", "gz", "sz", "mo", "hk2"] }, // GZ with the crew, commutes to SZ for medical
     { id: "ehsan", name: "Ehsan", legs: ["hk1", "mo", "hk2"] }, // solo in China
     { id: "scott", name: "Scott", legs: ["hk1", "mo", "hk2"] }, // same as Ehsan
     { id: "brendan", name: "Brendan", legs: ["hk1"] }, // first HK leg only
@@ -85,45 +85,45 @@ const TRIP = {
       ],
     },
     {
-      date: "Sep 28", day: "Mon", base: "HK → Guangzhou / Shenzhen", stay: "GZ hotel TBD (KJ, KLi, Shruthik, Wes) · SZ hotel TBD (Albin, Maas)", legs: ["gz", "sz"],
+      date: "Sep 28", day: "Mon", base: "HK → Guangzhou", stay: "GZ hotel TBD (all 6)", legs: ["gz", "sz"],
       morning: "Check out · MTR to West Kowloon",
-      afternoon: "Midday HSR West Kowloon → Guangzhou South ~1h (GZ crew) / → Futian ~14 min (SZ crew) · check in",
-      evening: "GZ: Beijing Rd + Pearl River · SZ: Huaqiangbei electronics + COCO Park",
-      notes: "Group splits today — Brendan heads home, Ehsan & Scott solo in China. SZ crew: fasting starts ~midnight for the Sep 29 checkup. Carry Shekou→Macau ferry ticket. HSR opens 15 days out — passport ticket.",
+      afternoon: "Midday HSR West Kowloon → Guangzhou South ~1h (all 6) · check in",
+      evening: "Beijing Rd + Pearl River night cruise",
+      notes: "Mainland crew of 6 goes to Guangzhou together — Brendan heads home, Ehsan & Scott solo in China. Albin & Maas: fasting starts ~midnight for the Sep 29 checkup — they commute back to SZ for it. Carry Shekou→Macau ferry ticket. HSR opens 15 days out — passport ticket.",
       checklist: [
         { t: "10:00am", task: "Check out, MTR → West Kowloon" },
-        { t: "12:00pm", task: "HSR → Guangzhou South (KJ · KLi · Shruthik · Wes) / → Futian (Albin · Maas)" },
-        { t: "1:30pm", task: "Check in — GZ + SZ hotels" },
-        { t: "3:00pm", task: "GZ: Beijing Rd · SZ: Huaqiangbei / SEG electronics" },
-        { t: "8:00pm", task: "GZ: Pearl River · SZ: COCO Park — last non-fasting night" },
+        { t: "12:00pm", task: "HSR → Guangzhou South (all 6)" },
+        { t: "1:30pm", task: "Check in — GZ hotel" },
+        { t: "3:00pm", task: "Beijing Rd / Shamian Island" },
+        { t: "8:00pm", task: "Pearl River night cruise — last non-fasting night for Albin & Maas" },
       ],
     },
     {
-      date: "Sep 29", day: "Tue", base: "Guangzhou / Shenzhen", stay: "GZ hotel TBD (KJ, KLi, Shruthik, Wes) · SZ hotel TBD (Albin, Maas)", legs: ["gz", "sz"],
-      morning: "GZ: dim sum + Shamian Island · SZ: 🩺 FASTING exec checkup + cancer screen + derm + wisdom-tooth eval @ HKU-Shenzhen (~8am)",
-      afternoon: "GZ crew: Chen Clan Academy + Canton Tower · Albin & Maas: post-checkup lunch → HSR Shenzhen → Guangzhou (own day trip, separate from GZ crew)",
-      evening: "GZ crew: Pearl River cruise / Beijing Rd · Albin & Maas: GZ evening on their own → HSR back to Shenzhen",
-      notes: "Split day — GZ crew on their own itinerary; Albin & Maas do the morning medical block (personal spend — not a group cost) then a SEPARATE Guangzhou day trip. If the checkup flags a wisdom-tooth extraction, skip the day trip and stay in SZ (OCT-LOFT instead). No breakfast for SZ crew; fast from ~midnight.",
+      date: "Sep 29", day: "Tue", base: "Guangzhou (SZ commute)", stay: "GZ hotel TBD (all 6)", legs: ["gz", "sz"],
+      morning: "Albin & Maas: ~6:30am HSR Guangzhou South → Futian · 🩺 FASTING exec checkup + cancer screen + derm + wisdom-tooth eval @ HKU-Shenzhen (~8am) · GZ 4: dim sum + Shamian Island",
+      afternoon: "Albin & Maas: post-checkup lunch in SZ → HSR back to GZ · GZ 4: Chen Clan Academy + Canton Tower",
+      evening: "All 6 in Guangzhou: Pearl River cruise / Beijing Rd",
+      notes: "Albin & Maas commute GZ→SZ→GZ for the medical block (personal spend — not a group cost). Fast from ~midnight; ~6:30am train reaches Futian ~7:30 for the 8am checkup. If a wisdom-tooth extraction is flagged they stay in SZ for the evening and rejoin the next morning.",
       checklist: [
-        { t: "8:00am", task: "SZ: HKU-Shenzhen checkup (fasting) · GZ crew: dim sum breakfast" },
-        { t: "10:30am", task: "GZ crew: Shamian Island + Chen Clan Academy" },
-        { t: "12:30pm", task: "Albin & Maas: post-checkup lunch" },
-        { t: "1:30pm", task: "Albin & Maas: HSR Shenzhen → Guangzhou South (~¥75) — skip if extraction flagged" },
-        { t: "3:00pm", task: "GZ crew: Canton Tower · Albin & Maas: own GZ loop (Shamian Island / Beijing Rd)" },
-        { t: "7:30pm", task: "GZ crew: Pearl River cruise · Albin & Maas: GZ dinner on their own" },
-        { t: "9:30pm", task: "Albin & Maas: HSR Guangzhou → Shenzhen — back to SZ hotel" },
+        { t: "6:30am", task: "Albin & Maas: HSR Guangzhou South → Futian (fasting)" },
+        { t: "8:00am", task: "A&M: HKU-Shenzhen checkup · GZ 4: dim sum breakfast" },
+        { t: "10:30am", task: "GZ 4: Shamian Island + Chen Clan Academy" },
+        { t: "12:30pm", task: "A&M: post-checkup lunch in SZ" },
+        { t: "3:00pm", task: "A&M: HSR Shenzhen → Guangzhou (skip if extraction) · GZ 4: Canton Tower" },
+        { t: "7:30pm", task: "All 6: Pearl River cruise / Beijing Rd" },
       ],
     },
     {
-      date: "Sep 30", day: "Wed", base: "Guangzhou → Shenzhen", stay: "Shenzhen hotel (TBD), Futian", legs: ["gz", "sz"],
-      morning: "GZ crew: check out, HSR Guangzhou → Shenzhen (~1h) · SZ: 🩺 LASIK/SMILE consult + pre-op ONLY @ Aier Eye (no procedure)",
-      afternoon: "Reunite in Shenzhen — OCT-LOFT / Shenzhen Bay boardwalk / Nantou",
-      evening: "Sea World plaza (Shekou) nightlife",
-      notes: "Contacts must be stopped since ~Sep 15. Book the GZ→SZ HSR with the Sep 28 tickets.",
+      date: "Sep 30", day: "Wed", base: "Guangzhou → Shenzhen", stay: "Shenzhen hotel (TBD), Futian — all 6", legs: ["gz", "sz"],
+      morning: "Albin & Maas: ~7am HSR GZ → Futian · 🩺 LASIK/SMILE consult + pre-op ONLY @ Aier Eye ~9am (no procedure) · GZ 4: check out ~11am, HSR Guangzhou → Shenzhen",
+      afternoon: "Reunite in Shenzhen — Huaqiangbei electronics / OCT-LOFT / Nantou",
+      evening: "Sea World plaza (Shekou) nightlife — or COCO Park",
+      notes: "Contacts must be stopped since ~Sep 15. All 6 need only this SZ night — book ~3 rooms. Book the GZ→SZ HSR with the Sep 28 tickets.",
       checklist: [
-        { t: "9:00am", task: "SZ: Aier Eye consult only · GZ: check out → Guangzhou South" },
-        { t: "11:00am", task: "GZ crew: HSR Guangzhou → Shenzhen (~1h)" },
-        { t: "1:00pm", task: "Reunite — OCT-LOFT or Nantou old town" },
+        { t: "7:00am", task: "Albin & Maas: HSR Guangzhou → Futian" },
+        { t: "9:00am", task: "A&M: Aier Eye consult only · GZ 4: check out → Guangzhou South" },
+        { t: "11:00am", task: "GZ 4: HSR Guangzhou → Shenzhen (~1h)" },
+        { t: "1:00pm", task: "Reunite — Huaqiangbei / OCT-LOFT / Nantou" },
         { t: "5:00pm", task: "Shenzhen Bay boardwalk run (~10.6km flat)" },
         { t: "8:00pm", task: "Sea World plaza, Shekou" },
       ],
@@ -193,27 +193,27 @@ const TRIP = {
   ],
 
   flights: {
-    note: "Fronted by Ehsan (Delta Main Basic) — ~$450/person placeholder, split across the group.",
+    note: "Fronted by Ehsan (Delta Main Basic) — ~$450/person placeholder; Kevin Li paid his own, so it splits across the other 8.",
     out: "DL2861 SEA→LAX + DL0089 LAX→HKG",
     back: "DL0088 HKG→LAX + DL1714 LAX→SEA",
   },
 
   // frontedBy set => contributes to settlement. total => split evenly among
   // leg attendees; perPerson => each attendee owes that amount to frontedBy.
+  // exclude: [ids] => those people paid their own — left out of the split.
   // No frontedBy => informational only (everyone pays their own).
   costs: [
-    { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 450, frontedBy: "ehsan", status: "booked", note: "~$450/person placeholder — update to actual fare · everyone attends hk1 so it splits across all 9" },
+    { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 450, frontedBy: "ehsan", exclude: ["kli"], status: "booked", note: "~$450/person placeholder — update to actual fare · Kevin Li paid his own — splits across the other 8" },
     { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158.19, perPerson: null, frontedBy: "albin", status: "booked", note: "Airbnb HM8YRKN5XN · host Wing · Onward Building, 528 Nathan Rd · in after 2pm / out by 11am · A21 → Man Ming Lane stop or Yau Ma Tei MTR exit D · paid Aug 18" },
-    { id: "gz-hotel", leg: "gz", cat: "Hotel", label: "TBD — Guangzhou hotel, Sep 28–30 (2 nights)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "GZ crew only: Kevin Jacob · Kevin Li · Shruthik · Wesley" },
-    { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "TBD — Hyatt Place Shenzhen Dongmen (points) or Kapok Shenzhen Luohu (cash)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "4 rooms · Albin & Maas need Sep 28–Oct 1, GZ crew only Sep 30 — settle room nights/split when booking · if points, record points + cash-equivalent" },
+    { id: "gz-hotel", leg: "gz", cat: "Hotel", label: "TBD — Guangzhou hotel, Sep 28–30 (2 nights)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "All 6 mainland: KJ · Kevin Li · Shruthik · Wesley · Albin · Maas — ~3 rooms" },
+    { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "TBD — Hyatt Place Shenzhen Dongmen (points) or Kapok Shenzhen Luohu (cash)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "All 6 need only the Sep 30 night now (~3 rooms) — A&M sleep in GZ Sep 28–29 · if points, record points + cash-equivalent" },
     { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "Casa Real Hotel — Studio, 2 Twin Beds (Macau Peninsula)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "Chosen — don't pay yet, family Expedia discount pending · Expedia quote ~$330 total for 2 rooms ($108/nt, was $425) · 'sleeps 3' = 2 twins, 3rd shares (no rollaway) — 7 attend, confirm 7th spot · non-refundable, +$28 for refundable til Sep 28 · only 2 left · Oct 1–2", url: "https://www.expedia.com/Macau-Hotels-Casa-Real-Hotel.h2219745.Hotel-Information?chkin=2026-10-01&chkout=2026-10-02", linkLabel: "Expedia — Casa Real Hotel" },
     { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: 820.84, perPerson: null, frontedBy: "albin", status: "booked", note: "Expedia itin 73521256411437 · 2 rooms, 2 double beds each · paid Aug 13 · in 3pm / out 12pm · 7 adults booked but 8 attend — confirm 8th bed" },
 
     { id: "a21", leg: "hk1", cat: "Transport", label: "Bus A21 · HKG → Yau Ma Tei", total: null, perPerson: 4.30, frontedBy: null, status: null, note: "~HK$34 · first bus ~05:30" },
-    { id: "hsr-gz", leg: "gz", cat: "Transport", label: "HSR West Kowloon → Guangzhou South", total: null, perPerson: 27, frontedBy: null, status: null, note: "~HK$215 · ~1h · passport ticket · GZ crew (4)" },
-    { id: "hsr", leg: "sz", cat: "Transport", label: "HSR West Kowloon → Futian", total: null, perPerson: 10, frontedBy: null, status: null, note: "~HK$78 · ~14 min · passport ticket · Albin & Maas" },
-    { id: "hsr-gz-sz", leg: "sz", cat: "Transport", label: "HSR Guangzhou → Shenzhen", total: null, perPerson: 11, frontedBy: null, status: null, note: "~¥75 · ~1h · Sep 30 · GZ crew rejoins" },
-    { id: "hsr-sz-gz-daytrip", leg: "gz", cat: "Transport", label: "HSR Shenzhen ↔ Guangzhou day trip (Albin & Maas)", total: null, perPerson: 22, frontedBy: null, status: null, note: "~¥150 round trip · Sep 29 PM · own itinerary, separate from GZ crew · book with the Sep 28 tickets" },
+    { id: "hsr-gz", leg: "gz", cat: "Transport", label: "HSR West Kowloon → Guangzhou South", total: null, perPerson: 27, frontedBy: null, status: null, note: "~HK$215 · ~1h · passport ticket · all 6" },
+    { id: "hsr-gz-sz", leg: "sz", cat: "Transport", label: "HSR Guangzhou → Shenzhen", total: null, perPerson: 11, frontedBy: null, status: null, note: "~¥75 · ~1h · Sep 30 · GZ 4 at ~11am; A&M on the ~7am train for the consult" },
+    { id: "hsr-gz-sz-commute", leg: "gz", cat: "Transport", label: "HSR Guangzhou ↔ Shenzhen medical commute (Albin & Maas)", total: null, perPerson: 33, frontedBy: null, status: null, note: "~¥225 total · Sep 29 round trip + Sep 30 one-way · early trains for the 8am checkup / 9am consult" },
     { id: "ferry-sz-mo", leg: "mo", cat: "Transport", label: "Metro to Shekou + ferry → Macau Outer Harbour", total: null, perPerson: 31, frontedBy: null, status: null, note: "Pre-booked ferry ticket required at border" },
     { id: "ferry-mo-hk", leg: "hk2", cat: "Transport", label: "Macau → TST ferry (Cotai Water Jet / TurboJET)", total: null, perPerson: 25, frontedBy: null, status: null, note: "Book 1–3 days ahead" },
     { id: "taxi-skycity", leg: "hk2", cat: "Transport", label: "2 taxis · TST → SkyCity Marriott", total: null, perPerson: null, frontedBy: null, status: null, note: "~HK$300/cab, split by riders · luggage" },
@@ -221,9 +221,9 @@ const TRIP = {
   ],
 
   notes: [
-    "Sep 28–30 the group splits: KJ · Kevin Li · Shruthik · Wesley → Guangzhou; Albin & Maas → Shenzhen (medical, own GZ day trip Sep 29); Ehsan & Scott solo; Brendan heads home.",
+    "Sep 28–30 all six go to Guangzhou; Albin & Maas commute to Shenzhen for the Sep 29 checkup + Sep 30 LASIK consult (personal spend). Ehsan & Scott solo; Brendan heads home.",
     "Kevin Li skips Macau — own transit back to HK Oct 1, rejoins the group for the airport leg (SkyCity Marriott + flight home).",
-    "Flights fronted by Ehsan — ~$450/person placeholder, split across everyone; update when the real fare lands.",
+    "Flights fronted by Ehsan — ~$450/person placeholder, split across everyone except Kevin Li (paid his own); update when the real fare lands.",
     "Sep 29–30 medical block and Sam's Tailor are personal spend — excluded.",
     "Points bookings: record points used AND cash-equivalent so the fronter is reimbursed fairly.",
     "Split is per leg: each person owes (leg shared costs) / (people on that leg).",

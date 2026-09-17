@@ -35,14 +35,18 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   - `total` set → each leg attendee owes `total / headcount` to the fronter.
   - `perPerson` set → each leg attendee owes `perPerson` to the fronter.
 - `frontedBy: null` → informational only (everyone pays their own).
+- `exclude: [ids]` on a cost → those people paid their own and are left
+  out of that cost's split (e.g. Kevin Li booked his own flight).
 - `null` = TBD. Render as "TBD", exclude from all math.
 - Excluded from the group split: the Sep 29–30 medical block and Sam's
   Tailor (all personal spend). Flights are fronted by Ehsan and sit on
-  `hk1` so they split across all 9 (~$450/person placeholder).
-- Sep 28–30 the group splits: 4 (KJ, Kevin Li, Shruthik, Wesley) take the
-  `gz` leg in Guangzhou while Albin & Maas hold `sz` in Shenzhen — both
-  groups attend `sz`, but the GZ crew only needs the Sep 30 hotel night.
-  Brendan attends `hk1` only; Ehsan & Scott skip mainland (solo).
+  `hk1` so they split across 8 — Kevin Li paid his own
+  (~$450/person placeholder).
+- Sep 28–30 the group splits: all six mainland travelers take the `gz`
+  leg in Guangzhou; Albin & Maas commute GZ→SZ for the Sep 29 checkup and
+  Sep 30 LASIK consult. Everyone on `sz` needs only the Sep 30 hotel
+  night. Brendan attends `hk1` only; Ehsan & Scott skip mainland (solo);
+  Kevin Li skips `mo` but rejoins for `hk2`.
 - Points bookings: record points used AND a cash-equivalent `total` so the
   fronter is reimbursed fairly.
 
@@ -91,9 +95,10 @@ sums match the cost table, settlement balances sum to ~$0.
 
 ## Outstanding TBDs (collect from trip owner)
 
-- Guangzhou hotel + total (Sep 28–30, GZ crew of 4)
-- Shenzhen hotel choice + total (Hyatt Place Dongmen points vs Kapok Luohu cash) — GZ crew only needs Sep 30 night; Albin/Maas need all 3
+- Guangzhou hotel + total (Sep 28–30, all 6)
+- Shenzhen hotel choice + total (Hyatt Place Dongmen points vs Kapok Luohu cash) — all 6 need only the Sep 30 night
 - Macau hotel total + rooming — Casa Real picked on Expedia (~$330 for 2 rooms), family discount pending; 2 rooms sleep 6 but 7 attend mo
 - SkyCity Marriott rooming — booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
 - HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming
+- HK2 SkyCity Marriott booked as 2 rooms (4+3) but 8 attend `hk2` — confirm rooming
 - Who fronts remaining bookings
