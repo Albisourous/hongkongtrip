@@ -32,13 +32,18 @@
   Albin → `costs["hk2-hotel"].total`. Check-in from 3pm, out 12pm.
   Reservation lists 7 adults while hk2 headcount is 8 — still need to
   confirm where the 8th person sleeps.
+- **Shenzhen hotel booked: Hyatt Place Dongmen** — Albin's Hyatt account,
+  confs `56229190` + `14228517` + `45139912`, 3× Specialty Twin Sep 30–Oct 1,
+  13,500 pts total (4,500/room) → `costs["sz-hotel"]` with $250
+  cash-equivalent (Chase pts estimate) so the split reimburses him fairly.
+  At Laojie MTR exit H on the Dongmen pedestrian street; Oct 1 morning
+  updated to Laojie → Shekou (~55 min, was Futian ~40). 6 beds for 6.
 
 ## Still needed from the trip owner
 
 | Item | Where it lands in `data.js` |
 |---|---|
-| Guangzhou hotel + total (Sep 28–30, all 6, ~3 rooms) | `costs["gz-hotel"]` |
-| Shenzhen hotel choice + total — Hyatt Place Dongmen (points) vs Kapok Luohu (cash) | `costs["sz-hotel"]` — all 6 need only the Sep 30 night. If points: record points + cash-equivalent `total` |
+| Guangzhou hotel + total (Sep 28–30, all 6, ~3 rooms) — Hilton Science City is the linked candidate, but it's ~45 min from the old-town sights | `costs["gz-hotel"]` |
 | Macau hotel book + total — Casa Real picked on Expedia (~$330 for 2 rooms), waiting on family discount; also confirm room count (2 rooms sleep 6, 7 attend) | `costs["mo-hotel"].total` + `frontedBy` + `status` |
 | SkyCity Marriott rooming — reservation lists 7 adults, 8 attend hk2 | `costs["hk2-hotel"].note` + maybe `people` |
 | HK1 Airbnb rooming — sleeps 7, 9 attend | `costs["hk1-hotel"].note` + maybe `people` |

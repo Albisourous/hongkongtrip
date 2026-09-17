@@ -18,6 +18,7 @@ and shares the fixed bottom tab nav (`.tabs`).
 |---|---|---|---|---|
 | Home | `index.html` | `js/home.js` | `css/home.css` | What/where/when, leg cards, roster |
 | Days | `days.html` | `js/days.js` | `css/days.css` | Day-by-day plan, swipe, checklists |
+| Hotels | `hotels.html` | `js/hotels.js` | `css/hotels.css` | Who sleeps where each night |
 | Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking (red) |
 | Payments | `payments.html` | `js/payments.js` | `css/payments.css` | Splits, settlement, paid ledger |
 
@@ -38,6 +39,8 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 - `exclude: [ids]` on a cost → those people paid their own and are left
   out of that cost's split (e.g. Kevin Li booked his own flight).
 - `null` = TBD. Render as "TBD", exclude from all math.
+- `sleeps` on a hotel cost = bed capacity; the Hotels tab compares it
+  to the leg's headcount and flags shortfalls.
 - Excluded from the group split: the Sep 29–30 medical block and Sam's
   Tailor (all personal spend). Flights are fronted by Ehsan and sit on
   `hk1` so they split across 8 — Kevin Li paid his own
@@ -53,7 +56,7 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 ## Conventions
 
 - Vanilla HTML/CSS/JS only. No dependencies, no build, no external assets.
-- `app.js` builds DOM via `createElement`/`textContent` — never `innerHTML`
+- Pages build DOM via `createElement`/`textContent` — never `innerHTML`
   with data values.
 - Money is USD, `$` + `toFixed(2)`, `.money` class, tabular numerals.
 - `TRIP.days` holds per-day plans: `morning`/`afternoon`/`evening` blocks
@@ -77,7 +80,7 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   `.total-row`, `.pos`, `.neg`, `.muted`, `.cards`, `.card`, `.picker`,
   `.day-chips`, `.day-chip`, `.day-detail`, `.block`, `.block-label`,
   `.checklist`, `.time`, `.tabs`. Page-specific classes go in
-  `css/<page>.css`, prefixed `.home-`, `.day-`, `.book-`, `.pay-`.
+  `css/<page>.css`, prefixed `.home-`, `.day-`, `.hotel-`, `.book-`, `.pay-`.
 - Commits: small, one concern each, imperative subject lines. Author as
   the repo-local identity (`Albisourous <albinshrestha01@gmail.com>`) —
   GitHub attributes by email. Do NOT add `Co-Authored-By` or
@@ -86,17 +89,16 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 ## Verify
 
 ```sh
-node --check data.js app.js   # syntax
+node --check data.js js/*.js  # syntax
 python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
-Check: all five sections render, TBDs show for null costs, split table
+Check: all five pages render, TBDs show for null costs, split table
 sums match the cost table, settlement balances sum to ~$0.
 
 ## Outstanding TBDs (collect from trip owner)
 
 - Guangzhou hotel + total (Sep 28–30, all 6)
-- Shenzhen hotel choice + total (Hyatt Place Dongmen points vs Kapok Luohu cash) — all 6 need only the Sep 30 night
 - Macau hotel total + rooming — Casa Real picked on Expedia (~$330 for 2 rooms), family discount pending; 2 rooms sleep 6 but 7 attend mo
 - SkyCity Marriott rooming — booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
 - HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming

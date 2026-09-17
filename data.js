@@ -114,11 +114,11 @@ const TRIP = {
       ],
     },
     {
-      date: "Sep 30", day: "Wed", base: "Guangzhou → Shenzhen", stay: "Shenzhen hotel (TBD), Futian — all 6", legs: ["gz", "sz"],
+      date: "Sep 30", day: "Wed", base: "Guangzhou → Shenzhen", stay: "Hyatt Place Shenzhen Dongmen (Laojie MTR) — all 6", legs: ["gz", "sz"],
       morning: "Albin & Maas: ~7am HSR GZ → Futian · 🩺 LASIK/SMILE consult + pre-op ONLY @ Aier Eye ~9am (no procedure) · GZ 4: check out ~11am, HSR Guangzhou → Shenzhen",
       afternoon: "Reunite in Shenzhen — Huaqiangbei electronics / OCT-LOFT / Nantou",
-      evening: "Sea World plaza (Shekou) nightlife — or COCO Park",
-      notes: "Contacts must be stopped since ~Sep 15. All 6 need only this SZ night — book ~3 rooms. Book the GZ→SZ HSR with the Sep 28 tickets.",
+      evening: "Sea World plaza (Shekou) nightlife — or COCO Park / Dongmen pedestrian st (at the hotel)",
+      notes: "Contacts must be stopped since ~Sep 15. SZ hotel booked: 3 twin rooms at Hyatt Place Dongmen (13,500 pts). Book the GZ→SZ HSR with the Sep 28 tickets.",
       checklist: [
         { t: "7:00am", task: "Albin & Maas: HSR Guangzhou → Futian" },
         { t: "9:00am", task: "A&M: Aier Eye consult only · GZ 4: check out → Guangzhou South" },
@@ -130,12 +130,12 @@ const TRIP = {
     },
     {
       date: "Oct 1", day: "Thu", base: "SZ → Macau", stay: "Casa Real Hotel, Macau Peninsula", legs: ["mo"],
-      morning: "Metro Futian → Shekou Port (~40 min) · ferry → Macau Outer Harbour (~60–70 min, arrive 45 min early) · 5-min taxi/shuttle to Peninsula hotel, drop bags",
+      morning: "Metro Laojie → Shekou Port (~55 min) or 2 Didis ~¥90/cab · ferry → Macau Outer Harbour (~60–70 min, arrive 45 min early) · 5-min taxi/shuttle to Peninsula hotel, drop bags",
       afternoon: "Historic walking tour: Senado Sq → Ruins of St Paul's → Mount Fortress → Rua da Felicidade + Macanese street food",
       evening: "Free casino shuttle from Grand Lisboa/StarWorld (or 15-min taxi) → Cotai: Venetian, Londoner, Studio City, Galaxy",
       notes: "⚠ Golden Week Day 1 — peak crowds. Carry pre-booked ferry ticket (240-hr transit requires onward ticket). Stay on the Peninsula near the historic centre for easy bag drop. Kevin Li skips Macau — own transit back to HK today, rejoins for the airport leg (hk2).",
       checklist: [
-        { t: "8:00am", task: "Metro Futian → Shekou Port (~40 min)" },
+        { t: "7:45am", task: "Metro Laojie → Shekou Port (~55 min) — or 2 Didis" },
         { t: "9:00am", task: "Kevin Li: own transit back to HK (skips Macau)" },
         { t: "9:15am", task: "Arrive port 45 min early · ferry → Macau Outer Harbour" },
         { t: "10:45am", task: "Taxi/shuttle 5 min → Peninsula hotel, drop bags" },
@@ -201,14 +201,15 @@ const TRIP = {
   // frontedBy set => contributes to settlement. total => split evenly among
   // leg attendees; perPerson => each attendee owes that amount to frontedBy.
   // exclude: [ids] => those people paid their own — left out of the split.
+  // sleeps: bed capacity on a hotel — the Hotels tab flags shortfalls.
   // No frontedBy => informational only (everyone pays their own).
   costs: [
     { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 450, frontedBy: "ehsan", exclude: ["kli"], status: "booked", note: "~$450/person placeholder — update to actual fare · Kevin Li paid his own — splits across the other 8" },
-    { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158.19, perPerson: null, frontedBy: "albin", status: "booked", note: "Airbnb HM8YRKN5XN · host Wing · Onward Building, 528 Nathan Rd · in after 2pm / out by 11am · A21 → Man Ming Lane stop or Yau Ma Tei MTR exit D · paid Aug 18" },
-    { id: "gz-hotel", leg: "gz", cat: "Hotel", label: "TBD — Guangzhou hotel, Sep 28–30 (2 nights)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "All 6 mainland: KJ · Kevin Li · Shruthik · Wesley · Albin · Maas — ~3 rooms" },
-    { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "TBD — Hyatt Place Shenzhen Dongmen (points) or Kapok Shenzhen Luohu (cash)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "All 6 need only the Sep 30 night now (~3 rooms) — A&M sleep in GZ Sep 28–29 · if points, record points + cash-equivalent" },
-    { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "Casa Real Hotel — Studio, 2 Twin Beds (Macau Peninsula)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "Chosen — don't pay yet, family Expedia discount pending · Expedia quote ~$330 total for 2 rooms ($108/nt, was $425) · 'sleeps 3' = 2 twins, 3rd shares (no rollaway) — 7 attend, confirm 7th spot · non-refundable, +$28 for refundable til Sep 28 · only 2 left · Oct 1–2", url: "https://www.expedia.com/Macau-Hotels-Casa-Real-Hotel.h2219745.Hotel-Information?chkin=2026-10-01&chkout=2026-10-02", linkLabel: "Expedia — Casa Real Hotel" },
-    { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: 820.84, perPerson: null, frontedBy: "albin", status: "booked", note: "Expedia itin 73521256411437 · 2 rooms, 2 double beds each · paid Aug 13 · in 3pm / out 12pm · 7 adults booked but 8 attend — confirm 8th bed" },
+    { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158.19, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 7, note: "Airbnb HM8YRKN5XN · host Wing · Onward Building, 528 Nathan Rd · in after 2pm / out by 11am · A21 → Man Ming Lane stop or Yau Ma Tei MTR exit D · paid Aug 18 · sleeps 7 but 9 attend — confirm rooming", url: "https://www.airbnb.com/rooms/37172099", linkLabel: "Airbnb — listing" },
+    { id: "gz-hotel", leg: "gz", cat: "Hotel", label: "TBD — Guangzhou hotel (Hilton Science City candidate), Sep 28–30", total: null, perPerson: null, frontedBy: null, status: "to-book", sleeps: null, note: "All 6 mainland: KJ · Kevin Li · Shruthik · Wesley · Albin · Maas — ~3 rooms · ⚠ Sep 29 contingency: if a wisdom-tooth extraction is flagged, A&M overnight in SZ · Hilton Science City is in Huangpu — ~45 min NE of Beijing Rd / Shamian sights", url: "https://www.expedia.com/Guangzhou-Hotels-Hilton-Guangzhou-Science-City.h2461294.Hotel-Information?chkin=2026-09-28&chkout=2026-09-30", linkLabel: "Expedia — Hilton Science City" },
+    { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "Hyatt Place Shenzhen Dongmen — 3× Specialty Twin (Laojie MTR, Luohu)", total: 250, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 6, note: "Hyatt confs 56229190 + 14228517 + 45139912 · 13,500 pts total (4,500/room — ~$250 pts value) · Sep 30–Oct 1, in 3pm / out 12pm · Laojie MTR exit H, turn left · breakfast incl up to 2/room", url: "https://www.hyatt.com/hyatt-place/en-US/szxzs-hyatt-place-shenzhen-dongmen", linkLabel: "Hyatt — Hyatt Place Dongmen" },
+    { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "Casa Real Hotel — Studio, 2 Twin Beds (Macau Peninsula)", total: null, perPerson: null, frontedBy: null, status: "to-book", sleeps: 6, note: "Chosen — don't pay yet, family Expedia discount pending · Expedia quote ~$330 total for 2 rooms ($108/nt, was $425) · 'sleeps 3' = 2 twins, 3rd shares (no rollaway) — 7 attend, confirm 7th spot · non-refundable, +$28 for refundable til Sep 28 · only 2 left · Oct 1–2", url: "https://www.expedia.com/Macau-Hotels-Casa-Real-Hotel.h2219745.Hotel-Information?chkin=2026-10-01&chkout=2026-10-02", linkLabel: "Expedia — Casa Real Hotel" },
+    { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: 820.84, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 8, note: "Expedia itin 73521256411437 · 2 rooms, 2 double beds each · paid Aug 13 · in 3pm / out 12pm · 7 adults booked but 8 attend — confirm 8th bed", url: "https://www.marriott.com/en-us/hotels/hkgap-hong-kong-skycity-marriott-hotel/overview/", linkLabel: "Marriott — SkyCity" },
 
     { id: "a21", leg: "hk1", cat: "Transport", label: "Bus A21 · HKG → Yau Ma Tei", total: null, perPerson: 4.30, frontedBy: null, status: null, note: "~HK$34 · first bus ~05:30" },
     { id: "hsr-gz", leg: "gz", cat: "Transport", label: "HSR West Kowloon → Guangzhou South", total: null, perPerson: 27, frontedBy: null, status: null, note: "~HK$215 · ~1h · passport ticket · all 6" },

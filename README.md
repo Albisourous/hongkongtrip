@@ -20,18 +20,19 @@ Deployed via GitHub Pages from `main`.
 ## Update trip data
 
 All content lives in `data.js` — people, hotels, transport, itinerary,
-and who fronted each booking. Edit values there; `app.js` recomputes the
+and who fronted each booking. Edit values there; the pages recompute the
 splits and settlement automatically. `null` means TBD.
 
 ## Layout
 
-Four pages, each a shell + its own JS/CSS, sharing `data.js` and
+Five pages, each a shell + its own JS/CSS, sharing `data.js` and
 `styles.css`:
 
 | Page | What it shows |
 |---|---|
 | `index.html` | Home — what the trip is, legs, who's on which leg |
 | `days.html` | Day-by-day plans with swipe + checklists |
+| `hotels.html` | Who sleeps where, night by night |
 | `bookings.html` | What still needs booking (red = to book) |
 | `payments.html` | Per-leg splits, settlement, paid ledger |
 

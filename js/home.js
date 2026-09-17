@@ -36,8 +36,8 @@
   hero.appendChild(el("p", "home-route", TRIP.route));
   hero.appendChild(el("p", "home-explainer",
     "This site tracks the plan for each day, what still needs booking, and who owes whom. " +
-    "Days holds the itinerary and checklists, Bookings shows what's left to reserve, " +
-    "and Payments splits the shared costs per leg."));
+    "Days holds the itinerary and checklists, Hotels shows who sleeps where each night, " +
+    "Bookings shows what's left to reserve, and Payments splits the shared costs per leg."));
   app.appendChild(hero);
 
   // ---------- Leg cards ----------
@@ -99,6 +99,8 @@
   var links = [
     { href: "days.html", title: "Days",
       desc: "Day-by-day plan, where we're sleeping, and checklists." },
+    { href: "hotels.html", title: "Hotels",
+      desc: "Who sleeps in each hotel, night by night." },
     { href: "bookings.html", title: "Bookings",
       desc: toBook === 0 ? "Everything is booked."
         : toBook + (toBook === 1 ? " thing still needs" : " things still need") + " booking." },
