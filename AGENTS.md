@@ -38,14 +38,17 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 - `frontedBy: null` → informational only (everyone pays their own).
 - `exclude: [ids]` on a cost → those people paid their own and are left
   out of that cost's split (e.g. Kevin Li booked his own flight).
+- `settled: [ids]` on a cost → those people already paid the fronter —
+  still shown in splits (with a ✓ in the ledger) but netted out of the
+  settlement table (e.g. Albin + Scott paid Ehsan for flights).
 - `null` = TBD. Render as "TBD", exclude from all math.
 - `sleeps` on a hotel cost = bed capacity; the Hotels tab compares it
   to the leg's headcount and flags shortfalls.
 - Excluded from the group split: Sam's Tailor (personal spend). Flights
   are fronted by Ehsan and sit on `hk1` so they split across 8 — Kevin
-  Li paid his own (~$450/person placeholder). `cat: "Flight"` costs
-  render as their own `FLT` column in the split table instead of inside
-  the leg column.
+  Li paid his own (~$450/person placeholder). `cat: "Flight"` and
+  `cat: "Hotel"` costs render as their own `FLT`/`HTL` columns in the
+  split table instead of inside the leg column.
 - Sep 28–30 all six mainland travelers take the `gz` leg in Guangzhou,
   then move to Shenzhen together on Sep 30 — everyone on `sz` needs only
   the Sep 30 hotel night. Brendan attends `hk1` only; Ehsan & Scott skip

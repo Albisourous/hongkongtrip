@@ -45,7 +45,7 @@
   };
 
   const legName = id => (TRIP.legs.find(l => l.id === id) || {}).name || id;
-  const legShort = id => ({ flight: "FLT", hk1: "HK", gz: "GZ", sz: "SZ", mo: "MO", hk2: "HKG" }[id] || legName(id));
+  const legShort = id => ({ flight: "FLT", hotel: "HTL", hk1: "HK", gz: "GZ", sz: "SZ", mo: "MO", hk2: "HKG" }[id] || legName(id));
   const personName = id => (TRIP.people.find(p => p.id === id) || {}).name || id;
   const attendees = leg => TRIP.people.filter(p => p.legs.includes(leg));
   // Leg attendees who owe for a cost — exclude lists people who paid their own.
@@ -53,6 +53,10 @@
     const at = attendees(c.leg);
     return c.exclude ? at.filter(p => !c.exclude.includes(p.id)) : at;
   };
+  // Payers minus people who already settled with the fronter — settlement
+  // uses this so paid-up shares drop out of what everyone still owes.
+  const activePayers = c =>
+    c.settled ? payers(c).filter(p => !c.settled.includes(p.id)) : payers(c);
 
   // Per-attendee share of a cost, or null when it doesn't count toward splits.
   const share = c => {
@@ -62,13 +66,23 @@
     return c.total != null ? c.total / n : c.perPerson;
   };
   const isFlight = c => c.cat === "Flight";
+  const isHotel = c => c.cat === "Hotel";
   const legTotal = leg => TRIP.costs.reduce((s, c) => {
-    const sh = c.leg === leg && !isFlight(c) ? share(c) : null;
+    const sh = c.leg === leg && !isFlight(c) && !isHotel(c) ? share(c) : null;
     return sh == null ? s : s + sh * payers(c).length;
   }, 0);
   const personLegShare = (p, leg) => TRIP.costs.reduce((s, c) => {
-    const sh = c.leg === leg && !isFlight(c) ? share(c) : null;
+    const sh = c.leg === leg && !isFlight(c) && !isHotel(c) ? share(c) : null;
     return sh == null || !payers(c).some(q => q.id === p) ? s : s + sh;
+  }, 0);
+  const personHotelShare = p => TRIP.costs.reduce((s, c) => {
+    const sh = isHotel(c) ? share(c) : null;
+    return sh == null || !payers(c).some(q => q.id === p) ? s : s + sh;
+  }, 0);
+  const onHotel = p => TRIP.costs.some(c => isHotel(c) && payers(c).some(q => q.id === p));
+  const hotelTotal = () => TRIP.costs.reduce((s, c) => {
+    const sh = isHotel(c) ? share(c) : null;
+    return sh == null ? s : s + sh * payers(c).length;
   }, 0);
   const personFlightShare = p => TRIP.costs.reduce((s, c) => {
     const sh = isFlight(c) ? share(c) : null;
@@ -124,7 +138,8 @@
       const sub = el("div", "pay-sub leg-" + c.leg);
       sub.append(el("span", "leg-dot"),
         `${legName(c.leg)} · ${c.frontedBy ? "fronted by " + personName(c.frontedBy) : "pay your own"}` +
-        (c.exclude ? ` · ${c.exclude.map(personName).join(", ")} paid own` : ""));
+        (c.exclude ? ` · ${c.exclude.map(personName).join(", ")} paid own` : "") +
+        (c.settled ? ` · ${c.settled.map(personName).join(", ")} settled` : ""));
       item.append(el("div", "pay-item", c.label), sub);
       tr.append(item,
         td("money", c.total == null ? tbd() : fmt(c.total)),
@@ -162,27 +177,29 @@
       const who = td("pay-who");
       at.forEach((p, i) => {
         if (i) who.append(" · ");
-        who.append(p.name);
+        who.append(p.name + (c.settled && c.settled.includes(p.id) ? " ✓" : ""));
       });
       tr.append(item, td(null, personName(c.frontedBy)), who,
         td("money", sh == null ? tbd() : fmt(sh)));
       tb.append(tr);
     });
     s.append(el("p", "muted",
-      "Each person's share of what someone else fronted — the fronter's own share is included in the split."));
+      "Each person's share of what someone else fronted — the fronter's own share is included in the split. ✓ = already paid the fronter."));
     app.append(s);
   }
 
   function split() {
     const s = el("section");
     s.append(el("h2", null, "Per-person split"));
-    const tb = mkTable(["Person", legTag("flight", "FLT"), ...TRIP.legs.map(l => legTag(l.id, legShort(l.id))), "Total"], s);
+    const tb = mkTable(["Person", legTag("flight", "FLT"), legTag("hotel", "HTL"), ...TRIP.legs.map(l => legTag(l.id, legShort(l.id))), "Total"], s);
     TRIP.people.forEach(p => {
       const tr = el("tr");
       tr.append(td(null, p.name));
       let tot = 0;
       tr.append(td("money", onFlight(p.id) ? fmt(personFlightShare(p.id)) : "—"));
       tot += personFlightShare(p.id);
+      tr.append(td("money", onHotel(p.id) ? fmt(personHotelShare(p.id)) : "—"));
+      tot += personHotelShare(p.id);
       TRIP.legs.forEach(l => {
         if (!p.legs.includes(l.id)) { tr.append(td("money", "—")); return; }
         const v = personLegShare(p.id, l.id);
@@ -196,6 +213,8 @@
     fr.append(td(null, "All"));
     let grand = flightTotal();
     fr.append(td("money", fmt(grand)));
+    grand += hotelTotal();
+    fr.append(td("money", fmt(hotelTotal())));
     TRIP.legs.forEach(l => {
       const v = legTotal(l.id);
       grand += v;
@@ -204,8 +223,8 @@
     fr.append(td("money", fmt(grand)));
     tb.append(fr);
     const legend = el("p", "muted", "Each leg splits only among the people on it. ");
-    const LEGEND = { flight: "round-trip airfare", hk1: "Sep 25–28", gz: "Guangzhou", sz: "Shenzhen", mo: "Macau", hk2: "airport night" };
-    ["flight", ...TRIP.legs.map(l => l.id)].forEach((id, i) => {
+    const LEGEND = { flight: "round-trip airfare", hotel: "all hotel nights", hk1: "Sep 25–28", gz: "Guangzhou", sz: "Shenzhen", mo: "Macau", hk2: "airport night" };
+    ["flight", "hotel", ...TRIP.legs.map(l => l.id)].forEach((id, i) => {
       if (i) legend.append(" · ");
       legend.append(el("span", "pay-abbr leg-" + id, legShort(id)),
         " = " + (LEGEND[id] || legName(id)));
@@ -221,7 +240,7 @@
     TRIP.costs.forEach(c => {
       const sh = share(c);
       if (sh == null) return;
-      const at = payers(c);
+      const at = activePayers(c);
       fronted[c.frontedBy] += sh * at.length;
       at.forEach(p => { owes[p.id] += sh; });
     });
@@ -266,7 +285,7 @@
         td("money" + (n > 0.004 ? " pos" : n < -0.004 ? " neg" : ""), fmt(n)), rem);
       tb.append(tr);
     });
-    s.append(el("p", "muted", "Net = fronted − owes. Remaining updates as payments are checked off."));
+    s.append(el("p", "muted", "Net = fronted − owes; already-settled shares are netted out. Remaining updates as payments are checked off."));
 
     if (!pays.length) {
       s.append(el("p", "muted", "Everyone is even — no payments needed."));

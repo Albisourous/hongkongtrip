@@ -23,6 +23,7 @@
   --mo: #059669;
   --hk2: #7c3aed;
   --flight: #64748b;
+  --hotel: #0d9488;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,6 +47,7 @@
     --mo: #34d399;
     --hk2: #a78bfa;
     --flight: #94a3b8;
+    --hotel: #2dd4bf;
   }
 }
 
@@ -243,6 +245,7 @@ li::marker {
 .leg-mo { --leg: var(--mo); }
 .leg-hk2 { --leg: var(--hk2); }
 .leg-flight { --leg: var(--flight); }
+.leg-hotel { --leg: var(--hotel); }
 
 .leg-dots {
   display: inline-flex;
