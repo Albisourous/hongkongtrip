@@ -12,7 +12,7 @@ const TRIP = {
     { id: "ehsan", name: "Ehsan", legs: ["hk1", "mo", "hk2"] }, // solo in China
     { id: "scott", name: "Scott", legs: ["hk1", "mo", "hk2"] }, // same as Ehsan
     { id: "brendan", name: "Brendan", legs: ["hk1"] }, // first HK leg only
-    { id: "kli", name: "Kevin Li", legs: ["hk1", "gz", "sz"] }, // skips Macau — own transit back to HK Oct 1, rejoins at HKG Oct 3
+    { id: "kli", name: "Kevin Li", legs: ["hk1", "gz", "sz", "hk2"] }, // skips Macau — own transit back to HK Oct 1, rejoins for the airport leg
     { id: "shruthik", name: "Shruthik", legs: ["hk1", "gz", "sz", "mo", "hk2"] },
     { id: "wesley", name: "Wesley", legs: ["hk1", "gz", "sz", "mo", "hk2"] },
   ],
@@ -133,7 +133,7 @@ const TRIP = {
       morning: "Metro Futian → Shekou Port (~40 min) · ferry → Macau Outer Harbour (~60–70 min, arrive 45 min early) · 5-min taxi/shuttle to Peninsula hotel, drop bags",
       afternoon: "Historic walking tour: Senado Sq → Ruins of St Paul's → Mount Fortress → Rua da Felicidade + Macanese street food",
       evening: "Free casino shuttle from Grand Lisboa/StarWorld (or 15-min taxi) → Cotai: Venetian, Londoner, Studio City, Galaxy",
-      notes: "⚠ Golden Week Day 1 — peak crowds. Carry pre-booked ferry ticket (240-hr transit requires onward ticket). Stay on the Peninsula near the historic centre for easy bag drop. Kevin Li skips Macau — own transit back to HK today, rejoins at HKG Oct 3.",
+      notes: "⚠ Golden Week Day 1 — peak crowds. Carry pre-booked ferry ticket (240-hr transit requires onward ticket). Stay on the Peninsula near the historic centre for easy bag drop. Kevin Li skips Macau — own transit back to HK today, rejoins for the airport leg (hk2).",
       checklist: [
         { t: "8:00am", task: "Metro Futian → Shekou Port (~40 min)" },
         { t: "9:00am", task: "Kevin Li: own transit back to HK (skips Macau)" },
@@ -151,7 +151,7 @@ const TRIP = {
       morning: "Last Macau AM — Senado / Lord Stow's egg tarts",
       afternoon: "Ferry Macau → TST · (opt) Sam's Tailor pickup · taxi/AEL to SkyCity Marriott, Lantau",
       evening: "Low-key dinner near TST or SkyCity · early night",
-      notes: "Book Macau→HK ferry 1–3 days ahead.",
+      notes: "Book Macau→HK ferry 1–3 days ahead. Kevin Li rejoins at SkyCity — he's been in HK since Oct 1 (skipped Macau).",
       checklist: [
         { t: "9:00am", task: "Lord Stow's egg tarts + last Macau loop" },
         { t: "12:00pm", task: "Ferry Macau → TST (~60 min)" },
@@ -168,7 +168,7 @@ const TRIP = {
       notes: "Arrive SEA 12:27pm.",
       checklist: [
         { t: "6:00am", task: "Wake · free shuttle → HKG T1" },
-        { t: "7:00am", task: "Check in / security — Kevin Li rejoins at T1" },
+        { t: "7:00am", task: "Check in / security" },
         { t: "9:25am", task: "DL0088 HKG → LAX → DL1714 → SEA" },
       ],
     },
@@ -222,7 +222,7 @@ const TRIP = {
 
   notes: [
     "Sep 28–30 the group splits: KJ · Kevin Li · Shruthik · Wesley → Guangzhou; Albin & Maas → Shenzhen (medical, own GZ day trip Sep 29); Ehsan & Scott solo; Brendan heads home.",
-    "Kevin Li skips Macau — own transit back to HK Oct 1, rejoins the group at HKG Oct 3.",
+    "Kevin Li skips Macau — own transit back to HK Oct 1, rejoins the group for the airport leg (SkyCity Marriott + flight home).",
     "Flights fronted by Ehsan — ~$450/person placeholder, split across everyone; update when the real fare lands.",
     "Sep 29–30 medical block and Sam's Tailor are personal spend — excluded.",
     "Points bookings: record points used AND cash-equivalent so the fronter is reimbursed fairly.",
