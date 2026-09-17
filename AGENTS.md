@@ -60,7 +60,8 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   with data values.
 - Money is USD, `$` + `toFixed(2)`, `.money` class, tabular numerals.
 - `TRIP.days` holds per-day plans: `morning`/`afternoon`/`evening` blocks
-  (null = nothing planned), `stay`, `notes`, and `checklist` items
+  (null = nothing planned), `places` (array — rendered joined by " · "),
+  `eats` (veg-friendly food note), `stay`, `notes`, and `checklist` items
   (`{t, task}` — t is a rough start time). Checklist state persists in
   localStorage (`hkcheck:{date}:{index}`). Payment marks use
   `hkpaid:{from}>{to}`; booking marks use `hkbooked:{costId}`.

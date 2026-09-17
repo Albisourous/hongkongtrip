@@ -115,7 +115,9 @@
 
     [["Morning", day.morning],
      ["Afternoon", day.afternoon],
-     ["Evening", day.evening]].forEach(function (pair) {
+     ["Evening", day.evening],
+     ["Places", day.places ? day.places.join(" · ") : null],
+     ["Veg eats", day.eats]].forEach(function (pair) {
       if (pair[1] == null) return;
       var block = el("div", "block");
       block.appendChild(el("span", "block-label", pair[0]));

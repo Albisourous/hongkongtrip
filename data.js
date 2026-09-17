@@ -44,6 +44,8 @@ const TRIP = {
       morning: "Land HKG 5:05am → Bus A21 to YMT → drop bags + nap",
       afternoon: "Cha chaan teng lunch · (opt) Sam's Tailor measure · Star Ferry / TST harbourfront",
       evening: "Victoria Park lanterns 7pm → Tai Hang Fire Dragon 8:15pm",
+      places: ["Yau Ma Tei Wholesale Fruit Market (iconic, by the Airbnb)", "Star Ferry → TST harbourfront", "Victoria Park lantern carnival", "Tai Hang Fire Dragon Dance"],
+      eats: "Cha chaan tengs do veg rice/noodle dishes — ask for 斋菜 (zhai); fruit market for cheap snacks",
       notes: "Mid-Autumn Festival. Buy Octopus cards at the airport. Airbnb check-in after 2pm — store bags first (host offers luggage storage).",
       checklist: [
         { t: "5:05am", task: "Land HKG · buy Octopus cards" },
@@ -60,6 +62,8 @@ const TRIP = {
       morning: "🥾 Dragon's Back trail run/hike → Shek O beach + village lunch",
       afternoon: "Sham Shui Po: Apliu St + Golden Computer Arcade + streetwear/coffee",
       evening: "Temple St Night Market OR rooftop bar",
+      places: ["Dragon's Back → Shek O", "Shek O village", "Apliu St flea market", "Golden Computer Arcade", "Temple St Night Market"],
+      eats: "Shek O village cafés have veg plates · SSP bakeries — egg tarts + pineapple buns are veg",
       notes: "Alt AM: KLN BJJ/judo (Jordan) or Lai Chi Kok calisthenics.",
       checklist: [
         { t: "7:30am", task: "MTR → Shau Kei Wan, bus 9 to trailhead" },
@@ -74,7 +78,9 @@ const TRIP = {
       morning: "Kowloon Walled City exhibition (go early, free timed ticket) → Kowloon City Thai lunch",
       afternoon: "Peak Tram + Lugard loop · Sneaker St + Sino Centre · Mid-Levels Escalator",
       evening: "LKF night out",
-      notes: "Symphony of Lights 8pm optional.",
+      places: ["Kowloon Walled City Park", "Chi Lin Nunnery + Nan Lian Garden (Tang-style, free)", "Kowloon City Thai st", "Peak Tram + Lugard loop", "Sneaker St + Sino Centre", "LKF"],
+      eats: "Chi Lin Nunnery veg restaurant at Nan Lian Garden — proper Buddhist veg meal, pairs with the Walled City park",
+      notes: "Symphony of Lights 8pm optional. Chi Lin Nunnery + Nan Lian Garden (Diamond Hill) is 10 min from the Walled City park — add it.",
       checklist: [
         { t: "9:00am", task: "Kowloon Walled City exhibition (timed ticket — go early)" },
         { t: "12:30pm", task: "Kowloon City Thai lunch" },
@@ -89,6 +95,8 @@ const TRIP = {
       morning: "Check out · MTR to West Kowloon",
       afternoon: "Midday HSR West Kowloon → Guangzhou South ~1h (all 6) · check in",
       evening: "Beijing Rd + Pearl River night cruise",
+      places: ["West Kowloon HSR terminus", "Beijing Rd pedestrian st (glass-floor ancient road)", "Huacheng Sq — Canton Tower skyline", "Pearl River night cruise"],
+      eats: "Guangxiao Temple veg restaurant — Guangzhou's oldest temple does classic Buddhist veg Cantonese",
       notes: "Mainland crew of 6 goes to Guangzhou together — Brendan heads home, Ehsan & Scott solo in China. Carry Shekou→Macau ferry ticket. HSR opens 15 days out — passport ticket.",
       checklist: [
         { t: "10:00am", task: "Check out, MTR → West Kowloon" },
@@ -101,8 +109,10 @@ const TRIP = {
     {
       date: "Sep 29", day: "Tue", base: "Guangzhou", stay: "GZ hotel TBD (all 6)", legs: ["gz", "sz"],
       morning: "Dim sum + Shamian Island",
-      afternoon: "Chen Clan Academy + Canton Tower",
+      afternoon: "Chen Clan Academy + Yongqingfang (Xiguan lanes, Bruce Lee ancestral home) + Canton Tower",
       evening: "Pearl River cruise / Beijing Rd",
+      places: ["Dim sum — Guangzhou Restaurant or Dian Dou De", "Shamian Island colonial streets", "Chen Clan Academy (folk art)", "Yongqingfang + Bruce Lee ancestral home", "Liwan Lake Park (locals' tai chi/cards)", "Canton Tower", "Pearl River cruise"],
+      eats: "Guangxiao Temple veg restaurant (near Chen Clan Academy) · herbal tea shops 凉茶 for the full Cantonese experience",
       notes: "Full group day in Guangzhou — all 6 together.",
       checklist: [
         { t: "8:30am", task: "Dim sum breakfast" },
@@ -116,6 +126,8 @@ const TRIP = {
       morning: "Check out ~11am · HSR Guangzhou → Shenzhen ~1h (all 6)",
       afternoon: "Nanshan tech run — DJI flagship @ OCT Harbour (free: fly drones indoors, RoboMaster) → Talent Park drone-delivered coffee + Pony.ai robotaxi · alt: Huaqiangbei electronics",
       evening: "COCO Park (Futian) nightlife — or Dongmen pedestrian st (at the hotel)",
+      places: ["DJI flagship @ OCT Harbour", "Talent Park drone-delivery lockers", "Pony.ai robotaxi (Nanshan geofence)", "Shenzhen Bay boardwalk", "COCO Park bar street", "Dongmen pedestrian st"],
+      eats: "COCO Park + Dongmen food courts have veg stalls — HeyTea was born in this region, grab one",
       notes: "SZ hotel booked: 3 twin rooms at Hyatt Place Dongmen (13,500 pts). Book the GZ→SZ HSR with the Sep 28 tickets. Robotaxi needs a CN number or WeChat mini-program — fallback is a normal Didi. Watch for a Golden Week drone show over Shenzhen Bay.",
       checklist: [
         { t: "10:30am", task: "Check out — GZ hotel" },
@@ -132,6 +144,8 @@ const TRIP = {
       morning: "Metro Laojie → Shekou Port (~55 min) or 2 Didis ~¥90/cab · ferry → Macau Outer Harbour (~60–70 min, arrive 45 min early) · 5-min taxi/shuttle to Peninsula hotel, drop bags",
       afternoon: "Historic walking tour: Senado Sq → Ruins of St Paul's → Mount Fortress → Rua da Felicidade + Macanese street food",
       evening: "Free casino shuttle from Grand Lisboa/StarWorld (or 15-min taxi) → Cotai: Venetian, Londoner, Studio City, Galaxy",
+      places: ["Senado Sq", "Ruins of St Paul's + Mount Fortress", "Rua da Felicidade", "A-Ma Temple (Macau's namesake)", "Red Market wet market", "Cotai strip at night"],
+      eats: "Egg tarts + pork-free noodle shops on the peninsula — ask for 斋 (zhai); A-Ma Temple area has veg cafés",
       notes: "⚠ Golden Week Day 1 — peak crowds. Carry pre-booked ferry ticket (240-hr transit requires onward ticket). Stay on the Peninsula near the historic centre for easy bag drop. Kevin Li skips Macau — own transit back to HK today, rejoins for the airport leg (hk2).",
       checklist: [
         { t: "7:45am", task: "Metro Laojie → Shekou Port (~55 min) — or 2 Didis" },
@@ -150,6 +164,8 @@ const TRIP = {
       morning: "Last Macau AM — Senado / Lord Stow's egg tarts",
       afternoon: "Ferry Macau → TST · (opt) Sam's Tailor pickup · taxi/AEL to SkyCity Marriott, Lantau",
       evening: "Low-key dinner near TST or SkyCity · early night",
+      places: ["Lord Stow's Bakery egg tarts", "Macau → HK ferry", "Sam's Tailor pickup", "SkyCity Marriott"],
+      eats: "Lord Stow's egg tarts are veg · last real meal is TST — airport area is slim pickings",
       notes: "Book Macau→HK ferry 1–3 days ahead. Kevin Li rejoins at SkyCity — he's been in HK since Oct 1 (skipped Macau).",
       checklist: [
         { t: "9:00am", task: "Lord Stow's egg tarts + last Macau loop" },
@@ -189,6 +205,8 @@ const TRIP = {
     { cat: "Shopping anime", detail: "Sino Centre + In's Point + Richmond Arcade, Mong Kok.", cost: "varies", url: null, linkLabel: null },
     { cat: "Shopping SZ", detail: "Huaqiangbei/SEG electronics · COCO Park mall + bar street (Futian, Shopping Park metro) · Luohu tailoring (skip replicas).", cost: "varies", url: null, linkLabel: null },
     { cat: "AI/tech SZ", detail: "DJI flagship OCT Harbour (free — indoor drone cages, RoboMaster; L9 Shenzhen Bay Park exit E) · Meituan drone delivery @ Talent Park (~¥25/order, works w/ foreign Alipay/WeChat) · Pony.ai driverless taxi, Nanshan/Qianhai geofence (~¥8–15, needs CN number or WeChat mini-program) · driverless metro lines 12/14 — ride the front car", cost: "free–¥30", url: "https://www.dji.com/where-to-buy/flagship/cn-sz", linkLabel: "DJI flagship store" },
+    { cat: "Local life", detail: "Morning tai chi + dancing aunties in any park · wet-market breakfast (baozi, congee, jianbing) · herbal tea shops 凉茶 · foot massage 足浴 after walking days · KTV · mahjong parlors · milk tea — HeyTea is from this region · shared bikes on Shenzhen Bay", cost: "free–cheap", url: null, linkLabel: null },
+    { cat: "Veg eats", detail: "HK: Chi Lin Nunnery veg restaurant (Nan Lian Garden, Diamond Hill) + LockCha tea house (HK Park) · GZ: Guangxiao Temple veg restaurant · SZ: Dongmen/COCO Park food courts · Macau: egg tarts + ask for 斋 (zhai, Buddhist veg) — every city: temple veg buffets are the reliable bet", cost: "cheap", url: null, linkLabel: null },
     { cat: "Viewpoints", detail: "Peak/Lugard, Choi Hung, Ping An Free Sky, Ruins of St Paul's.", cost: "varies", url: null, linkLabel: null },
   ],
 
