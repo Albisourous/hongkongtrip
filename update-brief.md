@@ -5,13 +5,11 @@
 
 ## Applied
 
-- **Albin & Maas join the GZ leg** — they sleep in Guangzhou with the crew
-  Sep 28–30 (GZ hotel now needs 6) and commute to Shenzhen on the early HSR
-  for both medical mornings: Sep 29 ~6:30am train for the 8am fasting
-  checkup, Sep 30 ~7am train for the 9am Aier consult. If the checkup flags
-  an extraction they stay in SZ that evening. The SZ hotel is now needed
-  only for Sep 30 — all 6, one night. Shenzhen sights (Huaqiangbei,
-  OCT-LOFT, Sea World) land on the Sep 30 reunite afternoon/evening.
+- **Albin & Maas stay on the group itinerary** — same legs as KJ, no
+  medical commutes. All six sleep in Guangzhou Sep 28–30 (GZ hotel needs
+  6) and move to Shenzhen together on Sep 30; the SZ hotel is needed only
+  for that one night. Shenzhen sights (Huaqiangbei, OCT-LOFT, Sea World)
+  fill the Sep 30 afternoon/evening.
 - **Kevin Li skips Macau** — legs now `["hk1", "gz", "sz", "hk2"]`. He
   transits back to HK on his own Oct 1 and rejoins the group for the airport
   leg (SkyCity Marriott Oct 2 → flight home Oct 3). Note: hk2 headcount is 8
@@ -55,7 +53,7 @@
 
 - Vanilla HTML/CSS/JS, no deps, no build. `createElement`/`textContent` only.
 - `null` = TBD: render "TBD", exclude from math. `frontedBy: null` = informational.
-- Split is per leg by `people[].legs`; medical block + Sam's Tailor excluded.
+- Split is per leg by `people[].legs`; Sam's Tailor excluded.
 - Small imperative commits, repo-local identity
   `Albisourous <albinshrestha01@gmail.com>`, no trailers.
 - Verify: `node --check data.js js/*.js`, then `python3 -m http.server 8000`

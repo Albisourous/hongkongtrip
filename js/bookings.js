@@ -56,9 +56,9 @@
     },
     {
       id: "hsr-ticket", urgent: true, legs: ["gz", "sz"],
-      title: "HSR tickets · West Kowloon → Guangzhou South + GZ↔SZ commutes",
+      title: "HSR tickets · West Kowloon → Guangzhou → Shenzhen",
       cost: hsr.cost,
-      when: "Opens 15 days out (~Sep 13) · WKL→GZ Sep 28 · A&M medical commutes Sep 29–30 · GZ→SZ Sep 30",
+      when: "Opens 15 days out (~Sep 13) · WKL→GZ Sep 28 · GZ→SZ Sep 30",
       why: hsr.detail,
       url: hsr.url, linkLabel: hsr.linkLabel,
     },
