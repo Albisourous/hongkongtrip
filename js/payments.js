@@ -94,6 +94,16 @@
     return sh == null ? s : s + sh * payers(c).length;
   }, 0);
 
+  // A person's share of costs matching pred counts as paid when they're
+  // in c.settled, or their person>fronter payment is checked off.
+  const paidIn = (p, pred) => TRIP.costs.reduce((s, c) => {
+    const sh = pred(c) ? share(c) : null;
+    if (sh == null || !payers(c).some(q => q.id === p)) return s;
+    const paid = (c.settled && c.settled.includes(p.id)) ||
+      store.get(`hkpaid:${p.id}>${c.frontedBy}`) === "1";
+    return paid ? s + sh : s;
+  }, 0);
+
   // Rows needing action sort first: to-book, booked, then informational.
   const STATUS_ORDER = { "to-book": 0, booked: 1 };
   const statusRank = c => c.status in STATUS_ORDER ? STATUS_ORDER[c.status] : 2;
@@ -191,20 +201,27 @@
   function split() {
     const s = el("section");
     s.append(el("h2", null, "Per-person split"));
+    // Green when the person's share in that bucket is fully paid/settled.
+    const shareCell = (owed, paid, show) => {
+      const c = td("money", show ? fmt(owed) : "—");
+      if (show && owed > 0.004 && paid >= owed - 0.005) c.classList.add("pos");
+      return c;
+    };
     const tb = mkTable(["Person", legTag("flight", "FLT"), legTag("hotel", "HTL"), ...TRIP.legs.map(l => legTag(l.id, legShort(l.id))), "Total"], s);
     TRIP.people.forEach(p => {
       const tr = el("tr");
       tr.append(td(null, p.name));
       let tot = 0;
-      tr.append(td("money", onFlight(p.id) ? fmt(personFlightShare(p.id)) : "—"));
-      tot += personFlightShare(p.id);
-      tr.append(td("money", onHotel(p.id) ? fmt(personHotelShare(p.id)) : "—"));
-      tot += personHotelShare(p.id);
+      const flt = personFlightShare(p.id), htl = personHotelShare(p.id);
+      tr.append(shareCell(flt, paidIn(p.id, isFlight), onFlight(p.id)));
+      tr.append(shareCell(htl, paidIn(p.id, isHotel), onHotel(p.id)));
+      tot += flt + htl;
       TRIP.legs.forEach(l => {
         if (!p.legs.includes(l.id)) { tr.append(td("money", "—")); return; }
         const v = personLegShare(p.id, l.id);
         tot += v;
-        tr.append(td("money", fmt(v)));
+        tr.append(shareCell(v,
+          paidIn(p.id, c => c.leg === l.id && !isFlight(c) && !isHotel(c)), true));
       });
       tr.append(td("money", fmt(tot)));
       tb.append(tr);
@@ -229,6 +246,7 @@
       legend.append(el("span", "pay-abbr leg-" + id, legShort(id)),
         " = " + (LEGEND[id] || legName(id)));
     });
+    legend.append(" · green = already paid/settled.");
     s.append(legend);
     app.append(s);
   }
