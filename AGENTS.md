@@ -65,13 +65,14 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 - Pages build DOM via `createElement`/`textContent` — never `innerHTML`
   with data values.
 - Money is USD, `$` + `toFixed(2)`, `.money` class, tabular numerals.
-- `TRIP.days` holds per-day plans: `morning`/`afternoon`/`evening` blocks
-  (null = nothing planned), `places` (array — rendered joined by " · "),
-  `eats` (veg-friendly food note), `stay`, `notes`, and `checklist` items
-  (`{t, task}` — t is a rough start time). Checklist state persists in
-  localStorage (`hkcheck:{date}:{index}`). Booking marks use
-  `hkbooked:{costId}`; paid-up splits are tracked via `settled: [ids]`
-  on the cost in data.js, not page marks.
+- `TRIP.days` holds per-day plans: `stay`, `notes` (timing/booking
+  warnings), and `checklist` — the full time-ordered itinerary as `{t,
+  task}` items (t is a rough start time), sequenced to minimize
+  backtracking between places. The checklist follows the main group
+  itinerary; people who split off do their own thing and aren't listed.
+  Checklist state persists in localStorage (`hkcheck:{date}:{index}`).
+  Booking marks use `hkbooked:{costId}`; paid-up splits are tracked via
+  `settled: [ids]` on the cost in data.js, not page marks.
 - `js/sync.js` (`window.SyncStore`, loaded on Days/Bookings/Payments)
   syncs those marks across devices via a free JSON bin
   (extendsclass json-storage — no auth, anyone with the URL can write).

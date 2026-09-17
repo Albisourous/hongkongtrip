@@ -1,4 +1,4 @@
-/* Days page — day-by-day plan rendered into #app.
+/* Days page — day-by-day checklist rendered into #app.
    Day chips pick a day, the detail card supports horizontal swipe,
    and checklist state persists in localStorage (hkcheck:{date}:{i}). */
 (function () {
@@ -112,18 +112,6 @@
       stay.appendChild(bookLink);
     }
     detail.appendChild(stay);
-
-    [["Morning", day.morning],
-     ["Afternoon", day.afternoon],
-     ["Evening", day.evening],
-     ["Places", day.places ? day.places.join(" · ") : null],
-     ["Veg eats", day.eats]].forEach(function (pair) {
-      if (pair[1] == null) return;
-      var block = el("div", "block");
-      block.appendChild(el("span", "block-label", pair[0]));
-      block.appendChild(document.createTextNode(pair[1]));
-      detail.appendChild(block);
-    });
 
     if (day.checklist.length) {
       var ul = el("ul", "checklist");

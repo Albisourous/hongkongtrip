@@ -281,18 +281,41 @@
     });
     s.append(el("p", "muted", "Net = fronted − owes; already-settled shares are netted out."));
 
-    // Who collects what — one line per fronter, no payment optimization.
+    // Who collects what — each person's total owed to each fronter,
+    // computed from the legs they're on. Settled people drop out of the
+    // amounts and are listed separately.
     const byFronter = {};
     TRIP.costs.forEach(c => {
-      if (share(c) == null) return;
-      (byFronter[c.frontedBy] = byFronter[c.frontedBy] || []).push(c);
+      const sh = share(c);
+      if (sh == null) return;
+      const f = byFronter[c.frontedBy] = byFronter[c.frontedBy] ||
+        { cats: new Set(), owes: {}, settled: new Set() };
+      f.cats.add(c.cat.toLowerCase() + "s");
+      activePayers(c).forEach(p => {
+        if (p.id !== c.frontedBy) f.owes[p.id] = (f.owes[p.id] || 0) + sh;
+      });
+      (c.settled || []).forEach(id => {
+        if (id !== c.frontedBy) f.settled.add(id);
+      });
     });
     s.append(el("h3", null, "Who to pay"));
     const ul = el("ul", "pay-pays");
-    Object.keys(byFronter).forEach(f => {
-      const cats = [...new Set(byFronter[f].map(c => c.cat.toLowerCase() + "s"))].join(" + ");
+    Object.keys(byFronter).forEach(fid => {
+      const g = byFronter[fid];
       const li = el("li");
-      li.append(el("span", null, `${cats} → ${personName(f)}`));
+      li.append(el("span", null, `${[...g.cats].join(" + ")} → ${personName(fid)}`));
+      const names = el("div", "pay-sub");
+      Object.keys(g.owes)
+        .sort((a, b) => g.owes[b] - g.owes[a])
+        .forEach((pid, i) => {
+          if (i) names.append(" · ");
+          names.append(`${personName(pid)} ${fmt(g.owes[pid])}`);
+        });
+      li.append(names);
+      if (g.settled.size) {
+        li.append(el("div", "pay-sub",
+          "settled: " + [...g.settled].map(personName).join(", ")));
+      }
       ul.append(li);
     });
     s.append(ul);
