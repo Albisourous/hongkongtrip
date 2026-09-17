@@ -53,6 +53,9 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   then move to Shenzhen together on Sep 30 — everyone on `sz` needs only
   the Sep 30 hotel night. Brendan attends `hk1` only; Ehsan & Scott skip
   mainland (solo); Kevin Li skips `mo` but rejoins for `hk2`.
+- Settlement lists direct payments to each fronter — no netting across
+  fronters (e.g. pay Ehsan for your flight, pay Albin for your hotels).
+  A fronter's own share and `settled` people drop out of the list.
 - Points bookings: record points used AND a cash-equivalent `total` so the
   fronter is reimbursed fairly.
 

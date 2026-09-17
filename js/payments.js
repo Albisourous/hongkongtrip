@@ -250,21 +250,23 @@
       return;
     }
 
-    // Suggested payments via greedy netting on current balances.
+    // Direct payments: each person pays each fronter for their share of
+    // that fronter's costs — no netting across fronters. Settled people
+    // and the fronter's own share drop out.
     const net = p => fronted[p.id] - owes[p.id];
-    const nets = TRIP.people.map(p => ({ id: p.id, net: net(p) }));
-    const debt = nets.filter(x => x.net < -0.01).map(x => ({ id: x.id, amt: -x.net })).sort((a, b) => b.amt - a.amt);
-    const cred = nets.filter(x => x.net > 0.01).map(x => ({ id: x.id, amt: x.net })).sort((a, b) => b.amt - a.amt);
-    const pays = [];
-    let i = 0, j = 0;
-    while (i < debt.length && j < cred.length) {
-      const pay = Math.min(debt[i].amt, cred[j].amt);
-      pays.push({ from: debt[i].id, to: cred[j].id, amt: pay });
-      debt[i].amt -= pay;
-      cred[j].amt -= pay;
-      if (debt[i].amt < 0.01) i++;
-      if (cred[j].amt < 0.01) j++;
-    }
+    const paysMap = {};
+    TRIP.costs.forEach(c => {
+      const sh = share(c);
+      if (sh == null) return;
+      activePayers(c).forEach(p => {
+        if (p.id === c.frontedBy) return;
+        const k = p.id + ">" + c.frontedBy;
+        const pay = paysMap[k] = paysMap[k] || { from: p.id, to: c.frontedBy, amt: 0, cats: [] };
+        pay.amt += sh;
+        if (!pay.cats.includes(c.cat)) pay.cats.push(c.cat);
+      });
+    });
+    const pays = Object.values(paysMap).sort((a, b) => b.amt - a.amt);
 
     // Remaining = net adjusted by payments already marked paid.
     const remaining = {}, remCells = {};
@@ -294,9 +296,9 @@
     }
 
     const progress = el("span", "pay-progress");
-    const h3 = el("h3", null, "Suggested payments ");
+    const h3 = el("h3", null, "Who pays whom ");
     h3.append(progress);
-    s.append(h3, el("p", "muted", "Check off payments as they're sent."));
+    s.append(h3, el("p", "muted", "Direct to each fronter — check off payments as they're sent."));
 
     const ul = el("ul", "pay-pays");
     let settled = 0;
@@ -326,6 +328,7 @@
         updateProgress();
       });
       lab.append(cb, el("span", null, `${personName(p.from)} → ${personName(p.to)}`),
+        el("span", "muted", " " + p.cats.join(" + ").toLowerCase()),
         el("span", "money", fmt(p.amt)));
       li.append(lab);
       ul.append(li);
