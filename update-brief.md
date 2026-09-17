@@ -14,6 +14,12 @@
   transits back to HK on his own Oct 1 and rejoins the group for the airport
   leg (SkyCity Marriott Oct 2 → flight home Oct 3). Note: hk2 headcount is 8
   but the Marriott was booked as 2 rooms (4+3) — confirm rooming.
+- **Macau hotel chosen: Casa Real Hotel** — Studio 2 Twin Beds, Oct 1–2,
+  Expedia quote ~$330 total for 2 rooms ($108/nt, was $425) →
+  `costs["mo-hotel"]` + Oct 1 `stay`. **Not booked yet** — waiting on a
+  family Expedia discount, so `total` stays null. Watch-outs: "sleeps 3"
+  is 2 twins with the 3rd sharing (no rollaway), and 2 rooms cover 6 of
+  the 7 `mo` attendees — may need a 3rd room.
 - **HK1 Airbnb confirmed** — Airbnb `HM8YRKN5XN`, host Wing, Onward
   Building 528 Nathan Rd, Sep 25–28, $1,158.19 paid Aug 18 →
   `costs["hk1-hotel"].total`. Check-in after 2pm / out by 11am — Sep 25
@@ -31,7 +37,7 @@
 |---|---|
 | Guangzhou hotel + total (Sep 28–30, GZ crew of 4) | `costs["gz-hotel"]` |
 | Shenzhen hotel choice + total — Hyatt Place Dongmen (points) vs Kapok Luohu (cash) | `costs["sz-hotel"]` — GZ crew needs only Sep 30 night; Albin & Maas all 3. If points: record points + cash-equivalent `total` |
-| Macau hotel + total — **Golden Week, book ASAP** | `costs["mo-hotel"]` — shortlist: Hotel Central / Sofitel Ponte 16 / Caravel |
+| Macau hotel book + total — Casa Real picked on Expedia (~$330 for 2 rooms), waiting on family discount; also confirm room count (2 rooms sleep 6, 7 attend) | `costs["mo-hotel"].total` + `frontedBy` + `status` |
 | SkyCity Marriott rooming — reservation lists 7 adults, 8 attend hk2 | `costs["hk2-hotel"].note` + maybe `people` |
 | HK1 Airbnb rooming — sleeps 7, 9 attend | `costs["hk1-hotel"].note` + maybe `people` |
 | Actual Delta fare (currently $450/person placeholder) | `costs["flights"].perPerson` |

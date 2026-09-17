@@ -93,7 +93,7 @@ sums match the cost table, settlement balances sum to ~$0.
 
 - Guangzhou hotel + total (Sep 28–30, GZ crew of 4)
 - Shenzhen hotel choice + total (Hyatt Place Dongmen points vs Kapok Luohu cash) — GZ crew only needs Sep 30 night; Albin/Maas need all 3
-- Macau hotel + total (book ASAP — Golden Week)
+- Macau hotel total + rooming — Casa Real picked on Expedia (~$330 for 2 rooms), family discount pending; 2 rooms sleep 6 but 7 attend mo
 - SkyCity Marriott rooming — booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
 - HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming
 - Who fronts remaining bookings

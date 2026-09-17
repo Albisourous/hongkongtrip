@@ -35,7 +35,7 @@
     cost: null,
     when: legDates(c.leg),
     why: [c.label.replace(/^TBD — /, ""), c.note].filter(Boolean).join(" · "),
-    url: null, linkLabel: null,
+    url: c.url || null, linkLabel: c.linkLabel || null,
   });
 
   const transit = res("Visa/legal");

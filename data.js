@@ -129,7 +129,7 @@ const TRIP = {
       ],
     },
     {
-      date: "Oct 1", day: "Thu", base: "SZ → Macau", stay: "Macau Peninsula hotel (TBD)", legs: ["mo"],
+      date: "Oct 1", day: "Thu", base: "SZ → Macau", stay: "Casa Real Hotel, Macau Peninsula", legs: ["mo"],
       morning: "Metro Futian → Shekou Port (~40 min) · ferry → Macau Outer Harbour (~60–70 min, arrive 45 min early) · 5-min taxi/shuttle to Peninsula hotel, drop bags",
       afternoon: "Historic walking tour: Senado Sq → Ruins of St Paul's → Mount Fortress → Rua da Felicidade + Macanese street food",
       evening: "Free casino shuttle from Grand Lisboa/StarWorld (or 15-min taxi) → Cotai: Venetian, Londoner, Studio City, Galaxy",
@@ -206,7 +206,7 @@ const TRIP = {
     { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158.19, perPerson: null, frontedBy: "albin", status: "booked", note: "Airbnb HM8YRKN5XN · host Wing · Onward Building, 528 Nathan Rd · in after 2pm / out by 11am · A21 → Man Ming Lane stop or Yau Ma Tei MTR exit D · paid Aug 18" },
     { id: "gz-hotel", leg: "gz", cat: "Hotel", label: "TBD — Guangzhou hotel, Sep 28–30 (2 nights)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "GZ crew only: Kevin Jacob · Kevin Li · Shruthik · Wesley" },
     { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "TBD — Hyatt Place Shenzhen Dongmen (points) or Kapok Shenzhen Luohu (cash)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "4 rooms · Albin & Maas need Sep 28–Oct 1, GZ crew only Sep 30 — settle room nights/split when booking · if points, record points + cash-equivalent" },
-    { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "TBD — Hotel Central (San Ma Lo, closest to UNESCO), Sofitel Ponte 16 (waterfront), or Caravel (budget boutique)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "Peninsula near historic centre for morning bag drop · Golden Week — book ASAP" },
+    { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "Casa Real Hotel — Studio, 2 Twin Beds (Macau Peninsula)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "Chosen — don't pay yet, family Expedia discount pending · Expedia quote ~$330 total for 2 rooms ($108/nt, was $425) · 'sleeps 3' = 2 twins, 3rd shares (no rollaway) — 7 attend, confirm 7th spot · non-refundable, +$28 for refundable til Sep 28 · only 2 left · Oct 1–2", url: "https://www.expedia.com/Macau-Hotels-Casa-Real-Hotel.h2219745.Hotel-Information?chkin=2026-10-01&chkout=2026-10-02", linkLabel: "Expedia — Casa Real Hotel" },
     { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: 820.84, perPerson: null, frontedBy: "albin", status: "booked", note: "Expedia itin 73521256411437 · 2 rooms, 2 double beds each · paid Aug 13 · in 3pm / out 12pm · 7 adults booked but 8 attend — confirm 8th bed" },
 
     { id: "a21", leg: "hk1", cat: "Transport", label: "Bus A21 · HKG → Yau Ma Tei", total: null, perPerson: 4.30, frontedBy: null, status: null, note: "~HK$34 · first bus ~05:30" },
