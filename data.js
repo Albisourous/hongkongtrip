@@ -6,9 +6,9 @@ const TRIP = {
 
   // legs a person attends; remove a leg id to exclude them from that leg's split
   people: [
-    { id: "albin", name: "Albin", legs: ["hk1", "sz", "mo", "hk2"] }, // SZ all 3 nights, maybe GZ day trip
+    { id: "albin", name: "Albin", legs: ["hk1", "sz", "mo", "hk2"] }, // SZ all 3 nights, own GZ day trip Sep 29
     { id: "kj", name: "Kevin Jacob", legs: ["hk1", "gz", "sz", "mo", "hk2"] },
-    { id: "maas", name: "Maas", legs: ["hk1", "sz", "mo", "hk2"] }, // SZ all 3 nights, maybe GZ day trip
+    { id: "maas", name: "Maas", legs: ["hk1", "sz", "mo", "hk2"] }, // SZ all 3 nights, own GZ day trip Sep 29
     { id: "ehsan", name: "Ehsan", legs: ["hk1", "mo", "hk2"] }, // solo in China
     { id: "scott", name: "Scott", legs: ["hk1", "mo", "hk2"] }, // same as Ehsan
     { id: "brendan", name: "Brendan", legs: ["hk1"] }, // first HK leg only
@@ -101,15 +101,17 @@ const TRIP = {
     {
       date: "Sep 29", day: "Tue", base: "Guangzhou / Shenzhen", stay: "GZ hotel TBD (KJ, KLi, Shruthik, Wes) · SZ hotel TBD (Albin, Maas)", legs: ["gz", "sz"],
       morning: "GZ: dim sum + Shamian Island · SZ: 🩺 FASTING exec checkup + cancer screen + derm + wisdom-tooth eval @ HKU-Shenzhen (~8am)",
-      afternoon: "GZ: Chen Clan Academy + Canton Tower · SZ: post-checkup lunch · wisdom-tooth extraction if flagged, else OCT-LOFT",
-      evening: "GZ: Pearl River cruise / Beijing Rd · SZ: rest or COCO Park",
-      notes: "Split day — GZ crew explores Guangzhou; Albin & Maas do the medical block (personal spend — not a group cost). No breakfast for SZ crew; fast from ~midnight.",
+      afternoon: "GZ crew: Chen Clan Academy + Canton Tower · Albin & Maas: post-checkup lunch → HSR Shenzhen → Guangzhou (own day trip, separate from GZ crew)",
+      evening: "GZ crew: Pearl River cruise / Beijing Rd · Albin & Maas: GZ evening on their own → HSR back to Shenzhen",
+      notes: "Split day — GZ crew on their own itinerary; Albin & Maas do the morning medical block (personal spend — not a group cost) then a SEPARATE Guangzhou day trip. If the checkup flags a wisdom-tooth extraction, skip the day trip and stay in SZ (OCT-LOFT instead). No breakfast for SZ crew; fast from ~midnight.",
       checklist: [
-        { t: "8:00am", task: "SZ: HKU-Shenzhen checkup (fasting) · GZ: dim sum breakfast" },
-        { t: "10:30am", task: "GZ: Shamian Island + Chen Clan Academy" },
-        { t: "12:30pm", task: "SZ: post-checkup lunch" },
-        { t: "3:00pm", task: "GZ: Canton Tower · SZ: extraction if flagged, else OCT-LOFT" },
-        { t: "7:30pm", task: "GZ: Pearl River cruise · SZ: rest or COCO Park" },
+        { t: "8:00am", task: "SZ: HKU-Shenzhen checkup (fasting) · GZ crew: dim sum breakfast" },
+        { t: "10:30am", task: "GZ crew: Shamian Island + Chen Clan Academy" },
+        { t: "12:30pm", task: "Albin & Maas: post-checkup lunch" },
+        { t: "1:30pm", task: "Albin & Maas: HSR Shenzhen → Guangzhou South (~¥75) — skip if extraction flagged" },
+        { t: "3:00pm", task: "GZ crew: Canton Tower · Albin & Maas: own GZ loop (Shamian Island / Beijing Rd)" },
+        { t: "7:30pm", task: "GZ crew: Pearl River cruise · Albin & Maas: GZ dinner on their own" },
+        { t: "9:30pm", task: "Albin & Maas: HSR Guangzhou → Shenzhen — back to SZ hotel" },
       ],
     },
     {
@@ -210,6 +212,7 @@ const TRIP = {
     { id: "hsr-gz", leg: "gz", cat: "Transport", label: "HSR West Kowloon → Guangzhou South", total: null, perPerson: 27, frontedBy: null, status: null, note: "~HK$215 · ~1h · passport ticket · GZ crew (4)" },
     { id: "hsr", leg: "sz", cat: "Transport", label: "HSR West Kowloon → Futian", total: null, perPerson: 10, frontedBy: null, status: null, note: "~HK$78 · ~14 min · passport ticket · Albin & Maas" },
     { id: "hsr-gz-sz", leg: "sz", cat: "Transport", label: "HSR Guangzhou → Shenzhen", total: null, perPerson: 11, frontedBy: null, status: null, note: "~¥75 · ~1h · Sep 30 · GZ crew rejoins" },
+    { id: "hsr-sz-gz-daytrip", leg: "gz", cat: "Transport", label: "HSR Shenzhen ↔ Guangzhou day trip (Albin & Maas)", total: null, perPerson: 22, frontedBy: null, status: null, note: "~¥150 round trip · Sep 29 PM · own itinerary, separate from GZ crew · book with the Sep 28 tickets" },
     { id: "ferry-sz-mo", leg: "mo", cat: "Transport", label: "Metro to Shekou + ferry → Macau Outer Harbour", total: null, perPerson: 31, frontedBy: null, status: null, note: "Pre-booked ferry ticket required at border" },
     { id: "ferry-mo-hk", leg: "hk2", cat: "Transport", label: "Macau → TST ferry (Cotai Water Jet / TurboJET)", total: null, perPerson: 25, frontedBy: null, status: null, note: "Book 1–3 days ahead" },
     { id: "taxi-skycity", leg: "hk2", cat: "Transport", label: "2 taxis · TST → SkyCity Marriott", total: null, perPerson: null, frontedBy: null, status: null, note: "~HK$300/cab, split by riders · luggage" },
