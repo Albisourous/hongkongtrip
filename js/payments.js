@@ -48,21 +48,26 @@
   const legShort = id => ({ hk1: "HK", gz: "GZ", sz: "SZ", mo: "MO", hk2: "HKG" }[id] || legName(id));
   const personName = id => (TRIP.people.find(p => p.id === id) || {}).name || id;
   const attendees = leg => TRIP.people.filter(p => p.legs.includes(leg));
+  // Leg attendees who owe for a cost — exclude lists people who paid their own.
+  const payers = c => {
+    const at = attendees(c.leg);
+    return c.exclude ? at.filter(p => !c.exclude.includes(p.id)) : at;
+  };
 
   // Per-attendee share of a cost, or null when it doesn't count toward splits.
   const share = c => {
     if (!c.frontedBy) return null;
-    const n = attendees(c.leg).length;
+    const n = payers(c).length;
     if (!n) return null;
     return c.total != null ? c.total / n : c.perPerson;
   };
   const legTotal = leg => TRIP.costs.reduce((s, c) => {
     const sh = c.leg === leg ? share(c) : null;
-    return sh == null ? s : s + sh * attendees(leg).length;
+    return sh == null ? s : s + sh * payers(c).length;
   }, 0);
   const personLegShare = (p, leg) => TRIP.costs.reduce((s, c) => {
     const sh = c.leg === leg ? share(c) : null;
-    return sh == null ? s : s + sh;
+    return sh == null || !payers(c).some(q => q.id === p) ? s : s + sh;
   }, 0);
 
   // Rows needing action sort first: to-book, booked, then informational.
@@ -100,7 +105,7 @@
     const tb = mkTable(["Item", "Total", "Per person", "Status"], s);
     let sum = 0;
     [...TRIP.costs].sort((a, b) => statusRank(a) - statusRank(b)).forEach(c => {
-      const n = attendees(c.leg).length;
+      const n = payers(c).length;
       const pp = c.perPerson != null ? c.perPerson : (c.total != null && n ? c.total / n : null);
       const sh = share(c);
       if (sh != null) sum += sh * n;
@@ -108,7 +113,8 @@
       const item = td(null);
       const sub = el("div", "pay-sub leg-" + c.leg);
       sub.append(el("span", "leg-dot"),
-        `${legName(c.leg)} · ${c.frontedBy ? "fronted by " + personName(c.frontedBy) : "pay your own"}`);
+        `${legName(c.leg)} · ${c.frontedBy ? "fronted by " + personName(c.frontedBy) : "pay your own"}` +
+        (c.exclude ? ` · ${c.exclude.map(personName).join(", ")} paid own` : ""));
       item.append(el("div", "pay-item", c.label), sub);
       tr.append(item,
         td("money", c.total == null ? tbd() : fmt(c.total)),
@@ -169,7 +175,7 @@
     TRIP.costs.forEach(c => {
       const sh = share(c);
       if (sh == null) return;
-      const at = attendees(c.leg);
+      const at = payers(c);
       fronted[c.frontedBy] += sh * at.length;
       at.forEach(p => { owes[p.id] += sh; });
     });
