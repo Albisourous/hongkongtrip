@@ -99,7 +99,7 @@ sums match the cost table, settlement balances sum to ~$0.
 ## Outstanding TBDs (collect from trip owner)
 
 - Guangzhou hotel + total (Sep 28–30, all 6)
-- Macau hotel total + rooming — Casa Real picked on Expedia (~$330 for 2 rooms), family discount pending; 2 rooms sleep 6 but 7 attend mo
+- Macau rooming — Casa Real booked ($319.05, fronted by Albin), 2 rooms sleep 6 but 7 attend mo — confirm 7th spot or 3rd room
 - SkyCity Marriott rooming — booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
 - HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming
 - HK2 SkyCity Marriott booked as 2 rooms (4+3) but 8 attend `hk2` — confirm rooming

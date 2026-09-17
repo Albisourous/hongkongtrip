@@ -16,10 +16,10 @@
   transits back to HK on his own Oct 1 and rejoins the group for the airport
   leg (SkyCity Marriott Oct 2 → flight home Oct 3). Note: hk2 headcount is 8
   but the Marriott was booked as 2 rooms (4+3) — confirm rooming.
-- **Macau hotel chosen: Casa Real Hotel** — Studio 2 Twin Beds, Oct 1–2,
-  Expedia quote ~$330 total for 2 rooms ($108/nt, was $425) →
-  `costs["mo-hotel"]` + Oct 1 `stay`. **Not booked yet** — waiting on a
-  family Expedia discount, so `total` stays null. Watch-outs: "sleeps 3"
+- **Macau hotel booked: Casa Real Hotel** — Studio 2 Twin Beds, Oct 1–2,
+  $319.05 all-in on Expedia (2 rooms $216.12 + taxes $47.24 + extra
+  guests $66.50 − coupon $10.81), paid under Albin →
+  `costs["mo-hotel"]` total + `frontedBy`. Watch-outs: "sleeps 3"
   is 2 twins with the 3rd sharing (no rollaway), and 2 rooms cover 6 of
   the 7 `mo` attendees — may need a 3rd room.
 - **HK1 Airbnb confirmed** — Airbnb `HM8YRKN5XN`, host Wing, Onward
@@ -44,7 +44,7 @@
 | Item | Where it lands in `data.js` |
 |---|---|
 | Guangzhou hotel + total (Sep 28–30, all 6, ~3 rooms) — Hilton Science City is the linked candidate, but it's ~45 min from the old-town sights | `costs["gz-hotel"]` |
-| Macau hotel book + total — Casa Real picked on Expedia (~$330 for 2 rooms), waiting on family discount; also confirm room count (2 rooms sleep 6, 7 attend) | `costs["mo-hotel"].total` + `frontedBy` + `status` |
+| Macau rooming — Casa Real booked ($319.05, Albin) but 2 rooms sleep 6 while 7 attend mo — confirm 7th spot or add a 3rd room | `costs["mo-hotel"].note` + `sleeps` + maybe `people` |
 | SkyCity Marriott rooming — reservation lists 7 adults, 8 attend hk2 | `costs["hk2-hotel"].note` + maybe `people` |
 | HK1 Airbnb rooming — sleeps 7, 9 attend | `costs["hk1-hotel"].note` + maybe `people` |
 | HK2 SkyCity rooming — 8 attend, booked 4+3 | `costs["hk2-hotel"].note` |
