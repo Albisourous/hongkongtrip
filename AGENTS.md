@@ -44,7 +44,8 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 - Excluded from the group split: the Sep 29–30 medical block and Sam's
   Tailor (all personal spend). Flights are fronted by Ehsan and sit on
   `hk1` so they split across 8 — Kevin Li paid his own
-  (~$450/person placeholder).
+  (~$450/person placeholder). `cat: "Flight"` costs render as their own
+  `FLT` column in the split table instead of inside the leg column.
 - Sep 28–30 the group splits: all six mainland travelers take the `gz`
   leg in Guangzhou; Albin & Maas commute GZ→SZ for the Sep 29 checkup and
   Sep 30 LASIK consult. Everyone on `sz` needs only the Sep 30 hotel
