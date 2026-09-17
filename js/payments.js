@@ -268,92 +268,34 @@
       return;
     }
 
-    // Direct payments: each person pays each fronter for their share of
-    // that fronter's costs — no netting across fronters. Settled people
-    // and the fronter's own share drop out.
     const net = p => fronted[p.id] - owes[p.id];
-    const paysMap = {};
-    TRIP.costs.forEach(c => {
-      const sh = share(c);
-      if (sh == null) return;
-      activePayers(c).forEach(p => {
-        if (p.id === c.frontedBy) return;
-        const k = p.id + ">" + c.frontedBy;
-        const pay = paysMap[k] = paysMap[k] || { from: p.id, to: c.frontedBy, amt: 0, cats: [] };
-        pay.amt += sh;
-        if (!pay.cats.includes(c.cat)) pay.cats.push(c.cat);
-      });
-    });
-    const pays = Object.values(paysMap).sort((a, b) => b.amt - a.amt);
-
-    // Remaining = net adjusted by payments already marked paid.
-    const remaining = {}, remCells = {};
-    TRIP.people.forEach(p => { remaining[p.id] = net(p); });
-    const updateRemaining = () => TRIP.people.forEach(p => {
-      const v = remaining[p.id], cell = remCells[p.id];
-      cell.className = "money" + (v > 0.004 ? " pos" : v < -0.004 ? " neg" : "");
-      cell.textContent = fmt(v);
-    });
 
     // Creditors first so it's clear who's waiting on money.
-    const tb = mkTable(["Person", "Fronted", "Owes", "Net", "Remaining"], s);
+    const tb = mkTable(["Person", "Fronted", "Owes", "Net"], s);
     [...TRIP.people].sort((a, b) => net(b) - net(a)).forEach(p => {
       const n = net(p);
-      const tr = el("tr"), rem = td("money", fmt(n));
-      remCells[p.id] = rem;
+      const tr = el("tr");
       tr.append(td(null, p.name), td("money", fmt(fronted[p.id])), td("money", fmt(owes[p.id])),
-        td("money" + (n > 0.004 ? " pos" : n < -0.004 ? " neg" : ""), fmt(n)), rem);
+        td("money" + (n > 0.004 ? " pos" : n < -0.004 ? " neg" : ""), fmt(n)));
       tb.append(tr);
     });
-    s.append(el("p", "muted", "Net = fronted − owes; already-settled shares are netted out. Remaining updates as payments are checked off."));
+    s.append(el("p", "muted", "Net = fronted − owes; already-settled shares are netted out."));
 
-    if (!pays.length) {
-      s.append(el("p", "muted", "Everyone is even — no payments needed."));
-      app.append(s);
-      return;
-    }
-
-    const progress = el("span", "pay-progress");
-    const h3 = el("h3", null, "Who pays whom ");
-    h3.append(progress);
-    s.append(h3, el("p", "muted", "Direct to each fronter — check off payments as they're sent."));
-
+    // Who collects what — one line per fronter, no payment optimization.
+    const byFronter = {};
+    TRIP.costs.forEach(c => {
+      if (share(c) == null) return;
+      (byFronter[c.frontedBy] = byFronter[c.frontedBy] || []).push(c);
+    });
+    s.append(el("h3", null, "Who to pay"));
     const ul = el("ul", "pay-pays");
-    let settled = 0;
-    const updateProgress = () => {
-      progress.textContent = `${settled} of ${pays.length} payments settled`;
-      progress.classList.toggle("done", settled === pays.length);
-    };
-    pays.forEach(p => {
-      const key = `hkpaid:${p.from}>${p.to}`;
-      const li = el("li"), lab = el("label"), cb = el("input");
-      cb.type = "checkbox";
-      const done = store.get(key) === "1";
-      cb.checked = done;
-      li.classList.toggle("pay-paid", done);
-      if (done) {
-        settled++;
-        remaining[p.from] += p.amt;
-        remaining[p.to] -= p.amt;
-      }
-      cb.addEventListener("change", () => {
-        store.set(key, cb.checked ? "1" : null);
-        li.classList.toggle("pay-paid", cb.checked);
-        settled += cb.checked ? 1 : -1;
-        remaining[p.from] += cb.checked ? p.amt : -p.amt;
-        remaining[p.to] -= cb.checked ? p.amt : -p.amt;
-        updateRemaining();
-        updateProgress();
-      });
-      lab.append(cb, el("span", null, `${personName(p.from)} → ${personName(p.to)}`),
-        el("span", "muted", " " + p.cats.join(" + ").toLowerCase()),
-        el("span", "money", fmt(p.amt)));
-      li.append(lab);
+    Object.keys(byFronter).forEach(f => {
+      const cats = [...new Set(byFronter[f].map(c => c.cat.toLowerCase() + "s"))].join(" + ");
+      const li = el("li");
+      li.append(el("span", null, `${cats} → ${personName(f)}`));
       ul.append(li);
     });
     s.append(ul);
-    updateRemaining();
-    updateProgress();
     app.append(s);
   }
 
@@ -361,7 +303,7 @@
     app.textContent = "";
     header(); costs(); ledger(); split(); settlement();
     const foot = el("footer");
-    foot.append(el("p", "muted", "Paid marks sync across devices (30s refresh)."));
+    foot.append(el("p", "muted", "Paid-up people are marked via `settled` in data.js."));
     app.append(foot);
   };
   if (window.SyncStore) SyncStore.onChange(run);

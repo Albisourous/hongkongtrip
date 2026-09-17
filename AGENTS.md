@@ -53,9 +53,9 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   then move to Shenzhen together on Sep 30 — everyone on `sz` needs only
   the Sep 30 hotel night. Brendan attends `hk1` only; Ehsan & Scott skip
   mainland (solo); Kevin Li skips `mo` but rejoins for `hk2`.
-- Settlement lists direct payments to each fronter — no netting across
-  fronters (e.g. pay Ehsan for your flight, pay Albin for your hotels).
-  A fronter's own share and `settled` people drop out of the list.
+- Settlement shows fronted/owes/net per person plus a "who to pay" line
+  per fronter (flights → Ehsan, hotels → Albin) — no payment suggestions
+  or netting. Who has paid is tracked via `settled: [ids]` in data.js.
 - Points bookings: record points used AND a cash-equivalent `total` so the
   fronter is reimbursed fairly.
 
@@ -69,8 +69,9 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   (null = nothing planned), `places` (array — rendered joined by " · "),
   `eats` (veg-friendly food note), `stay`, `notes`, and `checklist` items
   (`{t, task}` — t is a rough start time). Checklist state persists in
-  localStorage (`hkcheck:{date}:{index}`). Payment marks use
-  `hkpaid:{from}>{to}`; booking marks use `hkbooked:{costId}`.
+  localStorage (`hkcheck:{date}:{index}`). Booking marks use
+  `hkbooked:{costId}`; paid-up splits are tracked via `settled: [ids]`
+  on the cost in data.js, not page marks.
 - `js/sync.js` (`window.SyncStore`, loaded on Days/Bookings/Payments)
   syncs those marks across devices via a free JSON bin
   (extendsclass json-storage — no auth, anyone with the URL can write).
