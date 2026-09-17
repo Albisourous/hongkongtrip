@@ -8,7 +8,7 @@
 - **Albin & Maas stay on the group itinerary** — same legs as KJ, no
   medical commutes. All six sleep in Guangzhou Sep 28–30 (GZ hotel needs
   6) and move to Shenzhen together on Sep 30; the SZ hotel is needed only
-  for that one night. Shenzhen sights (Huaqiangbei, OCT-LOFT, Sea World)
+  for that one night. Shenzhen sights (Huaqiangbei, OCT-LOFT, COCO Park)
   fill the Sep 30 afternoon/evening.
 - **Kevin Li skips Macau** — legs now `["hk1", "gz", "sz", "hk2"]`. He
   transits back to HK on his own Oct 1 and rejoins the group for the airport

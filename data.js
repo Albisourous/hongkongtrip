@@ -115,14 +115,14 @@ const TRIP = {
       date: "Sep 30", day: "Wed", base: "Guangzhou → Shenzhen", stay: "Hyatt Place Shenzhen Dongmen (Laojie MTR) — all 6", legs: ["gz", "sz"],
       morning: "Check out ~11am · HSR Guangzhou → Shenzhen ~1h (all 6)",
       afternoon: "Drop bags at Hyatt Place Dongmen · Huaqiangbei electronics / OCT-LOFT / Nantou",
-      evening: "Sea World plaza (Shekou) nightlife — or COCO Park / Dongmen pedestrian st (at the hotel)",
+      evening: "COCO Park (Futian) nightlife — or Dongmen pedestrian st (at the hotel)",
       notes: "SZ hotel booked: 3 twin rooms at Hyatt Place Dongmen (13,500 pts). Book the GZ→SZ HSR with the Sep 28 tickets.",
       checklist: [
         { t: "10:30am", task: "Check out — GZ hotel" },
         { t: "11:00am", task: "HSR Guangzhou → Shenzhen (~1h, all 6)" },
         { t: "12:30pm", task: "Drop bags at Hyatt Place Dongmen (in 3pm) · lunch" },
         { t: "5:00pm", task: "Shenzhen Bay boardwalk run (~10.6km flat)" },
-        { t: "8:00pm", task: "Sea World plaza (Shekou) or COCO Park (Futian — line 1 direct from Laojie)" },
+        { t: "8:00pm", task: "COCO Park (Futian) — line 1 direct from Laojie" },
       ],
     },
     {
