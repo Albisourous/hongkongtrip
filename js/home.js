@@ -44,7 +44,7 @@
 
   var legSection = el("section");
   legSection.appendChild(el("h2", null, "The legs"));
-  var legCards = el("div", "cards");
+  var legCards = el("div", "cards home-legs");
 
   TRIP.legs.forEach(function (leg) {
     var card = el("div", "card home-leg leg-" + leg.id);
