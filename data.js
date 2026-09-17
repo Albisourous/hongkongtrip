@@ -44,7 +44,7 @@ const TRIP = {
       morning: "Land HKG 5:05am → Bus A21 to YMT → drop bags + nap",
       afternoon: "Cha chaan teng lunch · (opt) Sam's Tailor measure · Star Ferry / TST harbourfront",
       evening: "Victoria Park lanterns 7pm → Tai Hang Fire Dragon 8:15pm",
-      notes: "Mid-Autumn Festival. Buy Octopus cards at the airport.",
+      notes: "Mid-Autumn Festival. Buy Octopus cards at the airport. Airbnb check-in after 2pm — store bags first (host offers luggage storage).",
       checklist: [
         { t: "5:05am", task: "Land HKG · buy Octopus cards" },
         { t: "5:30am", task: "Bus A21 → Yau Ma Tei (~HK$34)" },
@@ -203,7 +203,7 @@ const TRIP = {
   // No frontedBy => informational only (everyone pays their own).
   costs: [
     { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 450, frontedBy: "ehsan", status: "booked", note: "~$450/person placeholder — update to actual fare · everyone attends hk1 so it splits across all 9" },
-    { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158, perPerson: null, frontedBy: "albin", status: "booked", note: "4BR, Yau Ma Tei / Nathan Rd" },
+    { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158.19, perPerson: null, frontedBy: "albin", status: "booked", note: "Airbnb HM8YRKN5XN · host Wing · Onward Building, 528 Nathan Rd · in after 2pm / out by 11am · A21 → Man Ming Lane stop or Yau Ma Tei MTR exit D · paid Aug 18" },
     { id: "gz-hotel", leg: "gz", cat: "Hotel", label: "TBD — Guangzhou hotel, Sep 28–30 (2 nights)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "GZ crew only: Kevin Jacob · Kevin Li · Shruthik · Wesley" },
     { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "TBD — Hyatt Place Shenzhen Dongmen (points) or Kapok Shenzhen Luohu (cash)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "4 rooms · Albin & Maas need Sep 28–Oct 1, GZ crew only Sep 30 — settle room nights/split when booking · if points, record points + cash-equivalent" },
     { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "TBD — Hotel Central (San Ma Lo, closest to UNESCO), Sofitel Ponte 16 (waterfront), or Caravel (budget boutique)", total: null, perPerson: null, frontedBy: null, status: "to-book", note: "Peninsula near historic centre for morning bag drop · Golden Week — book ASAP" },

@@ -14,6 +14,11 @@
   transits back to HK on his own Oct 1 and rejoins the group for the airport
   leg (SkyCity Marriott Oct 2 → flight home Oct 3). Note: hk2 headcount is 8
   but the Marriott was booked as 2 rooms (4+3) — confirm rooming.
+- **HK1 Airbnb confirmed** — Airbnb `HM8YRKN5XN`, host Wing, Onward
+  Building 528 Nathan Rd, Sep 25–28, $1,158.19 paid Aug 18 →
+  `costs["hk1-hotel"].total`. Check-in after 2pm / out by 11am — Sep 25
+  notes now mention storing bags before check-in. Sleeps 7 while 9 attend
+  hk1 — rooming still open.
 - **SkyCity Marriott confirmed** — Expedia itin `73521256411437`, 2 rooms
   ("Room, 2 Double Beds" each), Oct 2–3, $820.84 all-in paid Aug 13 under
   Albin → `costs["hk2-hotel"].total`. Check-in from 3pm, out 12pm.
