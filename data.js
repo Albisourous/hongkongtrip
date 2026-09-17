@@ -122,7 +122,7 @@ const TRIP = {
         { t: "11:00am", task: "HSR Guangzhou → Shenzhen (~1h, all 6)" },
         { t: "12:30pm", task: "Drop bags at Hyatt Place Dongmen (in 3pm) · lunch" },
         { t: "5:00pm", task: "Shenzhen Bay boardwalk run (~10.6km flat)" },
-        { t: "8:00pm", task: "Sea World plaza, Shekou" },
+        { t: "8:00pm", task: "Sea World plaza (Shekou) or COCO Park (Futian — line 1 direct from Laojie)" },
       ],
     },
     {
@@ -185,7 +185,7 @@ const TRIP = {
     { cat: "Running SZ", detail: "Shenzhen Bay boardwalk (~10.6km flat), Lianhuashan hills.", cost: "free", url: "https://greatruns.com", linkLabel: "greatruns.com" },
     { cat: "Shopping gear", detail: "Citygate Outlets (Arc'teryx outlet), Sneaker St Mong Kok.", cost: "varies", url: "https://citygateoutlets.com.hk", linkLabel: "citygateoutlets.com.hk" },
     { cat: "Shopping anime", detail: "Sino Centre + In's Point + Richmond Arcade, Mong Kok.", cost: "varies", url: null, linkLabel: null },
-    { cat: "Shopping SZ", detail: "Huaqiangbei/SEG electronics; Luohu tailoring (skip replicas).", cost: "varies", url: null, linkLabel: null },
+    { cat: "Shopping SZ", detail: "Huaqiangbei/SEG electronics · COCO Park mall + bar street (Futian, Shopping Park metro) · Luohu tailoring (skip replicas).", cost: "varies", url: null, linkLabel: null },
     { cat: "Viewpoints", detail: "Peak/Lugard, Choi Hung, Ping An Free Sky, Ruins of St Paul's.", cost: "varies", url: null, linkLabel: null },
   ],
 
