@@ -46,7 +46,6 @@
 | SkyCity Marriott rooming — reservation lists 7 adults, 8 attend hk2 | `costs["hk2-hotel"].note` + maybe `people` |
 | HK1 Airbnb rooming — sleeps 7, 9 attend | `costs["hk1-hotel"].note` + maybe `people` |
 | HK2 SkyCity rooming — 8 attend, booked 4+3 | `costs["hk2-hotel"].note` |
-| Actual Delta fare (currently $450/person placeholder) | `costs["flights"].perPerson` |
 | Who fronts remaining bookings | `frontedBy` on the above |
 
 ## Rules of engagement

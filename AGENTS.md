@@ -46,7 +46,7 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   to the leg's headcount and flags shortfalls.
 - Excluded from the group split: Sam's Tailor (personal spend). Flights
   are fronted by Ehsan and sit on `hk1` so they split across 8 — Kevin
-  Li paid his own (~$450/person placeholder). `cat: "Flight"` and
+  Li paid his own ($456/person confirmed). `cat: "Flight"` and
   `cat: "Hotel"` costs render as their own `FLT`/`HTL` columns in the
   split table instead of inside the leg column.
 - Sep 28–30 all six mainland travelers take the `gz` leg in Guangzhou,

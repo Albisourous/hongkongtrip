@@ -211,7 +211,7 @@ const TRIP = {
   ],
 
   flights: {
-    note: "Fronted by Ehsan (Delta Main Basic) — ~$450/person placeholder; Kevin Li paid his own, so it splits across the other 8.",
+    note: "Fronted by Ehsan (Delta Main Basic) — $456/person confirmed; Kevin Li paid his own, so it splits across the other 8.",
     out: "DL2861 SEA→LAX + DL0089 LAX→HKG",
     back: "DL0088 HKG→LAX + DL1714 LAX→SEA",
   },
@@ -223,7 +223,7 @@ const TRIP = {
   // sleeps: bed capacity on a hotel — the Hotels tab flags shortfalls.
   // No frontedBy => informational only (everyone pays their own).
   costs: [
-    { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 450, frontedBy: "ehsan", exclude: ["kli"], settled: ["albin", "scott"], status: "booked", note: "~$450/person placeholder — update to actual fare · Kevin Li paid his own — splits across the other 8 · Albin + Scott already paid Ehsan" },
+    { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 456, frontedBy: "ehsan", exclude: ["kli"], settled: ["albin", "scott", "kj"], status: "booked", note: "$456/person confirmed by Ehsan · Kevin Li paid his own — splits across the other 8 · Albin, Scott + KJ already paid Ehsan" },
     { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158.19, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 7, note: "Airbnb HM8YRKN5XN · host Wing · Onward Building, 528 Nathan Rd · in after 2pm / out by 11am · A21 → Man Ming Lane stop or Yau Ma Tei MTR exit D · paid Aug 18 · sleeps 7 but 9 attend — confirm rooming", url: "https://www.airbnb.com/rooms/37172099", linkLabel: "Airbnb — listing" },
     { id: "gz-hotel", leg: "gz", cat: "Hotel", label: "TBD — Guangzhou hotel (Hilton Science City candidate), Sep 28–30", total: null, perPerson: null, frontedBy: null, status: "to-book", sleeps: null, note: "All 6 mainland: KJ · Kevin Li · Shruthik · Wesley · Albin · Maas — ~3 rooms · Hilton Science City is in Huangpu — ~45 min NE of Beijing Rd / Shamian sights", url: "https://www.expedia.com/Guangzhou-Hotels-Hilton-Guangzhou-Science-City.h2461294.Hotel-Information?chkin=2026-09-28&chkout=2026-09-30", linkLabel: "Expedia — Hilton Science City" },
     { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "Hyatt Place Shenzhen Dongmen — 3× Specialty Twin (Laojie MTR, Luohu)", total: 250, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 6, note: "Hyatt confs 56229190 + 14228517 + 45139912 · 13,500 pts total (4,500/room — ~$250 pts value) · Sep 30–Oct 1, in 3pm / out 12pm · Laojie MTR exit H, turn left · breakfast incl up to 2/room", url: "https://www.hyatt.com/hyatt-place/en-US/szxzs-hyatt-place-shenzhen-dongmen", linkLabel: "Hyatt — Hyatt Place Dongmen" },
@@ -242,7 +242,7 @@ const TRIP = {
   notes: [
     "Sep 28–30 all six go to Guangzhou together, then move to Shenzhen on Sep 30. Ehsan & Scott solo; Brendan heads home.",
     "Kevin Li skips Macau — own transit back to HK Oct 1, rejoins the group for the airport leg (SkyCity Marriott + flight home).",
-    "Flights fronted by Ehsan — ~$450/person placeholder, split across everyone except Kevin Li (paid his own); update when the real fare lands.",
+    "Flights fronted by Ehsan — $456/person, split across everyone except Kevin Li (paid his own); Albin, Scott + KJ already settled.",
     "Sam's Tailor is personal spend — excluded.",
     "Points bookings: record points used AND cash-equivalent so the fronter is reimbursed fairly.",
     "Split is per leg: each person owes (leg shared costs) / (people on that leg).",
