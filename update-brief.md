@@ -10,6 +10,9 @@
   leaves for Shenzhen). Conditional: skipped if the morning checkup flags
   a wisdom-tooth extraction (fallback: OCT-LOFT). HSR round trip ~¥150/person,
   informational only (`frontedBy: null`).
+- **Kevin Li skips Macau** — legs now `["hk1", "gz", "sz"]`. He transits back
+  to HK on his own Oct 1 and rejoins the group at HKG Oct 3. Off `hk2` too —
+  the SkyCity Marriott was booked for 7 (4+3), which now matches exactly.
 
 ## Still needed from the trip owner
 
