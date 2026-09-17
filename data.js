@@ -114,13 +114,15 @@ const TRIP = {
     {
       date: "Sep 30", day: "Wed", base: "Guangzhou → Shenzhen", stay: "Hyatt Place Shenzhen Dongmen (Laojie MTR) — all 6", legs: ["gz", "sz"],
       morning: "Check out ~11am · HSR Guangzhou → Shenzhen ~1h (all 6)",
-      afternoon: "Drop bags at Hyatt Place Dongmen · Huaqiangbei electronics / OCT-LOFT / Nantou",
+      afternoon: "Nanshan tech run — DJI flagship @ OCT Harbour (free: fly drones indoors, RoboMaster) → Talent Park drone-delivered coffee + Pony.ai robotaxi · alt: Huaqiangbei electronics",
       evening: "COCO Park (Futian) nightlife — or Dongmen pedestrian st (at the hotel)",
-      notes: "SZ hotel booked: 3 twin rooms at Hyatt Place Dongmen (13,500 pts). Book the GZ→SZ HSR with the Sep 28 tickets.",
+      notes: "SZ hotel booked: 3 twin rooms at Hyatt Place Dongmen (13,500 pts). Book the GZ→SZ HSR with the Sep 28 tickets. Robotaxi needs a CN number or WeChat mini-program — fallback is a normal Didi. Watch for a Golden Week drone show over Shenzhen Bay.",
       checklist: [
         { t: "10:30am", task: "Check out — GZ hotel" },
         { t: "11:00am", task: "HSR Guangzhou → Shenzhen (~1h, all 6)" },
         { t: "12:30pm", task: "Drop bags at Hyatt Place Dongmen (in 3pm) · lunch" },
+        { t: "1:30pm", task: "DJI flagship, OCT Harbour — fly drones + RoboMaster (free)" },
+        { t: "3:30pm", task: "Talent Park: Meituan drone delivery (~¥25) + Pony.ai robotaxi (~¥10)" },
         { t: "5:00pm", task: "Shenzhen Bay boardwalk run (~10.6km flat)" },
         { t: "8:00pm", task: "COCO Park (Futian) — line 1 direct from Laojie" },
       ],
@@ -186,6 +188,7 @@ const TRIP = {
     { cat: "Shopping gear", detail: "Citygate Outlets (Arc'teryx outlet), Sneaker St Mong Kok.", cost: "varies", url: "https://citygateoutlets.com.hk", linkLabel: "citygateoutlets.com.hk" },
     { cat: "Shopping anime", detail: "Sino Centre + In's Point + Richmond Arcade, Mong Kok.", cost: "varies", url: null, linkLabel: null },
     { cat: "Shopping SZ", detail: "Huaqiangbei/SEG electronics · COCO Park mall + bar street (Futian, Shopping Park metro) · Luohu tailoring (skip replicas).", cost: "varies", url: null, linkLabel: null },
+    { cat: "AI/tech SZ", detail: "DJI flagship OCT Harbour (free — indoor drone cages, RoboMaster; L9 Shenzhen Bay Park exit E) · Meituan drone delivery @ Talent Park (~¥25/order, works w/ foreign Alipay/WeChat) · Pony.ai driverless taxi, Nanshan/Qianhai geofence (~¥8–15, needs CN number or WeChat mini-program) · driverless metro lines 12/14 — ride the front car", cost: "free–¥30", url: "https://www.dji.com/where-to-buy/flagship/cn-sz", linkLabel: "DJI flagship store" },
     { cat: "Viewpoints", detail: "Peak/Lugard, Choi Hung, Ping An Free Sky, Ruins of St Paul's.", cost: "varies", url: null, linkLabel: null },
   ],
 
