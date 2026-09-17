@@ -22,6 +22,7 @@
   --sz: #0284c7;
   --mo: #059669;
   --hk2: #7c3aed;
+  --flight: #64748b;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,6 +45,7 @@
     --sz: #38bdf8;
     --mo: #34d399;
     --hk2: #a78bfa;
+    --flight: #94a3b8;
   }
 }
 
@@ -240,6 +242,7 @@ li::marker {
 .leg-sz { --leg: var(--sz); }
 .leg-mo { --leg: var(--mo); }
 .leg-hk2 { --leg: var(--hk2); }
+.leg-flight { --leg: var(--flight); }
 
 .leg-dots {
   display: inline-flex;

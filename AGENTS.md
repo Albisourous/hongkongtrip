@@ -18,7 +18,7 @@ and shares the fixed bottom tab nav (`.tabs`).
 |---|---|---|---|---|
 | Home | `index.html` | `js/home.js` | `css/home.css` | What/where/when, leg cards, roster |
 | Days | `days.html` | `js/days.js` | `css/days.css` | Day-by-day plan, swipe, checklists |
-| Hotels | `hotels.html` | `js/hotels.js` | `css/hotels.css` | Who sleeps where each night |
+| Hotels | `hotels.html` | `js/hotels.js` | `css/hotels.css` | Who sleeps where + per-stay cost split |
 | Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking (red) |
 | Payments | `payments.html` | `js/payments.js` | `css/payments.css` | Splits, settlement, paid ledger |
 

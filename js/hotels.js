@@ -13,15 +13,35 @@
   };
   const legDot = id => el("span", "leg-dot leg-" + id);
   const legName = id => (TRIP.legs.find(l => l.id === id) || {}).name || id;
+  const personName = id => (TRIP.people.find(p => p.id === id) || {}).name || id;
   const fmt = n => "$" + n.toFixed(2);
-
-  // Where someone actually is when they split off from the group stay —
-  // `where` for the card, `short` for the by-person matrix cell.
-  const AWAY = {
-    brendan: { where: "flies home after HK", short: "home" },
-    ehsan: { where: "own plans in HK", short: "HK" },
-    scott: { where: "own plans in HK", short: "HK" },
-    kli: { where: "skips Macau — in HK", short: "HK" },
+  const tbd = () => el("span", "tbd", "TBD");
+  const td = (cls, v) => {
+    const c = el("td", cls);
+    if (v != null) v.nodeType ? c.append(v) : c.textContent = v;
+    return c;
+  };
+  const mkTable = (cols, section) => {
+    const wrap = el("div", "table-wrap"), t = el("table"), tb = el("tbody"),
+      hr = el("tr"), thd = el("thead");
+    cols.forEach(c => {
+      const th = el("th");
+      if (c != null && c.nodeType) th.append(c);
+      else th.textContent = c;
+      hr.append(th);
+    });
+    thd.append(hr);
+    t.append(thd, tb);
+    wrap.append(t);
+    section.append(wrap);
+    return tb;
+  };
+  const stayHead = b => {
+    const th = el("th");
+    const leg = blockLeg(b);
+    if (leg) th.append(legDot(leg), " ");
+    th.append(dateRange(b));
+    return th;
   };
 
   // A stay block can cover more than one leg (Sep 28–30 days carry both
@@ -123,7 +143,7 @@
       const names2 = el("span", "hotel-names muted");
       b.away.forEach((p, i) => {
         if (i) names2.append(" · ");
-        names2.append(p.name + (AWAY[p.id] ? " — " + AWAY[p.id].where : ""));
+        names2.append(p.name);
       });
       row.append(names2);
       card.append(row);
@@ -176,7 +196,7 @@
           cell.append(el("span", "hotel-in" +
             (blockLeg(b) ? " leg-" + blockLeg(b) : ""), "✓"));
         } else {
-          cell.append(el("span", "muted", AWAY[p.id] ? AWAY[p.id].short : "—"));
+          cell.append(el("span", "muted", "—"));
         }
         tr.append(cell);
       });
@@ -185,7 +205,86 @@
     t.append(thd, tb);
     wrap.append(t);
     s.append(wrap, el("p", "muted",
-      "✓ sleeps with the group — anything else is where they actually are."));
+      "✓ sleeps with the group; — means they aren't on that leg."));
+    return s;
+  }
+
+  // People a hotel cost actually splits across — leg attendees minus
+  // `exclude`, same rule as the Payments tab.
+  const payersFor = c =>
+    TRIP.people.filter(p => p.legs.includes(c.leg) &&
+      (c.exclude || []).indexOf(p.id) === -1);
+  const shareOf = b => {
+    if (!b.cost || b.cost.total == null) return null;
+    const n = payersFor(b.cost).length;
+    return n ? b.cost.total / n : null;
+  };
+
+  function breakdown() {
+    const s = el("section");
+    s.append(el("h2", null, "Cost breakdown"));
+
+    // Per stay: total, how many split it, each share, who fronted it.
+    const tb = mkTable(["Stay", "Total", "Split among", "Each", "Fronted by"], s);
+    let sum = 0;
+    stays.forEach(b => {
+      const c = b.cost, leg = blockLeg(b), tr = el("tr");
+      const name = td(null);
+      if (leg) name.append(legDot(leg), " ");
+      name.append(leg ? legName(leg) : b.stay, " ",
+        el("span", "muted", dateRange(b)));
+      const n = c ? payersFor(c).length : 0;
+      const each = shareOf(b);
+      if (c && c.total != null) sum += c.total;
+      tr.append(name,
+        td("money", c && c.total != null ? fmt(c.total) : tbd()),
+        td("money", n ? n + " pax" : "—"),
+        td("money", each != null ? fmt(each) : tbd()),
+        td(null, c && c.frontedBy ? personName(c.frontedBy) : "—"));
+      tb.append(tr);
+    });
+    const fr = el("tr", "total-row"), pad = td(null, "");
+    pad.colSpan = 3;
+    fr.append(td(null, "All stays"), td("money", fmt(sum)), pad);
+    tb.append(fr);
+
+    // Per person: their share of each stay plus a lodging total.
+    s.append(el("h3", null, "Per person"));
+    const tb2 = mkTable(["Person", ...stays.map(stayHead), "Total"], s);
+    TRIP.people.forEach(p => {
+      const tr = el("tr");
+      tr.append(td(null, p.name));
+      let tot = 0;
+      stays.forEach(b => {
+        const c = b.cost, each = shareOf(b);
+        const on = c && payersFor(c).some(q => q.id === p.id);
+        if (b.sleepers.indexOf(p) === -1) tr.append(td("money", "—"));
+        else if (each == null) tr.append(td("money", tbd()));
+        else if (!on) tr.append(td("money muted", "own"));
+        else { tot += each; tr.append(td("money", fmt(each))); }
+      });
+      tr.append(td("money", fmt(tot)));
+      tb2.append(tr);
+    });
+    const gr = el("tr", "total-row");
+    gr.append(td(null, "All"));
+    let grand = 0;
+    stays.forEach(b => {
+      const c = b.cost;
+      if (c && c.total != null) grand += c.total;
+      gr.append(td("money", c && c.total != null ? fmt(c.total) : tbd()));
+    });
+    gr.append(td("money", fmt(grand)));
+    tb2.append(gr);
+
+    const pending = stays.filter(b => !b.cost || b.cost.total == null)
+      .map(b => legName(blockLeg(b)));
+    const note = el("p", "muted",
+      "Each stay splits evenly among the people sleeping there.");
+    if (pending.length) {
+      note.append(" Totals exclude TBD stays: " + pending.join(", ") + ".");
+    }
+    s.append(note);
     return s;
   }
 
@@ -201,7 +300,7 @@
   const list = el("div", "hotel-list");
   stays.forEach(b => list.append(hotelCard(b)));
   sec.append(list);
-  app.append(sec, matrix());
+  app.append(sec, breakdown(), matrix());
 
   const foot = el("footer");
   foot.append(el("p", "muted",

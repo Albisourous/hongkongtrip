@@ -45,7 +45,7 @@
   };
 
   const legName = id => (TRIP.legs.find(l => l.id === id) || {}).name || id;
-  const legShort = id => ({ hk1: "HK", gz: "GZ", sz: "SZ", mo: "MO", hk2: "HKG" }[id] || legName(id));
+  const legShort = id => ({ flight: "FLT", hk1: "HK", gz: "GZ", sz: "SZ", mo: "MO", hk2: "HKG" }[id] || legName(id));
   const personName = id => (TRIP.people.find(p => p.id === id) || {}).name || id;
   const attendees = leg => TRIP.people.filter(p => p.legs.includes(leg));
   // Leg attendees who owe for a cost — exclude lists people who paid their own.
@@ -61,13 +61,23 @@
     if (!n) return null;
     return c.total != null ? c.total / n : c.perPerson;
   };
+  const isFlight = c => c.cat === "Flight";
   const legTotal = leg => TRIP.costs.reduce((s, c) => {
-    const sh = c.leg === leg ? share(c) : null;
+    const sh = c.leg === leg && !isFlight(c) ? share(c) : null;
     return sh == null ? s : s + sh * payers(c).length;
   }, 0);
   const personLegShare = (p, leg) => TRIP.costs.reduce((s, c) => {
-    const sh = c.leg === leg ? share(c) : null;
+    const sh = c.leg === leg && !isFlight(c) ? share(c) : null;
     return sh == null || !payers(c).some(q => q.id === p) ? s : s + sh;
+  }, 0);
+  const personFlightShare = p => TRIP.costs.reduce((s, c) => {
+    const sh = isFlight(c) ? share(c) : null;
+    return sh == null || !payers(c).some(q => q.id === p) ? s : s + sh;
+  }, 0);
+  const onFlight = p => TRIP.costs.some(c => isFlight(c) && payers(c).some(q => q.id === p));
+  const flightTotal = () => TRIP.costs.reduce((s, c) => {
+    const sh = isFlight(c) ? share(c) : null;
+    return sh == null ? s : s + sh * payers(c).length;
   }, 0);
 
   // Rows needing action sort first: to-book, booked, then informational.
@@ -133,11 +143,13 @@
   function split() {
     const s = el("section");
     s.append(el("h2", null, "Per-person split"));
-    const tb = mkTable(["Person", ...TRIP.legs.map(l => legTag(l.id, legShort(l.id))), "Total"], s);
+    const tb = mkTable(["Person", legTag("flight", "FLT"), ...TRIP.legs.map(l => legTag(l.id, legShort(l.id))), "Total"], s);
     TRIP.people.forEach(p => {
       const tr = el("tr");
       tr.append(td(null, p.name));
       let tot = 0;
+      tr.append(td("money", onFlight(p.id) ? fmt(personFlightShare(p.id)) : "—"));
+      tot += personFlightShare(p.id);
       TRIP.legs.forEach(l => {
         if (!p.legs.includes(l.id)) { tr.append(td("money", "—")); return; }
         const v = personLegShare(p.id, l.id);
@@ -149,7 +161,8 @@
     });
     const fr = el("tr", "total-row");
     fr.append(td(null, "All"));
-    let grand = 0;
+    let grand = flightTotal();
+    fr.append(td("money", fmt(grand)));
     TRIP.legs.forEach(l => {
       const v = legTotal(l.id);
       grand += v;
@@ -158,11 +171,11 @@
     fr.append(td("money", fmt(grand)));
     tb.append(fr);
     const legend = el("p", "muted", "Each leg splits only among the people on it. ");
-    const LEGEND = { hk1: "Sep 25–28", gz: "Guangzhou", sz: "Shenzhen", mo: "Macau", hk2: "airport night" };
-    TRIP.legs.forEach((l, i) => {
+    const LEGEND = { flight: "round-trip airfare", hk1: "Sep 25–28", gz: "Guangzhou", sz: "Shenzhen", mo: "Macau", hk2: "airport night" };
+    ["flight", ...TRIP.legs.map(l => l.id)].forEach((id, i) => {
       if (i) legend.append(" · ");
-      legend.append(el("span", "pay-abbr leg-" + l.id, legShort(l.id)),
-        " = " + (LEGEND[l.id] || l.name));
+      legend.append(el("span", "pay-abbr leg-" + id, legShort(id)),
+        " = " + (LEGEND[id] || legName(id)));
     });
     s.append(legend);
     app.append(s);
