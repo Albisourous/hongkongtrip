@@ -108,7 +108,6 @@ sums match the cost table, settlement balances sum to ~$0.
 
 ## Outstanding TBDs (collect from trip owner)
 
-- Guangzhou hotel — Grand Hyatt Guangzhou, Sep 28 (1 night, ~3 rooms, all 6)
 - Shenzhen Sep 29 night — 3 more rooms at Hyatt Place Dongmen (~13,500 pts expected)
 - Macau rooming — Casa Real booked ($319.05, fronted by Albin), 2 rooms sleep 6 but 7 attend mo — confirm 7th spot or 3rd room
 - SkyCity Marriott rooming — booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
