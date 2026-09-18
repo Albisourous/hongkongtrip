@@ -6,10 +6,12 @@
 ## Applied
 
 - **Albin & Maas stay on the group itinerary** — same legs as KJ, no
-  medical commutes. All six sleep in Guangzhou Sep 28–30 (GZ hotel needs
-  6) and move to Shenzhen together on Sep 30; the SZ hotel is needed only
-  for that one night. Shenzhen sights (Huaqiangbei, OCT-LOFT, COCO Park)
-  fill the Sep 30 afternoon/evening.
+  medical commutes. All six sleep in Guangzhou on Sep 28 (one night —
+  Grand Hyatt Guangzhou to book, ~3 rooms) and night-train to Shenzhen
+  on Sep 29. Shenzhen gets two nights at Hyatt Place Dongmen: Sep 29
+  (to book, ~13,500 pts expected) + Sep 30 (booked, 13,500 pts). Sep 30
+  is a full Shenzhen day — Huaqiangbei morning, Nanshan tech run
+  (DJI / Talent Park / robotaxi) afternoon, COCO Park / Dongmen evening.
 - **Kevin Li skips Macau** — legs now `["hk1", "gz", "sz", "hk2"]`. He
   transits back to HK on his own Oct 1 and rejoins the group for the airport
   leg (SkyCity Marriott Oct 2 → flight home Oct 3). Note: hk2 headcount is 8
@@ -41,7 +43,8 @@
 
 | Item | Where it lands in `data.js` |
 |---|---|
-| Guangzhou hotel + total (Sep 28–30, all 6, ~3 rooms) — Hilton Science City is the linked candidate, but it's ~45 min from the old-town sights | `costs["gz-hotel"]` |
+| Guangzhou hotel + total — Grand Hyatt Guangzhou, Sep 28 (1 night, ~3 rooms, all 6) | `costs["gz-hotel"]` |
+| Shenzhen Sep 29 night — 3 more rooms at Hyatt Place Dongmen (~13,500 pts expected, on Albin's account) | `costs["sz-hotel-2"]` |
 | Macau rooming — Casa Real booked ($319.05, Albin) but 2 rooms sleep 6 while 7 attend mo — confirm 7th spot or add a 3rd room | `costs["mo-hotel"].note` + `sleeps` + maybe `people` |
 | SkyCity Marriott rooming — reservation lists 7 adults, 8 attend hk2 | `costs["hk2-hotel"].note` + maybe `people` |
 | HK1 Airbnb rooming — sleeps 7, 9 attend | `costs["hk1-hotel"].note` + maybe `people` |

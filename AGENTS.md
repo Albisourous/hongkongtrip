@@ -49,10 +49,11 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   Li paid his own ($456/person confirmed). `cat: "Flight"` and
   `cat: "Hotel"` costs render as their own `FLT`/`HTL` columns in the
   split table instead of inside the leg column.
-- Sep 28–30 all six mainland travelers take the `gz` leg in Guangzhou,
-  then move to Shenzhen together on Sep 30 — everyone on `sz` needs only
-  the Sep 30 hotel night. Brendan attends `hk1` only; Ehsan & Scott skip
-  mainland (solo); Kevin Li skips `mo` but rejoins for `hk2`.
+- Sep 28 all six mainland travelers take the `gz` leg in Guangzhou (one
+  night at the Grand Hyatt), then night-train to Shenzhen on Sep 29 —
+  everyone on `sz` needs the Sep 29 + Sep 30 hotel nights. Brendan
+  attends `hk1` only; Ehsan & Scott skip mainland (solo); Kevin Li skips
+  `mo` but rejoins for `hk2`.
 - Settlement shows fronted/owes/net per person plus a "who to pay" line
   per fronter (flights → Ehsan, hotels → Albin) — no payment suggestions
   or netting. Who has paid is tracked via `settled: [ids]` in data.js.
@@ -107,7 +108,8 @@ sums match the cost table, settlement balances sum to ~$0.
 
 ## Outstanding TBDs (collect from trip owner)
 
-- Guangzhou hotel + total (Sep 28–30, all 6)
+- Guangzhou hotel — Grand Hyatt Guangzhou, Sep 28 (1 night, ~3 rooms, all 6)
+- Shenzhen Sep 29 night — 3 more rooms at Hyatt Place Dongmen (~13,500 pts expected)
 - Macau rooming — Casa Real booked ($319.05, fronted by Albin), 2 rooms sleep 6 but 7 attend mo — confirm 7th spot or 3rd room
 - SkyCity Marriott rooming — booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
 - HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming
