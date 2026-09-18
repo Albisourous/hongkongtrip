@@ -44,8 +44,54 @@
   const ferryOut = res("Ferry Macau→HK");
   const walled = (day("Sep 27").checklist || []).find(i => /walled city/i.test(i.task)) || {};
 
+  // Hotels whose bed count can't cover their leg's headcount.
+  const roomingItems = TRIP.costs
+    .filter(c => c.cat === "Hotel" && c.sleeps != null)
+    .map(c => {
+      const n = TRIP.people.filter(p => p.legs.includes(c.leg)).length;
+      if (n <= c.sleeps) return null;
+      return {
+        id: `room-${c.id}`, urgent: true, legs: [c.leg],
+        title: `Confirm rooming — ${legName(c.leg)}`,
+        cost: `${c.sleeps} beds / ${n} people`,
+        when: legDates(c.leg),
+        why: `${c.label} — confirm where the extra ${n - c.sleeps} sleep${n - c.sleeps > 1 ? "" : "s"} (or add a room)`,
+        url: c.url || null, linkLabel: c.linkLabel || null,
+      };
+    }).filter(Boolean);
+
   const REQUIRED = [
     ...TRIP.costs.filter(c => c.status === "to-book").map(hotelItem),
+    ...roomingItems,
+    {
+      id: "room-hk2-adults", urgent: true, legs: ["hk2"],
+      title: "Confirm 8th bed — SkyCity Marriott",
+      cost: "7 adults booked / 8 attend",
+      when: "Oct 2",
+      why: "Reservation lists 7 adults but hk2 headcount is 8 — add the 8th to the booking or sort a spot",
+      url: "https://www.marriott.com/en-us/hotels/hkgap-hong-kong-skycity-marriott-hotel/overview/", linkLabel: "Marriott — SkyCity",
+    },
+    {
+      id: "prep-passports", urgent: true, legs: ["hk1"],
+      title: "Passports valid 6+ months — all 9",
+      cost: null,
+      when: "Before Sep 25",
+      why: "HK entry, the 240-hr mainland transit and Macau entry all check validity — HSR + ferry tickets also need the passport numbers",
+    },
+    {
+      id: "prep-pay", urgent: true, legs: ["gz", "sz"],
+      title: "Alipay / WeChat Pay set up + verified — mainland 6",
+      cost: null,
+      when: "Before Sep 28",
+      why: "Cards barely work in mainland — metro, food, Didi and tickets all run on QR payments; verify the card link before you land",
+    },
+    {
+      id: "prep-sim", urgent: true, legs: ["gz", "sz"],
+      title: "eSIM/roaming with China data (+ VPN) — mainland 6",
+      cost: null,
+      when: "Before Sep 28",
+      why: "Google/WhatsApp are blocked on the mainland — an eSIM that roams via HK or a VPN keeps them working",
+    },
     {
       id: "transit-onward", urgent: true, legs: ["gz", "sz"],
       title: "Onward ticket — 240-hr transit",
