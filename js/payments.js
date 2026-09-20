@@ -114,15 +114,25 @@
       const legs = [...new Set(b.days.flatMap(d => d.legs || []))];
       const sleepers = TRIP.people.filter(p => p.legs.some(l => legs.includes(l)));
       const sw = words(b.stay), lc = b.stay.toLowerCase();
-      let cost = null, best = 0;
-      TRIP.costs.filter(c => isHotel(c) && legs.includes(c.leg)).forEach(c => {
-        let n = (LEG_WORDS[c.leg] || []).some(w => lc.includes(w)) ? 100 : 0;
-        words(c.label).forEach(w => { if (sw.has(w)) n++; });
-        if (n > best) { cost = c; best = n; }
-      });
-      return { stay: b.stay, days: b.days, legs, sleepers, cost };
+      let best = 0;
+      const scored = TRIP.costs
+        .filter(c => isHotel(c) && legs.includes(c.leg))
+        .map(c => {
+          let n = (LEG_WORDS[c.leg] || []).some(w => lc.includes(w)) ? 100 : 0;
+          words(c.label).forEach(w => { if (sw.has(w)) n++; });
+          if (n > best) best = n;
+          return { c, n };
+        });
+      // Every cost whose leg name appears in the stay text is a real match
+      // — a stay can span several bookings (e.g. the two Hyatt Dongmen
+      // nights are separate costs). Otherwise take the best-scoring one.
+      const strong = scored.filter(x => x.n >= 100);
+      const costs = strong.length
+        ? strong.map(x => x.c)
+        : scored.filter(x => x.n === best && best > 0).map(x => x.c);
+      return { stay: b.stay, days: b.days, legs, sleepers, costs };
     });
-  const stayLeg = b => (b.cost ? b.cost.leg : b.legs[0]);
+  const stayLeg = b => (b.costs.length ? b.costs[0].leg : b.legs[0]);
   // "Sep 25"–"Sep 27" => "Sep 25–27"; "Sep 30"–"Oct 1" => "Sep 30–Oct 1".
   const stayDates = b => {
     const first = b.days[0].date, last = b.days[b.days.length - 1].date;
@@ -301,23 +311,37 @@
       th.append(stayDates(b));
       return th;
     };
+    // The person's summed share of the stay's bookings that Albin fronted;
+    // "pending" when part of the stay is still unpriced.
+    const stayShare = (p, b) => {
+      let amt = 0, pending = false;
+      b.costs.forEach(c => {
+        if (c.total == null) { pending = true; return; }
+        if (c.frontedBy !== FRONTER) return;
+        const sh = share(c);
+        if (sh == null || !payers(c).some(q => q.id === p.id)) return;
+        amt += sh;
+      });
+      return { amt, pending };
+    };
     const tb = mkTable(["Person", ...stays.map(head), "Total"], s);
     TRIP.people.forEach(p => {
       const tr = el("tr");
       tr.append(td(null, p.name));
       let tot = 0;
       stays.forEach(b => {
-        const c = b.cost;
         if (b.sleepers.indexOf(p) === -1) return tr.append(td("money", "—"));
-        // Not Albin's tab — nothing owed to him for this stay.
-        if (!c || c.frontedBy !== FRONTER || c.total == null) {
-          return tr.append(td("money", !c || c.total == null ? tbd() : "—"));
+        const st = stayShare(p, b);
+        tot += st.amt;
+        if (st.amt <= 0.004) {
+          return tr.append(td("money",
+            st.pending || !b.costs.length ? tbd() : "—"));
         }
-        if (!payers(c).some(q => q.id === p.id)) return tr.append(td("money muted", "own"));
-        const each = c.total / payers(c).length;
-        tot += each;
-        const cell = td("money", fmt(each));
-        if (c.settled && c.settled.includes(p.id)) cell.classList.add("pos");
+        const cell = td("money", fmt(st.amt));
+        if (st.pending) cell.append(" ", el("span", "tbd", "+TBD"));
+        if (b.costs.length && b.costs.every(c => (c.settled || []).includes(p.id))) {
+          cell.classList.add("pos");
+        }
         tr.append(cell);
       });
       tr.append(td("money", fmt(tot)));
@@ -327,15 +351,18 @@
     gr.append(td(null, "All"));
     let grand = 0;
     stays.forEach(b => {
-      const c = b.cost, v = c && c.frontedBy === FRONTER ? c.total : null;
-      if (v != null) grand += v;
-      gr.append(td("money", v != null ? fmt(v)
-        : c && c.total != null ? "—" : tbd()));
+      const v = b.costs.reduce((s2, c) =>
+        c.frontedBy === FRONTER && c.total != null ? s2 + c.total : s2, 0);
+      const pending = b.costs.some(c => c.total == null);
+      grand += v;
+      const cell = td("money", v ? fmt(v) : pending || !b.costs.length ? tbd() : "—");
+      if (v && pending) cell.append(" ", el("span", "tbd", "+TBD"));
+      gr.append(cell);
     });
     gr.append(td("money", fmt(grand)));
     tb.append(gr);
     s.append(el("p", "muted",
-      `Each stay splits evenly among the people sleeping there — total is what each person owes ${personName(FRONTER)} for the stays he fronted. TBD stays aren't counted yet.`));
+      `Each stay splits evenly among the people sleeping there — total is what each person owes ${personName(FRONTER)} for the stays he fronted. +TBD means part of that stay isn't priced yet.`));
     app.append(s);
   }
 
