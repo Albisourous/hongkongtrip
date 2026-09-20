@@ -161,9 +161,9 @@ const TRIP = {
   // Bookings, transit and activity references.
   resources: [
     { cat: "Visa/legal", detail: "240-hr transit: must be HK→mainland→Macau (different region in/out). Guangzhou + Shenzhen both count as the mainland stop. Carry onward Macau ticket.", cost: "—", url: null, linkLabel: "MTR 240-hr policy page" },
-    { cat: "HSR", detail: "West Kowloon → Guangzhou South ~1h (all 6) · Guangzhou → Shenzhen ~1h Sep 30. Opens 15 days out; passport ticket.", cost: "~$10–28", url: "https://www.highspeed.mtr.com.hk", linkLabel: "highspeed.mtr.com.hk" },
-    { cat: "Ferry SZ→Macau", detail: "Shekou Port → Macau Taipa, ~60 min. First 08:00, last 21:00.", cost: "~$31", url: "https://www.trip.com", linkLabel: "Trip.com / Klook" },
-    { cat: "Ferry Macau→HK", detail: "Macau Taipa → HK Sheung Wan, ~60 min.", cost: "~$25", url: "https://www.turbojet.com.hk", linkLabel: "turbojet.com.hk" },
+    { cat: "HSR", detail: "West Kowloon → Guangzhou South ~1h (all 6) · Guangzhou → Shenzhen ~1h Sep 29 night. Opens 15 days out; passport ticket.", cost: "~$10–28", url: "https://www.highspeed.mtr.com.hk", linkLabel: "highspeed.mtr.com.hk" },
+    { cat: "Ferry SZ→Macau", detail: "Shekou Port → Macau Outer Harbour, ~60 min. First 08:00, last 21:00.", cost: "~$31", url: "https://www.trip.com", linkLabel: "Trip.com / Klook" },
+    { cat: "Ferry Macau→HK", detail: "Taipa → TST (Cotai Water Jet) or Outer Harbour → Sheung Wan (TurboJET), ~60 min.", cost: "~$25", url: "https://www.turbojet.com.hk", linkLabel: "turbojet.com.hk" },
     { cat: "BJJ/Judo HK", detail: "KLN BJJ (Jordan) — BJJ + judo, English.", cost: "~HK$200", url: "https://klnbjj.com", linkLabel: "klnbjj.com" },
     { cat: "BJJ Shenzhen", detail: "Wan Sheng Fight Club (Luohu).", cost: "~¥50–100", url: "https://wstkd.com", linkLabel: "wstkd.com · +86 158 8944 4114" },
     { cat: "Calisthenics HK", detail: "Lai Chi Kok Park, Victoria Park, Kowloon Park.", cost: "free", url: "https://calisthenics-parks.com", linkLabel: "calisthenics-parks.com" },
