@@ -7,10 +7,11 @@
 
 - **Albin & Maas stay on the group itinerary** — same legs as KJ, no
   medical commutes. All six sleep in Guangzhou on Sep 28 (one night —
-  Grand Hyatt Guangzhou booked, 2 twins ~$284) and night-train to Shenzhen
+  Grand Hyatt Guangzhou booked, 2 twins, 15,000 pts = $357 @2.38cpp)
+  and night-train to Shenzhen
   on Sep 29. Shenzhen gets two nights at Hyatt Place Dongmen: Sep 29
-  (booked, confs 37134482 + 29032314 + 31333538, 13,500 pts) + Sep 30
-  (booked, confs 56229190 + 14228517 + 45139912, 13,500 pts). Sep 30
+  (booked, confs 37134482 + 29032314 + 31333538, 13,500 pts = $321.30) + Sep 30
+  (booked, confs 56229190 + 14228517 + 45139912, 13,500 pts = $321.30). Sep 30
   is a full Shenzhen day — Huaqiangbei morning, Nanshan tech run
   (DJI / Talent Park / robotaxi) afternoon, COCO Park / Dongmen evening.
 - **Kevin Li skips Macau** — legs now `["hk1", "gz", "sz", "hk2"]`. He
@@ -35,8 +36,8 @@
   confirm where the 8th person sleeps.
 - **Shenzhen hotel booked: Hyatt Place Dongmen** — Albin's Hyatt account,
   confs `56229190` + `14228517` + `45139912`, 3× Specialty Twin Sep 30–Oct 1,
-  13,500 pts total (4,500/room) → `costs["sz-hotel"]` with $250
-  cash-equivalent (Chase pts estimate) so the split reimburses him fairly.
+  13,500 pts total (4,500/room) → `costs["sz-hotel"]` with $321.30
+  cash-equivalent (2.38cpp) so the split reimburses him fairly.
   At Laojie MTR exit H on the Dongmen pedestrian street; Oct 1 morning
   updated to Laojie → Shekou (~55 min, was Futian ~40). 6 beds for 6.
 
