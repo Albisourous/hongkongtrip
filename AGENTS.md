@@ -110,9 +110,7 @@ sums match the cost table, settlement balances sum to ~$0.
 
 ## Outstanding TBDs (collect from trip owner)
 
-- Shenzhen Sep 29 night — 3 more rooms at Hyatt Place Dongmen (~13,500 pts expected)
 - Macau rooming — Casa Real booked ($319.05, fronted by Albin), 2 rooms sleep 6 but 7 attend mo — confirm 7th spot or 3rd room
-- SkyCity Marriott rooming — booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
+- SkyCity Marriott rooming — 2 rooms booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
 - HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming
-- HK2 SkyCity Marriott booked as 2 rooms (4+3) but 8 attend `hk2` — confirm rooming
-- Who fronts remaining bookings
+- HSR + ferry tickets still to buy — Sep 28 WK→GZ + Sep 29 GZ→SZ (on sale 15 days out), Shekou→Macau ferry (required at border), Macau→HK ferry (1–3 days ahead)

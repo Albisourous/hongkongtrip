@@ -9,7 +9,8 @@
   medical commutes. All six sleep in Guangzhou on Sep 28 (one night —
   Grand Hyatt Guangzhou booked, 2 twins ~$284) and night-train to Shenzhen
   on Sep 29. Shenzhen gets two nights at Hyatt Place Dongmen: Sep 29
-  (to book, ~13,500 pts expected) + Sep 30 (booked, 13,500 pts). Sep 30
+  (booked, confs 37134482 + 29032314 + 31333538, 13,500 pts) + Sep 30
+  (booked, confs 56229190 + 14228517 + 45139912, 13,500 pts). Sep 30
   is a full Shenzhen day — Huaqiangbei morning, Nanshan tech run
   (DJI / Talent Park / robotaxi) afternoon, COCO Park / Dongmen evening.
 - **Kevin Li skips Macau** — legs now `["hk1", "gz", "sz", "hk2"]`. He
@@ -43,7 +44,6 @@
 
 | Item | Where it lands in `data.js` |
 |---|---|
-| Shenzhen Sep 29 night — 3 more rooms at Hyatt Place Dongmen (~13,500 pts expected, on Albin's account) | `costs["sz-hotel-2"]` |
 | Macau rooming — Casa Real booked ($319.05, Albin) but 2 rooms sleep 6 while 7 attend mo — confirm 7th spot or add a 3rd room | `costs["mo-hotel"].note` + `sleeps` + maybe `people` |
 | SkyCity Marriott rooming — reservation lists 7 adults, 8 attend hk2 | `costs["hk2-hotel"].note` + maybe `people` |
 | HK1 Airbnb rooming — sleeps 7, 9 attend | `costs["hk1-hotel"].note` + maybe `people` |
