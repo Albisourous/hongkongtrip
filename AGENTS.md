@@ -19,7 +19,7 @@ and shares the fixed bottom tab nav (`.tabs`).
 | Home | `index.html` | `js/home.js` | `css/home.css` | What/where/when, leg cards, roster |
 | Days | `days.html` | `js/days.js` | `css/days.css` | Day-by-day plan, swipe, checklists |
 | Hotels | `hotels.html` | `js/hotels.js` | `css/hotels.css` | Who sleeps where + per-stay cost split |
-| Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking (red) |
+| Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking + checkable reminders (red) |
 | Payments | `payments.html` | `js/payments.js` | `css/payments.css` | Splits, settlement, paid ledger |
 
 Shared files (coordinate before editing): `data.js`, `styles.css`,
@@ -72,7 +72,9 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   backtracking between places. The checklist follows the main group
   itinerary; people who split off do their own thing and aren't listed.
   Checklist state persists in localStorage (`hkcheck:{date}:{index}`).
-  Booking marks use `hkbooked:{costId}`; paid-up splits are tracked via
+  Booking marks use `hkbooked:{costId}` — `TRIP.reminders` ids share this
+  keyspace (non-booking checks on the Bookings page, badged "to check").
+  Paid-up splits are tracked via
   `settled: [ids]` on the cost in data.js, not page marks.
 - `js/sync.js` (`window.SyncStore`, loaded on Days/Bookings/Payments)
   syncs those marks across devices via a free JSON bin

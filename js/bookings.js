@@ -134,6 +134,15 @@
     },
   ];
 
+  // Non-booking checks from data.js — same card/checkbox treatment,
+  // badged "to check"/"done" instead of "to book"/"booked".
+  const REMINDERS = (TRIP.reminders || []).map(r => ({
+    id: r.id, urgent: true, check: true, legs: r.legs || [],
+    title: r.title, cost: r.cost || null,
+    when: r.when || null, why: r.why,
+    url: r.url || null, linkLabel: r.linkLabel || null,
+  }));
+
   // Map a resource category to a leg color, when it's place-specific.
   const CAT_LEGS = [["hong kong", "hk1"], ["hk", "hk1"], ["shenzhen", "sz"],
     ["sz", "sz"], ["macau", "mo"], ["guangzhou", "gz"], ["gz", "gz"]];
@@ -165,10 +174,11 @@
     el("p", "tagline", "What still needs locking in — red items need action before they're gone.")
   );
   const summary = el("p", "book-summary");
-  const secToBook = el("section"), secOpt = el("section"), secDone = el("section");
+  const secToBook = el("section"), secRem = el("section"),
+    secOpt = el("section"), secDone = el("section");
   const foot = el("footer");
   foot.append(el("p", "muted", "Booked marks sync across devices (30s refresh)."));
-  app.append(head, summary, secToBook, secOpt, secDone, foot);
+  app.append(head, summary, secToBook, secRem, secOpt, secDone, foot);
 
   const isDone = it => store.get(`hkbooked:${it.id}`) === "1";
 
@@ -196,8 +206,9 @@
 
     const right = el("div", "book-right");
     right.append(costNode(it), el("span",
-      done ? "badge badge-booked" : it.urgent ? "badge badge-to-book" : "badge",
-      done ? "booked" : it.urgent ? "to book" : "optional"));
+      done ? "badge badge-booked" : it.check || it.urgent ? "badge badge-to-book" : "badge",
+      done ? (it.check ? "done" : "booked")
+        : it.check ? "to check" : it.urgent ? "to book" : "optional"));
     hd.append(lab, right);
     c.append(hd);
 
@@ -217,11 +228,12 @@
   }
 
   function render() {
-    [secToBook, secOpt, secDone].forEach(s => { s.textContent = ""; });
+    [secToBook, secRem, secOpt, secDone].forEach(s => { s.textContent = ""; });
 
     const reqPend = REQUIRED.filter(i => !isDone(i));
+    const remPend = REMINDERS.filter(i => !isDone(i));
     const optPend = OPTIONAL.filter(i => !isDone(i));
-    const done = [...REQUIRED, ...OPTIONAL].filter(isDone);
+    const done = [...REQUIRED, ...REMINDERS, ...OPTIONAL].filter(isDone);
 
     summary.textContent = "";
     const n = reqPend.length;
@@ -230,6 +242,10 @@
         n === 1 ? " thing left to book" : " things left to book");
     } else {
       summary.append(el("strong", "book-count book-count-ok", "Nothing left to book"), " — all set.");
+    }
+    if (remPend.length) {
+      summary.append(el("span", "muted",
+        ` · ${remPend.length} reminder${remPend.length > 1 ? "s" : ""} to check`));
     }
     if (optPend.length) {
       summary.append(el("span", "muted",
@@ -243,6 +259,17 @@
       secToBook.append(list);
     } else {
       secToBook.append(el("p", "muted", "Everything's booked."));
+    }
+
+    if (REMINDERS.length) {
+      secRem.append(el("h2", null, "Reminders — things to check"));
+      if (remPend.length) {
+        const list = el("div", "book-list");
+        remPend.forEach(i => list.append(card(i, false)));
+        secRem.append(list);
+      } else {
+        secRem.append(el("p", "muted", "All checked."));
+      }
     }
 
     if (optPend.length) {

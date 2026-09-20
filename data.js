@@ -179,6 +179,26 @@ const TRIP = {
     { cat: "Viewpoints", detail: "Peak/Lugard, Choi Hung, Ping An Free Sky, Ruins of St Paul's.", cost: "varies", url: null, linkLabel: null },
   ],
 
+  // Non-booking checks to verify — rendered on Bookings as a Reminders
+  // section (checkable, synced like booked marks via hkbooked:{id}).
+  reminders: [
+    { id: "china-batteries", legs: ["gz", "sz"], title: "China power-bank / battery rules",
+      when: "Before Sep 28",
+      why: "Mainland airports + rail require a CCC (3C) mark on power banks and confiscate unmarked or recalled ones (≤100Wh typical, ≤160Wh with approval). Check every bank + spare batteries before packing — on the Delta flights they're carry-on only anyway." },
+    { id: "border-items", legs: [], title: "Restricted items at the borders",
+      when: "Before packing",
+      why: "Vapes/e-cigarettes are banned into HK + Macau, drones need registration on the mainland, and some meds are restricted — check anything unusual before crossing." },
+    { id: "mainland-entry", legs: ["gz"], title: "Mainland entry card + hotel registration",
+      when: "Sep 28 at West Kowloon",
+      why: "Fill the arrival card at the border; hotels auto-register foreigners with police within 24h (an Airbnb wouldn't — one reason it's all hotels in mainland)." },
+    { id: "insurance", legs: [], title: "Travel insurance",
+      when: "Before Sep 23",
+      why: "Medical + delay cover spanning HK, mainland and Macau — buy before departure and confirm mainland China is covered." },
+    { id: "typhoon", legs: ["mo", "hk2"], title: "Typhoon-season check",
+      when: "Week of Sep 21 + before ferries",
+      why: "Late Sep is still typhoon season — check HKO/CMA warnings; flights and the Shekou/Macau ferries can be delayed or cancelled." },
+  ],
+
   flights: {
     note: "Fronted by Ehsan (Delta Main Basic) — $456/person confirmed; Kevin Li paid his own, so it splits across the other 8.",
     out: "DL2861 SEA→LAX + DL0089 LAX→HKG",
