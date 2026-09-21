@@ -56,6 +56,11 @@
   color: inherit;
 }
 
+/* Visual separation between itinerary items. */
+.checklist li + li {
+  border-top: 1px solid var(--border);
+}
+
 /* Must-see items — the day's time-sensitive goal (item.must in data.js). */
 .checklist li.day-must .time,
 .checklist li.day-must .task {
