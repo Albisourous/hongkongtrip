@@ -334,37 +334,6 @@ const TRIP = {
     { name: "Hong Kong Intl Airport", leg: "hk2", cat: "move", day: "Oct 3", lat: 22.3080, lng: 113.9185, note: "DL0088 9:25am" },
   ],
 
-  // 5×5 trip bingo — center (index 12) is the signature star pose.
-  // Square state persists as hkbingo:{index} (syncs like hkcheck/hkbooked).
-  // Each square: t = front title, d = detail on the flip side.
-  bingo: [
-    { t: "Star Ferry", d: "Ride the green-and-white ferry across Victoria Harbour." },
-    { t: "Drone coffee", d: "Meituan drone delivers coffee at Talent Park." },
-    { t: "Robotaxi", d: "Pony.ai driverless ride through Shenzhen (~¥10)." },
-    { t: "DJI cage flight", d: "Fly a drone inside the flagship cage at OCT Harbour." },
-    { t: "Bargain win", d: "Haggle a market find down under ¥100." },
-    { t: "Egg tart showdown", d: "Margaret's vs Lord Stow's — crown a winner." },
-    { t: "Dim sum feast", d: "Order until the table surrenders." },
-    { t: "Choi Hung court", d: "Rainbow basketball court photo." },
-    { t: "Monster Building", d: "Stacked-facade shot in Quarry Bay." },
-    { t: "Baiyun zipline", d: "Ride the 白云飞索 down the mountain (~1.5km)." },
-    { t: "Big Buddha", d: "Climb the 268 steps at Ngong Ping." },
-    { t: "Ngong Ping 360", d: "Cable car over Lantau — Crystal Cabin bonus." },
-    { t: "⭐ THE STAR POSE", d: "All 9, auntie formation. Mandatory." },
-    { t: "Symphony of Lights", d: "Watch from the harbourfront or the Peak." },
-    { t: "Huaqiangbei find", d: "Weirdest gadget in the electronics maze." },
-    { t: "Temple St score", d: "Fortune teller or the oddest souvenir." },
-    { t: "Karaoke night", d: "RedMR/Neway room session — no skips allowed." },
-    { t: "Group spa", d: "Massage or sauna stop — He-mu or Aqila." },
-    { t: "Hanfu dress-up", d: "战国袍 robes at Yongqingfang." },
-    { t: "Fire Dragon", d: "Tai Hang fire dragon dance — incense and sparks." },
-    { t: "斋 veggie dish", d: "Order a Buddhist zhai plate." },
-    { t: "Sneaker St pickup", d: "Buy something absolutely nobody needed." },
-    { t: "Train games", d: "Liar's dice or cards on an HSR leg." },
-    { t: "Drone show", d: "Golden Week drone show over Shenzhen Bay — if it's on." },
-    { t: "Karting", d: "Indoor karts — loser buys the HeyTea." },
-  ],
-
   flights: {
     note: "Fronted by Ehsan (Delta Main Basic) — $456/person confirmed; Kevin Li paid his own, so it splits across the other 8.",
     out: "DL2861 SEA→LAX + DL0089 LAX→HKG",

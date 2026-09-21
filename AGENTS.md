@@ -19,7 +19,6 @@ and shares the fixed bottom tab nav (`.tabs`).
 | Home | `index.html` | `js/home.js` | `css/home.css` | What/where/when, leg cards, roster |
 | Days | `days.html` | `js/days.js` | `css/days.css` | Day-by-day plan, swipe, checklists, per-day mini map |
 | Map | `map.html` | `js/map.js` | `css/map.css` | Interactive POI map (Leaflet + Amap tiles) |
-| Bingo | `bingo.html` | `js/bingo.js` | `css/bingo.css` | 5×5 trip-challenge card (`TRIP.bingo`, `hkbingo:` marks) |
 | Hotels | `hotels.html` | `js/hotels.js` | `css/hotels.css` | Who sleeps where + per-stay cost split |
 | Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking + checkable reminders (red) |
 | Payments | `payments.html` | `js/payments.js` | `css/payments.css` | Splits, settlement, paid ledger |
