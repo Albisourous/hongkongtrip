@@ -186,11 +186,10 @@
     ? el("span", "tbd", "TBD")
     : el("span", "book-cost", it.cost);
 
-  function card(it, done) {
-    const c = el("div",
+  function row(it, done) {
+    const li = el("li",
       "book-item" + (done ? " book-item-done" : it.urgent ? "" : " book-item-opt"));
 
-    const hd = el("div", "book-head");
     const lab = el("label", "book-check");
     const cb = el("input");
     cb.type = "checkbox";
@@ -202,17 +201,17 @@
     const title = el("span", "book-title");
     if (it.legs && it.legs.length) title.append(legDots(it.legs));
     title.append(it.title);
-    lab.append(cb, title);
 
-    const right = el("div", "book-right");
+    const right = el("span", "book-right");
     right.append(costNode(it), el("span",
       done ? "badge badge-booked" : it.check || it.urgent ? "badge badge-to-book" : "badge",
       done ? (it.check ? "done" : "booked")
         : it.check ? "to check" : it.urgent ? "to book" : "optional"));
-    hd.append(lab, right);
-    c.append(hd);
 
-    if (it.why) c.append(el("p", "book-why", it.why));
+    lab.append(cb, title, right);
+    li.append(lab);
+
+    if (it.why) li.append(el("p", "book-why", it.why));
 
     const meta = el("p", "book-meta");
     if (it.when) meta.append(el("span", "book-when", it.when));
@@ -223,8 +222,8 @@
       a.rel = "noopener";
       meta.append(a);
     }
-    if (meta.childNodes.length) c.append(meta);
-    return c;
+    if (meta.childNodes.length) li.append(meta);
+    return li;
   }
 
   function render() {
@@ -254,8 +253,8 @@
 
     secToBook.append(el("h2", null, "To book"));
     if (reqPend.length) {
-      const list = el("div", "book-list");
-      reqPend.forEach(i => list.append(card(i, false)));
+      const list = el("ul", "book-list");
+      reqPend.forEach(i => list.append(row(i, false)));
       secToBook.append(list);
     } else {
       secToBook.append(el("p", "muted", "Everything's booked."));
@@ -264,8 +263,8 @@
     if (REMINDERS.length) {
       secRem.append(el("h2", null, "Reminders — things to check"));
       if (remPend.length) {
-        const list = el("div", "book-list");
-        remPend.forEach(i => list.append(card(i, false)));
+        const list = el("ul", "book-list");
+        remPend.forEach(i => list.append(row(i, false)));
         secRem.append(list);
       } else {
         secRem.append(el("p", "muted", "All checked."));
@@ -274,15 +273,15 @@
 
     if (optPend.length) {
       secOpt.append(el("h2", null, "Optional & links"));
-      const list = el("div", "book-list");
-      optPend.forEach(i => list.append(card(i, false)));
+      const list = el("ul", "book-list");
+      optPend.forEach(i => list.append(row(i, false)));
       secOpt.append(list);
     }
 
     if (done.length) {
       secDone.append(el("h2", null, "Done"));
-      const list = el("div", "book-list");
-      done.forEach(i => list.append(card(i, true)));
+      const list = el("ul", "book-list");
+      done.forEach(i => list.append(row(i, true)));
       secDone.append(list);
     }
   }

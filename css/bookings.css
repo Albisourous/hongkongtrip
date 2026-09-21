@@ -16,47 +16,40 @@
   color: var(--green);
 }
 
+/* Flat checklist rows — checkbox + title, details indented underneath */
 .book-list {
-  display: grid;
-  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
   margin: 0 0 1rem;
 }
 
-/* Pending items are red-accented; optional and done items are not. */
 .book-item {
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--red);
-  border-radius: 0.75rem;
-  background: var(--surface);
-  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 0.2rem;
 }
 
-.book-item-opt {
-  border-left-color: var(--border);
+.book-item:last-child {
+  border-bottom: 0;
 }
 
 .book-item-done {
-  border-left-color: var(--green);
   opacity: 0.62;
-}
-
-.book-head {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.75rem;
 }
 
 .book-check {
   display: flex;
   align-items: flex-start;
   gap: 0.55rem;
-  flex: 1 1 auto;
   min-width: 0;
   font-size: 0.95rem;
   font-weight: 650;
   line-height: 1.45;
+  border-radius: 0.45rem;
   cursor: pointer;
+}
+
+.book-check:hover {
+  background: var(--code-bg);
 }
 
 .book-check input {
@@ -75,6 +68,11 @@
 .book-item-done .book-title {
   color: var(--muted);
   text-decoration: line-through;
+}
+
+.book-title {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 /* Leg color dots before the item title */
