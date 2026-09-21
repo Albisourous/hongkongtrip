@@ -68,7 +68,8 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 - Money is USD, `$` + `toFixed(2)`, `.money` class, tabular numerals.
 - `TRIP.days` holds per-day plans: `stay`, `notes` (timing/booking
   warnings), and `checklist` — the full time-ordered itinerary as `{t,
-  task}` items (t is a rough start time), sequenced to minimize
+  task, must?}` items (t is a rough start time; `must: true` marks the
+  day's time-sensitive goal, rendered red via `.day-must`), sequenced to minimize
   backtracking between places. The checklist follows the main group
   itinerary; people who split off do their own thing and aren't listed.
   Checklist state persists in localStorage (`hkcheck:{date}:{index}`).

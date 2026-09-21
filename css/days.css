@@ -56,6 +56,17 @@
   color: inherit;
 }
 
+/* Must-see items — the day's time-sensitive goal (item.must in data.js). */
+.checklist li.day-must .time,
+.checklist li.day-must .task {
+  color: var(--red);
+  font-weight: 650;
+}
+
+.checklist li.day-must .task::before {
+  content: "★ ";
+}
+
 .day-notes {
   margin-top: 0.85rem;
   padding-top: 0.75rem;

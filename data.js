@@ -27,7 +27,8 @@ const TRIP = {
 
   // Per-day plan. stay = where the group sleeps that night.
   // checklist = the full time-ordered plan ({t, task} — t is a rough start
-  // time), sequenced to minimize backtracking between places; it follows
+  // time; must: true marks the day's time-sensitive goal, rendered red on
+  // Days), sequenced to minimize backtracking between places; it follows
   // the main group itinerary — people who split off do their own thing
   // and aren't listed. notes = timing/booking warnings.
   days: [
@@ -36,7 +37,7 @@ const TRIP = {
       notes: "Redeye over the Pacific.",
       checklist: [
         { t: "3:00pm", task: "SEA — check bags through to HKG" },
-        { t: "5:40pm", task: "DL2861 SEA → LAX" },
+        { t: "5:40pm", task: "DL2861 SEA → LAX", must: true },
         { t: "evening", task: "DL0089 LAX → HKG — sleep on the plane" },
       ],
     },
@@ -51,7 +52,7 @@ const TRIP = {
         { t: "12:30pm", task: "Cha chaan teng lunch — ask for 斋菜 (zhai) veg dishes" },
         { t: "3:00pm", task: "(opt) Sam's Tailor fitting, TST → Cheung Hing Kee pan-fried buns, Lock Rd (Michelin Bib — buns all meat; veg = kelp/wheat-gluten sides) → Star Ferry + harbourfront" },
         { t: "7:00pm", task: "Victoria Park lantern carnival, Causeway Bay" },
-        { t: "8:15pm", task: "Tai Hang Fire Dragon Dance — 5-min walk from Victoria Park" },
+        { t: "8:15pm", task: "Tai Hang Fire Dragon Dance — 5-min walk from Victoria Park", must: true },
       ],
     },
     {
@@ -59,7 +60,7 @@ const TRIP = {
       notes: "Alt AM: KLN BJJ/judo (Jordan) or Lai Chi Kok calisthenics.",
       checklist: [
         { t: "7:30am", task: "MTR → Shau Kei Wan, bus 9 to the trailhead" },
-        { t: "8:30am", task: "Dragon's Back hike → Shek O (~2.5h)" },
+        { t: "8:30am", task: "Dragon's Back hike → Shek O (~2.5h)", must: true },
         { t: "12:00pm", task: "Shek O beach + village lunch — veg plates at the cafés" },
         { t: "3:00pm", task: "Sham Shui Po — Apliu St flea market + Golden Computer Arcade (egg tarts + pineapple buns at the bakeries)" },
         { t: "7:00pm", task: "Temple St Night Market — back in YMT by the Airbnb (or rooftop bar)" },
@@ -69,12 +70,12 @@ const TRIP = {
       date: "Sep 27", day: "Sun", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei", legs: ["hk1"],
       notes: "All Kowloon stops before lunch are ~10 min apart. Peak saved for night — Lugard lookout is the skyline photo spot; LKF is a ~15-min walk down from the tram terminus. Peak Tram queues run ~30–45 min at dusk — buy the timed ticket ahead.",
       checklist: [
-        { t: "9:00am", task: "Kowloon Walled City exhibition — free timed ticket, go early" },
+        { t: "9:00am", task: "Kowloon Walled City exhibition — free timed ticket, go early", must: true },
         { t: "10:45am", task: "Chi Lin Nunnery + Nan Lian Garden, Diamond Hill (~10 min away) — Tang-style, free" },
         { t: "12:30pm", task: "Kowloon City Thai lunch — back by the park" },
         { t: "2:30pm", task: "Sneaker St + Sino Centre, Mong Kok" },
         { t: "5:00pm", task: "MTR → Central · Peak Tram up (arrive ~5:45 for golden hour)" },
-        { t: "6:15pm", task: "Lugard Rd lookout — sunset → night skyline photo (~20-min walk each way)" },
+        { t: "6:15pm", task: "Lugard Rd lookout — sunset → night skyline photo (~20-min walk each way)", must: true },
         { t: "8:00pm", task: "Tram down → Central — Symphony of Lights is visible from the Peak anyway" },
         { t: "9:00pm", task: "LKF night out — walkable from the tram terminus" },
       ],
@@ -83,8 +84,8 @@ const TRIP = {
       date: "Sep 28", day: "Mon", base: "HK → Guangzhou", stay: "Grand Hyatt Guangzhou (Zhujiang New Town) — all 6", legs: ["gz", "sz"],
       notes: "HSR opens 15 days out — passport ticket. Carry the Shekou→Macau ferry ticket — it doubles as onward-ticket proof for the 240-hr transit. Fake-market tips (Kinbo/Zhanxi): tees ¥40–150, hoodies ¥80–300, jackets ¥150–500 — open at ~40–50% of asking and be ready to walk; they'll call you back.",
       checklist: [
-        { t: "9:00am", task: "Check out · MTR → West Kowloon HSR terminus (arrive ~45–60 min early — border checks inside)" },
-        { t: "10:00am", task: "HSR West Kowloon → Guangzhou East ~1h40 (or South ~1h) — all 6" },
+        { t: "9:00am", task: "Check out · MTR → West Kowloon HSR terminus — security + border ≥45 min before departure; gates open ~15 min, close 5 min" },
+        { t: "10:00am", task: "HSR West Kowloon → Guangzhou East ~1h40 (or South ~1h) — all 6", must: true },
         { t: "11:45am", task: "Metro/taxi → Grand Hyatt, drop bags (check-in 3pm)" },
         { t: "12:45pm", task: "Xiajiao Mei 虾饺妹 dim sum — Haizhu Plaza branch, the smiley-face one" },
         { t: "2:00pm", task: "Beijing Rd pedestrian st — ancient road under glass floor" },
@@ -104,8 +105,8 @@ const TRIP = {
         { t: "3:00pm", task: "Yongqingfang lanes + Bruce Lee ancestral home (~15-min walk)" },
         { t: "4:30pm", task: "Liwan Lake Park — locals' tai chi + cards" },
         { t: "6:30pm", task: "Canton Tower / Huacheng Sq night view — right by the Grand Hyatt" },
-        { t: "8:00pm", task: "Collect bags → Guangzhou South" },
-        { t: "9:00pm", task: "HSR Guangzhou → Shenzhen (~1h, all 6)" },
+        { t: "8:00pm", task: "Collect bags → station (East→Luohu or South→Futian) — arrive ~30–45 min early; gates open ~15 min, close 5 min" },
+        { t: "9:00pm", task: "HSR Guangzhou → Shenzhen (~1h, all 6)", must: true },
         { t: "10:30pm", task: "Check in — Hyatt Place Dongmen" },
       ],
     },
@@ -119,7 +120,7 @@ const TRIP = {
         { t: "1:30pm", task: "MOCAUP, Futian CBD — contemporary art + urban planning museum, free, closes ~6pm" },
         { t: "2:45pm", task: "Bijiashan Park hill loop → UpperHills loft mall next door" },
         { t: "4:15pm", task: "Metro → Nanshan (~40 min)" },
-        { t: "5:00pm", task: "DJI flagship @ OCT Harbour — fly drones + RoboMaster (free) · (opt) 5D cinema in the OCT/Happy Valley area" },
+        { t: "5:00pm", task: "DJI flagship @ OCT Harbour — fly drones + RoboMaster (free) · (opt) 5D cinema in the OCT/Happy Valley area", must: true },
         { t: "6:00pm", task: "Haus Nowhere — Gentle Monster flagship store + art installations · B&C bakery (Butterful & Creamorous), Shenzhen Bay MixC area" },
         { t: "7:00pm", task: "Talent Park — Meituan drone coffee (~¥25) + Pony.ai robotaxi (~¥10)" },
         { t: "8:00pm", task: "Shenzhen Bay boardwalk — Golden Week drone show if it's on (~10.6km flat)" },
@@ -132,7 +133,7 @@ const TRIP = {
       notes: "⚠ Golden Week Day 1 — peak crowds. Carry the pre-booked ferry ticket — it's the onward-ticket proof for the 240-hr transit. The peninsula walk runs north→south and ends at Grand Lisboa for the Cotai shuttle.",
       checklist: [
         { t: "7:45am", task: "Metro Laojie → Shekou Port (~55 min) — or 2 Didis ~¥90/cab" },
-        { t: "9:15am", task: "Arrive port 45 min early · ferry → Macau Outer Harbour (~60–70 min)" },
+        { t: "9:15am", task: "Arrive port 45 min early · ferry → Macau Outer Harbour (~60–70 min)", must: true },
         { t: "10:45am", task: "5-min taxi/shuttle → Casa Real, drop bags" },
         { t: "11:15am", task: "(opt) Red Market wet market — ~15 min NW of the hotel" },
         { t: "12:00pm", task: "Ruins of St Paul's + Mount Fortress" },
@@ -148,7 +149,7 @@ const TRIP = {
       notes: "Book Macau→HK ferry 1–3 days ahead. Sam's Tailor is ~10 min from the TST ferry terminal; last real meal is TST — airport area is slim pickings.",
       checklist: [
         { t: "9:00am", task: "Margaret's Café e Nata egg tarts + last Senado loop (Lord Stow's is a Coloane detour)" },
-        { t: "12:00pm", task: "Ferry Macau → TST (~60 min)" },
+        { t: "12:00pm", task: "Ferry Macau → TST (~60 min)", must: true },
         { t: "2:00pm", task: "(opt) Sam's Tailor pickup, TST" },
         { t: "4:00pm", task: "Taxi/AEL → SkyCity Marriott, Lantau — check in" },
         { t: "8:00pm", task: "Early night — 6am wake-up" },
@@ -161,7 +162,7 @@ const TRIP = {
         { t: "6:00am", task: "Wake · free shuttle → HKG T1" },
         { t: "7:00am", task: "Check in / security" },
         { t: "7:45am", task: "(opt) Free mahjong-tile souvenir — HKG giveaway counter in departures, while it lasts" },
-        { t: "9:25am", task: "DL0088 HKG → LAX → DL1714 → SEA" },
+        { t: "9:25am", task: "DL0088 HKG → LAX → DL1714 → SEA", must: true },
       ],
     },
   ],

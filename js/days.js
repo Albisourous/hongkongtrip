@@ -128,10 +128,12 @@
           li.classList.toggle("done", cb.checked);
           refreshProgress(current);
         });
+        if (item.must) li.classList.add("day-must");
         label.appendChild(cb);
         label.appendChild(document.createTextNode(" "));
         label.appendChild(el("span", "time", item.t));
-        label.appendChild(document.createTextNode(" " + item.task));
+        label.appendChild(document.createTextNode(" "));
+        label.appendChild(el("span", "task", item.task));
         li.appendChild(label);
         ul.appendChild(li);
       });
