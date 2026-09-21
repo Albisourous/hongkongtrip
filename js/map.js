@@ -1,7 +1,8 @@
 /* Map page — interactive map of every POI in TRIP.places.
    Leaflet is vendored in vendor/leaflet (no CDN). Tiles are Amap raster
    tiles — reachable on mainland networks; pin conversion WGS-84 → GCJ-02
-   and shared pin/popup helpers live in js/geo.js (window.GeoKit). */
+   and shared pin/popup helpers live in js/geo.js (window.GeoKit).
+   Filters: by leg or by day. Deep links: #leg=gz, #day=sep-28. */
 (function () {
   "use strict";
 
@@ -16,11 +17,13 @@
   var head = el("header");
   head.appendChild(el("h1", null, "Map"));
   head.appendChild(el("p", "tagline",
-    "Every pin on the plan — tap for the day and details. Amap tiles work in mainland China."));
+    "Every pin on the plan — filter by leg or pick a day. Amap tiles work in mainland China."));
   app.appendChild(head);
 
-  var chips = el("div", "day-chips map-chips");
-  app.appendChild(chips);
+  var legChips = el("div", "day-chips map-chips");
+  var dayChips = el("div", "day-chips map-chips");
+  app.appendChild(legChips);
+  app.appendChild(dayChips);
 
   var mapEl = el("div");
   mapEl.id = "map";
@@ -38,49 +41,107 @@
     var ll = GeoKit.gcj(p.lat, p.lng);
     var m = L.marker(ll, { icon: GeoKit.pinIcon(p.leg) });
     m.bindPopup(GeoKit.popup(p));
-    return { leg: p.leg, marker: m, ll: ll };
+    return { p: p, leg: p.leg, marker: m, ll: ll };
   });
 
-  function fitTo(legId) {
-    var pts = entries
-      .filter(function (e) { return legId === "all" || e.leg === legId; })
-      .map(function (e) { return e.ll; });
-    if (pts.length === 1) {
-      map.setView(pts[0], 15);
-    } else if (pts.length) {
-      map.fitBounds(L.latLngBounds(pts).pad(0.15));
+  function daySlug(day) {
+    return day.date.toLowerCase().replace(/\s+/g, "-");
+  }
+
+  // {kind:"all"} | {kind:"leg", id} | {kind:"day", i}
+  var filter = { kind: "all" };
+  var chipFor = {};
+
+  function filterKey() {
+    if (filter.kind === "leg") return "leg:" + filter.id;
+    if (filter.kind === "day") return "day:" + filter.i;
+    return "all";
+  }
+
+  function match(e) {
+    if (filter.kind === "leg") return e.leg === filter.id;
+    if (filter.kind === "day") return GeoKit.onDay(e.p, TRIP.days[filter.i].date);
+    return true;
+  }
+
+  function apply() {
+    var pts = [];
+    entries.forEach(function (e) {
+      if (match(e)) {
+        e.marker.addTo(map);
+        pts.push(e.ll);
+      } else {
+        map.removeLayer(e.marker);
+      }
+    });
+    if (pts.length === 1) map.setView(pts[0], 15);
+    else if (pts.length) map.fitBounds(L.latLngBounds(pts).pad(0.15));
+
+    var key = filterKey();
+    Object.keys(chipFor).forEach(function (k) {
+      chipFor[k].classList.toggle("active", k === key);
+    });
+
+    var hash = filter.kind === "leg" ? "#leg=" + filter.id
+      : filter.kind === "day" ? "#day=" + daySlug(TRIP.days[filter.i])
+      : "";
+    if (location.hash !== hash) {
+      history.replaceState(null, "", hash || location.pathname);
     }
   }
 
-  function setFilter(legId) {
-    entries.forEach(function (e) {
-      var on = legId === "all" || e.leg === legId;
-      if (on) e.marker.addTo(map); else map.removeLayer(e.marker);
-    });
-    fitTo(legId);
-  }
-
-  function chip(id, label, dots) {
+  function chip(key, label, dotLeg, f, title) {
     var b = el("button", "day-chip");
     b.type = "button";
-    if (dots) b.appendChild(el("span", "leg-dot leg-" + id));
+    if (dotLeg) b.appendChild(el("span", "leg-dot leg-" + dotLeg));
     b.appendChild(document.createTextNode(label));
+    if (title) b.title = title;
     b.addEventListener("click", function () {
-      chips.querySelectorAll(".day-chip").forEach(function (c) {
-        c.classList.toggle("active", c === b);
-      });
-      setFilter(id);
+      filter = f;
+      apply();
     });
+    chipFor[key] = b;
     return b;
   }
 
-  var all = chip("all", "All (" + entries.length + ")", false);
-  all.classList.add("active");
-  chips.appendChild(all);
+  legChips.appendChild(
+    chip("all", "All (" + entries.length + ")", false, { kind: "all" }));
   TRIP.legs.forEach(function (leg) {
     var n = entries.filter(function (e) { return e.leg === leg.id; }).length;
-    if (n) chips.appendChild(chip(leg.id, leg.name + " (" + n + ")", true));
+    if (n) legChips.appendChild(
+      chip("leg:" + leg.id, leg.name + " (" + n + ")", leg.id,
+        { kind: "leg", id: leg.id }));
   });
 
-  setFilter("all");
+  TRIP.days.forEach(function (day, i) {
+    var n = entries.filter(function (e) {
+      return GeoKit.onDay(e.p, day.date);
+    }).length;
+    if (!n) return;
+    dayChips.appendChild(
+      chip("day:" + i, day.date + " (" + n + ")", false,
+        { kind: "day", i: i }, day.date + " · " + day.day + " — " + day.base));
+  });
+
+  function fromHash() {
+    var h = decodeURIComponent(location.hash.slice(1));
+    var m = h.match(/^leg=(\w+)$/);
+    if (m && chipFor["leg:" + m[1]]) {
+      filter = { kind: "leg", id: m[1] };
+      return apply();
+    }
+    m = h.match(/^day=([a-z]{3}-\d{1,2})$/);
+    if (m) {
+      var i = TRIP.days.findIndex(function (d) { return daySlug(d) === m[1]; });
+      if (i >= 0 && chipFor["day:" + i]) {
+        filter = { kind: "day", i: i };
+        return apply();
+      }
+    }
+    filter = { kind: "all" };
+    apply();
+  }
+
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
 })();

@@ -133,6 +133,10 @@
       });
       if (pts.length === 1) dayMap.setView(pts[0], 14);
       else dayMap.fitBounds(L.latLngBounds(pts).pad(0.25));
+      var mapLink = el("a", "day-map-link", "Full map →");
+      mapLink.href = "map.html#day=" +
+        day.date.toLowerCase().replace(/\s+/g, "-");
+      detail.appendChild(mapLink);
     }
 
     if (day.checklist.length) {
