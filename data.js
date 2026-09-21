@@ -64,6 +64,7 @@ const TRIP = {
         { t: "2:00pm", task: "(opt) Shek O beach afternoon — bus 9 from Shau Kei Wan (~30 min)" },
         { t: "6:30pm", task: "Mong Kok neon walk — Fallen Angels territory (Sai Yeung Choi St / Argyle)", must: true },
         { t: "8:00pm", task: "Temple St Night Market — back in YMT by the Airbnb (or rooftop bar)" },
+        { t: "late", task: "(opt) He-mu Spa 天沐·養生 — massage + sauna, Kimberley Rd TST, til 11pm · 9542 5956" },
       ],
     },
     {
@@ -237,6 +238,7 @@ const TRIP = {
     { name: "Shek O beach + village", leg: "hk1", cat: "see", day: "Sep 26 (opt)", lat: 22.2305, lng: 114.2500 },
     { name: "Mong Kok neon walk — Sai Yeung Choi St", leg: "hk1", cat: "see", day: "Sep 26", lat: 22.3169, lng: 114.1698, note: "Fallen Angels territory" },
     { name: "Temple St Night Market", leg: "hk1", cat: "see", day: "Sep 26", lat: 22.3097, lng: 114.1702 },
+    { name: "He-mu Spa 天沐·養生", leg: "hk1", cat: "see", day: "Sep 26 (opt)", lat: 22.3008, lng: 114.1757, note: "massage + sauna · Kimberley Rd, TST · 12pm–11pm" },
     { name: "Kowloon Walled City Park", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.3320, lng: 114.1870, note: "exhibition — timed ticket" },
     { name: "Chi Lin Nunnery + Nan Lian Garden", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.3407, lng: 114.2054 },
     { name: "Kowloon City — Thai lunch", leg: "hk1", cat: "eat", day: "Sep 27", lat: 22.3305, lng: 114.1868 },
