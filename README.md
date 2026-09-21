@@ -32,8 +32,7 @@ Five pages, each a shell + its own JS/CSS, sharing `data.js` and
 |---|---|
 | `index.html` | Home — what the trip is, legs, who's on which leg |
 | `days.html` | Day-by-day plans with swipe + checklists |
-| `hotels.html` | Who sleeps where + per-stay cost split |
-| `bookings.html` | What still needs booking (red = to book) |
+| `bookings.html` | What still needs booking + who sleeps where, per-stay cost split |
 | `payments.html` | Per-leg splits, settlement, paid ledger |
 
 `data.js` is the single source of truth — edit values there; `null` = TBD.

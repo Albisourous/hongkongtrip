@@ -347,7 +347,7 @@ const TRIP = {
   // leg attendees; perPerson => each attendee owes that amount to frontedBy.
   // exclude: [ids] => those people paid their own — left out of the split.
   // settled: [ids] => already paid the fronter — netted out of settlement.
-  // sleeps: bed capacity on a hotel — the Hotels tab flags shortfalls.
+  // sleeps: bed capacity on a hotel — the Bookings tab flags shortfalls.
   // No frontedBy => informational only (everyone pays their own).
   costs: [
     { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 456, frontedBy: "ehsan", exclude: ["kli", "brendan"], settled: ["albin", "scott", "kj"], status: "booked", note: "$456/person confirmed by Ehsan · Kevin Li + Brendan paid their own — splits across the other 7 · Albin, Scott + KJ already paid Ehsan" },

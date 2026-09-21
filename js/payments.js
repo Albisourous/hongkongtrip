@@ -94,7 +94,7 @@
     return sh == null ? s : s + sh * payers(c).length;
   }, 0);
 
-  // ---- Stay blocks (same grouping as the Hotels tab) -----------------------
+  // ---- Stay blocks (same grouping as the Bookings tab) ---------------------
   // Consecutive days sharing a `stay` string form one hotel stay; each stay
   // is matched to a hotel cost by leg + shared words in the label.
   const LEG_WORDS = {
@@ -300,7 +300,7 @@
   }
 
   // Per-person × per-stay shares for the hotels Albin fronted — the same
-  // breakdown as the Hotels tab, but the total is just what's owed to him.
+  // breakdown as the Bookings tab, but the total is just what's owed to him.
   function owed() {
     const FRONTER = "albin";
     const s = el("section");

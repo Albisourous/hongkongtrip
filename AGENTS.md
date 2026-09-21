@@ -19,8 +19,7 @@ and shares the fixed bottom tab nav (`.tabs`).
 | Home | `index.html` | `js/home.js` | `css/home.css` | What/where/when, leg cards, roster |
 | Days | `days.html` | `js/days.js` | `css/days.css` | Day-by-day plan, swipe, checklists, per-day mini map |
 | Map | `map.html` | `js/map.js` | `css/map.css` | Interactive POI map (Leaflet + Amap tiles) |
-| Hotels | `hotels.html` | `js/hotels.js` | `css/hotels.css` | Who sleeps where + per-stay cost split |
-| Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking + checkable reminders (red) |
+| Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking + checkable reminders (red), who sleeps where, per-stay cost split |
 | Payments | `payments.html` | `js/payments.js` | `css/payments.css` | Splits, settlement, paid ledger |
 
 Shared files (coordinate before editing): `data.js`, `styles.css`,
@@ -43,7 +42,7 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   still shown in splits (with a ✓ in the ledger) but netted out of the
   settlement table (e.g. Albin + Scott paid Ehsan for flights).
 - `null` = TBD. Render as "TBD", exclude from all math.
-- `sleeps` on a hotel cost = bed capacity; the Hotels tab compares it
+- `sleeps` on a hotel cost = bed capacity; the Bookings tab compares it
   to the leg's headcount and flags shortfalls.
 - Excluded from the group split: Sam's Tailor (personal spend). Flights
   are fronted by Ehsan and sit on `hk1` so they split across 7 — Kevin

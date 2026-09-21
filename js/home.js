@@ -102,11 +102,10 @@
       desc: "Day-by-day plan, where we're sleeping, and checklists." },
     { href: "map.html", title: "Map",
       desc: "Every pin on the plan — works in mainland China." },
-    { href: "hotels.html", title: "Hotels",
-      desc: "Who sleeps in each hotel, night by night." },
     { href: "bookings.html", title: "Bookings",
-      desc: toBook === 0 ? "Everything is booked."
-        : toBook + (toBook === 1 ? " thing still needs" : " things still need") + " booking." },
+      desc: (toBook === 0 ? "Everything is booked."
+        : toBook + (toBook === 1 ? " thing still needs" : " things still need") + " booking.")
+        + " Plus who sleeps where, night by night." },
     { href: "payments.html", title: "Payments",
       desc: "Per-leg splits and who owes whom." },
   ];
