@@ -1,9 +1,24 @@
 /* Days page (days.html) — page-specific styles only.
    Shared styles live in ../styles.css. Prefix new classes with .day- */
 
-/* Horizontal swipe on the card; vertical scroll stays native. */
-.day-detail {
+/* Horizontal swipe on the card; vertical scroll stays native.
+   (Not on .day-detail — pan-y on the card would block sideways
+   map drags inside .day-map.) */
+.checklist {
   touch-action: pan-y;
+}
+
+/* Embedded per-day map — Leaflet needs full touch control, and its
+   panes must stay under the fixed tab bar. */
+.day-map {
+  height: 15rem;
+  margin: 0.75rem 0;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  background: var(--surface);
+  position: relative;
+  z-index: 0;
+  touch-action: none;
 }
 
 .day-head {

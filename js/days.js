@@ -67,6 +67,7 @@
   var chipProgs = [];
   var progressEl = null;
   var current = 0;
+  var dayMap = null;
 
   function refreshProgress(i) {
     var day = TRIP.days[i];
@@ -112,6 +113,27 @@
       stay.appendChild(bookLink);
     }
     detail.appendChild(stay);
+
+    // Mini map of this day's pins (needs Leaflet + GeoKit on the page).
+    if (dayMap) { dayMap.remove(); dayMap = null; }
+    var pins = (TRIP.places || []).filter(function (p) {
+      return window.GeoKit && GeoKit.onDay(p, day.date);
+    });
+    if (pins.length && window.L && window.GeoKit) {
+      var mapDiv = el("div", "day-map");
+      detail.appendChild(mapDiv);
+      dayMap = L.map(mapDiv, { scrollWheelZoom: false });
+      L.tileLayer(GeoKit.TILE_URL, GeoKit.TILE_OPTS).addTo(dayMap);
+      var pts = [];
+      pins.forEach(function (p) {
+        var ll = GeoKit.gcj(p.lat, p.lng);
+        L.marker(ll, { icon: GeoKit.pinIcon(p.leg) })
+          .addTo(dayMap).bindPopup(GeoKit.popup(p));
+        pts.push(ll);
+      });
+      if (pts.length === 1) dayMap.setView(pts[0], 14);
+      else dayMap.fitBounds(L.latLngBounds(pts).pad(0.25));
+    }
 
     if (day.checklist.length) {
       var ul = el("ul", "checklist");
@@ -159,15 +181,19 @@
   });
   TRIP.days.forEach(function (_, i) { refreshProgress(i); });
 
-  // Swipe left/right on the detail card to move between days.
+  // Swipe left/right on the detail card to move between days —
+  // but not when the touch started on the embedded map.
   var touchX = 0;
   var touchY = 0;
+  var swipeOK = true;
   detail.addEventListener("touchstart", function (e) {
     var t = e.changedTouches[0];
+    swipeOK = !(e.target.closest && e.target.closest(".day-map"));
     touchX = t.clientX;
     touchY = t.clientY;
   }, { passive: true });
   detail.addEventListener("touchend", function (e) {
+    if (!swipeOK) return;
     var t = e.changedTouches[0];
     var dx = t.clientX - touchX;
     var dy = t.clientY - touchY;
