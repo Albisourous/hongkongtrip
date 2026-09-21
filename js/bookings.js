@@ -27,7 +27,7 @@
 
   // ---- Action items -------------------------------------------------------
 
-  const REQUIRED_CATS = ["Visa/legal", "HSR", "Ferry SZ→Macau", "Ferry Macau→HK"];
+  const REQUIRED_CATS = ["Visa/legal", "HSR", "Ferry SZ→Macau", "Bus Macau→HK"];
 
   const hotelItem = c => ({
     id: c.id, urgent: true, legs: [c.leg],
@@ -41,7 +41,7 @@
   const transit = res("Visa/legal");
   const hsr = res("HSR");
   const ferryIn = res("Ferry SZ→Macau");
-  const ferryOut = res("Ferry Macau→HK");
+  const busOut = res("Bus Macau→HK");
   const walled = (day("Sep 27").checklist || []).find(i => /walled city/i.test(i.task)) || {};
 
   // Hotels whose bed count can't cover their leg's headcount.
@@ -117,12 +117,12 @@
       url: ferryIn.url, linkLabel: ferryIn.linkLabel,
     },
     {
-      id: "ferry-mo-hk", urgent: true, legs: ["hk2"],
-      title: "Ferry · Macau → Hong Kong",
-      cost: ferryOut.cost,
-      when: `${dayNote("Oct 2", "ferry") || "Book ahead"} Travel Oct 2`,
-      why: ferryOut.detail,
-      url: ferryOut.url, linkLabel: ferryOut.linkLabel,
+      id: "bus-mo-hk", urgent: true, legs: ["hk2"],
+      title: "HZMB bus · Macau → HKIA",
+      cost: busOut.cost,
+      when: "Travel Oct 2 · no pre-booking needed (Airport Direct coach optional)",
+      why: busOut.detail,
+      url: busOut.url, linkLabel: busOut.linkLabel,
     },
     {
       id: "walled-city", urgent: true, legs: ["hk1"],
