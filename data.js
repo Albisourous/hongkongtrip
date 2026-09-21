@@ -238,7 +238,7 @@ const TRIP = {
     { name: "Sino Centre + In's Point", leg: "hk1", cat: "shop", day: "Sep 27", lat: 22.3170, lng: 114.1700, note: "anime/figures" },
     { name: "Mid-Levels Escalator", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2837, lng: 114.1548, note: "Chungking Express" },
     { name: "Peak Tram — Garden Rd terminus", leg: "hk1", cat: "move", day: "Sep 27", lat: 22.2778, lng: 114.1594, note: "timed ticket" },
-    { name: "Lugard Rd lookout", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2711, lng: 114.1496, note: "sunset → night skyline" },
+    { name: "Lugard Rd lookout", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2783175, lng: 114.1465622, note: "sunset → night skyline" },
     { name: "Lan Kwai Fong", leg: "hk1", cat: "eat", day: "Sep 27", lat: 22.2809, lng: 114.1553, note: "night out" },
     { name: "West Kowloon HSR station", leg: "hk1", cat: "move", day: "Sep 28", lat: 22.3034, lng: 114.1650 },
 
