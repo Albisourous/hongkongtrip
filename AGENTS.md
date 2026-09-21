@@ -18,6 +18,7 @@ and shares the fixed bottom tab nav (`.tabs`).
 |---|---|---|---|---|
 | Home | `index.html` | `js/home.js` | `css/home.css` | What/where/when, leg cards, roster |
 | Days | `days.html` | `js/days.js` | `css/days.css` | Day-by-day plan, swipe, checklists |
+| Map | `map.html` | `js/map.js` | `css/map.css` | Interactive POI map (Leaflet + Amap tiles) |
 | Hotels | `hotels.html` | `js/hotels.js` | `css/hotels.css` | Who sleeps where + per-stay cost split |
 | Bookings | `bookings.html` | `js/bookings.js` | `css/bookings.css` | What still needs booking + checkable reminders (red) |
 | Payments | `payments.html` | `js/payments.js` | `css/payments.css` | Splits, settlement, paid ledger |
@@ -62,9 +63,16 @@ checklist logic can be recovered with `git show aec6870:app.js`.
 
 ## Conventions
 
-- Vanilla HTML/CSS/JS only. No dependencies, no build, no external assets.
+- Vanilla HTML/CSS/JS only. No dependencies, no build, no external assets —
+  the one exception is `vendor/leaflet/` (Leaflet 1.9.4 vendored for the Map
+  page so nothing loads from a CDN).
 - Pages build DOM via `createElement`/`textContent` — never `innerHTML`
   with data values.
+- The Map page uses Amap raster tiles (`webrd0{1-4}.is.autonavi.com`,
+  `lang=zh_en` bilingual) — the only mainstream basemap reachable on
+  mainland networks without an API key. `TRIP.places` coords are WGS-84;
+  `js/map.js` converts them to GCJ-02 ("Mars coordinates") so pins align
+  with the shifted mainland tiles.
 - Money is USD, `$` + `toFixed(2)`, `.money` class, tabular numerals.
 - `TRIP.days` holds per-day plans: `stay`, `notes` (timing/booking
   warnings), and `checklist` — the full time-ordered itinerary as `{t,

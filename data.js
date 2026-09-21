@@ -214,6 +214,83 @@ const TRIP = {
       why: "Late Sep is still typhoon season — check HKO/CMA warnings; flights and the Shekou/Macau ferries can be delayed or cancelled." },
   ],
 
+  // Points of interest for the Map page. lat/lng are WGS-84 — map.js
+  // converts to GCJ-02 so pins align with the Amap (mainland) tiles.
+  places: [
+    // Hong Kong — hk1
+    { name: "Airbnb — Onward Building, 528 Nathan Rd", leg: "hk1", cat: "stay", day: "Sep 25–28", lat: 22.3119, lng: 114.1706, note: "Yau Ma Tei · home base" },
+    { name: "Yau Ma Tei Wholesale Fruit Market", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.3121, lng: 114.1678 },
+    { name: "Chungking Mansions", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.2966, lng: 114.1722, note: "Chungking Express / Fallen Angels" },
+    { name: "Cheung Hing Kee pan-fried buns", leg: "hk1", cat: "eat", day: "Sep 25", lat: 22.2981, lng: 114.1737, note: "Lock Rd, TST · Michelin Bib" },
+    { name: "Sam's Tailor — Burlington House", leg: "hk1", cat: "shop", day: "Sep 25 + Oct 2", lat: 22.2980, lng: 114.1721 },
+    { name: "Star Ferry pier + TST harbourfront", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.2937, lng: 114.1687 },
+    { name: "Victoria Park lantern carnival", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.2817, lng: 114.1891, note: "Mid-Autumn Festival" },
+    { name: "Tai Hang Fire Dragon Dance", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.2790, lng: 114.1920 },
+    { name: "Sham Shui Po — Apliu St", leg: "hk1", cat: "shop", day: "Sep 26", lat: 22.3294, lng: 114.1620 },
+    { name: "Golden Computer Arcade", leg: "hk1", cat: "shop", day: "Sep 26", lat: 22.3305, lng: 114.1616 },
+    { name: "Shek O beach + village", leg: "hk1", cat: "see", day: "Sep 26 (opt)", lat: 22.2305, lng: 114.2500 },
+    { name: "Mong Kok neon walk — Sai Yeung Choi St", leg: "hk1", cat: "see", day: "Sep 26", lat: 22.3169, lng: 114.1698, note: "Fallen Angels territory" },
+    { name: "Temple St Night Market", leg: "hk1", cat: "see", day: "Sep 26", lat: 22.3097, lng: 114.1702 },
+    { name: "Kowloon Walled City Park", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.3320, lng: 114.1870, note: "exhibition — timed ticket" },
+    { name: "Chi Lin Nunnery + Nan Lian Garden", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.3407, lng: 114.2054 },
+    { name: "Kowloon City — Thai lunch", leg: "hk1", cat: "eat", day: "Sep 27", lat: 22.3305, lng: 114.1868 },
+    { name: "Sneaker St — Fa Yuen St", leg: "hk1", cat: "shop", day: "Sep 27", lat: 22.3187, lng: 114.1703 },
+    { name: "Sino Centre + In's Point", leg: "hk1", cat: "shop", day: "Sep 27", lat: 22.3170, lng: 114.1700, note: "anime/figures" },
+    { name: "Mid-Levels Escalator", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2837, lng: 114.1548, note: "Chungking Express" },
+    { name: "Peak Tram — Garden Rd terminus", leg: "hk1", cat: "move", day: "Sep 27", lat: 22.2778, lng: 114.1594, note: "timed ticket" },
+    { name: "Lugard Rd lookout", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2711, lng: 114.1496, note: "sunset → night skyline" },
+    { name: "Lan Kwai Fong", leg: "hk1", cat: "eat", day: "Sep 27", lat: 22.2809, lng: 114.1553, note: "night out" },
+    { name: "West Kowloon HSR station", leg: "hk1", cat: "move", day: "Sep 28", lat: 22.3034, lng: 114.1650 },
+
+    // Guangzhou — gz
+    { name: "Grand Hyatt Guangzhou", leg: "gz", cat: "stay", day: "Sep 28–29", lat: 23.1165, lng: 113.3244, note: "Zhujiang New Town" },
+    { name: "Xiajiao Mei 虾饺妹 dim sum", leg: "gz", cat: "eat", day: "Sep 28", lat: 23.1145, lng: 113.2615, note: "Haizhu Plaza" },
+    { name: "Beijing Rd pedestrian street", leg: "gz", cat: "see", day: "Sep 28", lat: 23.1225, lng: 113.2650, note: "ancient road under glass" },
+    { name: "Kinbo + Zhanxi markets", leg: "gz", cat: "shop", day: "Sep 28", lat: 23.1487, lng: 113.2570, note: "by GZ Railway Stn · bargain hard" },
+    { name: "Tianzi Pier — Pearl River cruise", leg: "gz", cat: "see", day: "Sep 28", lat: 23.1163, lng: 113.2670 },
+    { name: "Shamian Island", leg: "gz", cat: "see", day: "Sep 29", lat: 23.1083, lng: 113.2403 },
+    { name: "Chen Clan Academy", leg: "gz", cat: "see", day: "Sep 29", lat: 23.1209, lng: 113.2461 },
+    { name: "Yongqingfang + Bruce Lee home", leg: "gz", cat: "see", day: "Sep 29", lat: 23.1159, lng: 113.2396 },
+    { name: "Liwan Lake Park", leg: "gz", cat: "see", day: "Sep 29", lat: 23.1248, lng: 113.2390 },
+    { name: "Canton Tower + Huacheng Sq", leg: "gz", cat: "see", day: "Sep 29", lat: 23.1066, lng: 113.3246 },
+    { name: "Guangzhou East station", leg: "gz", cat: "move", day: "Sep 29", lat: 23.1497, lng: 113.3248 },
+    { name: "Guangzhou South station", leg: "gz", cat: "move", day: "Sep 28", lat: 22.9870, lng: 113.2685 },
+
+    // Shenzhen — sz
+    { name: "Hyatt Place Dongmen", leg: "sz", cat: "stay", day: "Sep 29–Oct 1", lat: 22.5425, lng: 114.1180, note: "Laojie MTR exit H" },
+    { name: "Dongmen pedestrian street", leg: "sz", cat: "shop", day: "Sep 29–30", lat: 22.5440, lng: 114.1185 },
+    { name: "Huaqiangbei / SEG electronics", leg: "sz", cat: "shop", day: "Sep 30", lat: 22.5445, lng: 114.0855 },
+    { name: "MOCAUP — art + urban planning museum", leg: "sz", cat: "see", day: "Sep 30", lat: 22.5410, lng: 114.0579 },
+    { name: "Bijiashan Park + UpperHills", leg: "sz", cat: "see", day: "Sep 30", lat: 22.5618, lng: 114.0780 },
+    { name: "DJI flagship — OCT Harbour", leg: "sz", cat: "tech", day: "Sep 30", lat: 22.5280, lng: 113.9845, note: "drone cages + RoboMaster" },
+    { name: "Haus Nowhere — Gentle Monster", leg: "sz", cat: "shop", day: "Sep 30", lat: 22.5170, lng: 113.9380 },
+    { name: "Talent Park — drone coffee + robotaxi", leg: "sz", cat: "tech", day: "Sep 30", lat: 22.5097, lng: 113.9450 },
+    { name: "Shenzhen Bay boardwalk", leg: "sz", cat: "see", day: "Sep 30", lat: 22.4970, lng: 113.9660, note: "Golden Week drone show" },
+    { name: "COCO Park", leg: "sz", cat: "eat", day: "Sep 30", lat: 22.5345, lng: 114.0530 },
+    { name: "OCT-LOFT / Nantou (fallback)", leg: "sz", cat: "see", day: "Sep 30", lat: 22.5360, lng: 113.9880 },
+    { name: "Shekou Cruise Homeport", leg: "sz", cat: "move", day: "Oct 1", lat: 22.4679, lng: 113.9048, note: "ferry → Macau" },
+    { name: "Futian station", leg: "sz", cat: "move", day: "Sep 28", lat: 22.5390, lng: 114.0530 },
+
+    // Macau — mo
+    { name: "Casa Real Hotel", leg: "mo", cat: "stay", day: "Oct 1–2", lat: 22.1953, lng: 113.5530 },
+    { name: "Macau Outer Harbour ferry terminal", leg: "mo", cat: "move", day: "Oct 1", lat: 22.1972, lng: 113.5590 },
+    { name: "Red Market", leg: "mo", cat: "see", day: "Oct 1 (opt)", lat: 22.2035, lng: 113.5470 },
+    { name: "Ruins of St Paul's + Mount Fortress", leg: "mo", cat: "see", day: "Oct 1", lat: 22.1976, lng: 113.5408 },
+    { name: "Senado Square", leg: "mo", cat: "see", day: "Oct 1", lat: 22.1937, lng: 113.5397 },
+    { name: "Rua da Felicidade", leg: "mo", cat: "eat", day: "Oct 1", lat: 22.1940, lng: 113.5380, note: "Macanese street food" },
+    { name: "Margaret's Café e Nata", leg: "mo", cat: "eat", day: "Oct 2", lat: 22.1927, lng: 113.5412, note: "egg tarts" },
+    { name: "Grand Lisboa — free Cotai shuttle", leg: "mo", cat: "move", day: "Oct 1", lat: 22.1907, lng: 113.5448 },
+    { name: "Venetian / Londoner", leg: "mo", cat: "see", day: "Oct 1", lat: 22.1480, lng: 113.5600 },
+    { name: "Studio City", leg: "mo", cat: "see", day: "Oct 1", lat: 22.1407, lng: 113.5680 },
+    { name: "Galaxy Macau", leg: "mo", cat: "see", day: "Oct 1", lat: 22.1435, lng: 113.5520 },
+
+    // Hong Kong airport — hk2
+    { name: "China Ferry Terminal, TST", leg: "hk2", cat: "move", day: "Oct 2", lat: 22.2994, lng: 114.1676, note: "Macau ferry arrives here" },
+    { name: "Citygate Outlets", leg: "hk2", cat: "shop", day: "Oct 2 (opt)", lat: 22.2897, lng: 113.9414 },
+    { name: "SkyCity Marriott", leg: "hk2", cat: "stay", day: "Oct 2–3", lat: 22.3124, lng: 113.9374 },
+    { name: "Hong Kong Intl Airport", leg: "hk2", cat: "move", day: "Oct 3", lat: 22.3080, lng: 113.9185, note: "DL0088 9:25am" },
+  ],
+
   flights: {
     note: "Fronted by Ehsan (Delta Main Basic) — $456/person confirmed; Kevin Li paid his own, so it splits across the other 8.",
     out: "DL2861 SEA→LAX + DL0089 LAX→HKG",

@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Payments · HK · Guangzhou · Shenzhen · Macau 2026</title>
+  <title>Map — HK · GZ · SZ · Macau 2026</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="css/payments.css">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/map.css">
 </head>
 <body>
   <main class="container" id="app"></main>
@@ -13,15 +14,15 @@
   <nav class="tabs">
     <a href="index.html">Home</a>
     <a href="days.html">Days</a>
-    <a href="map.html">Map</a>
+    <a href="map.html" aria-current="page">Map</a>
     <a href="hotels.html">Hotels</a>
     <a href="bookings.html">Bookings</a>
-    <a href="payments.html" aria-current="page">Payments</a>
+    <a href="payments.html">Payments</a>
   </nav>
 
   <noscript><p class="noscript">This site needs JavaScript. Trip data lives in <code>data.js</code>.</p></noscript>
   <script src="data.js"></script>
-  <script src="js/sync.js"></script>
-  <script src="js/payments.js"></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/map.js"></script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+/* Map page (map.html) — page-specific styles only.
+   Shared styles live in ../styles.css. Prefix new classes with .map- */
+
+#map {
+  height: 62vh;
+  min-height: 22rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  margin: 0 0 1rem;
+  /* keep Leaflet panes below the fixed tab bar */
+  z-index: 0;
+}
+
+#map.leaflet-container {
+  font: inherit;
+}
+
+.map-chips {
+  margin-bottom: 0.75rem;
+}
+
+/* Colored dot markers — color comes from the leg-* class via --leg */
+.map-pin {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  background: var(--leg, var(--accent));
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.map-pop-name {
+  margin: 0;
+  font-weight: 650;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.map-pop-meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.map-pop-note {
+  margin: 0.3rem 0 0;
+  font-size: 0.8rem;
+}
