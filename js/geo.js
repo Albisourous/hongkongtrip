@@ -73,6 +73,29 @@ window.GeoKit = (function () {
     });
   }
 
+  // "Open in maps" deep links — Apple/Google get the raw WGS-84 coords;
+  // Amap gets the GCJ-02-converted ones (its app speaks Mars coords) and
+  // callnative=1 hands off to the installed app — the reliable pick in
+  // mainland China where Google Maps is blocked.
+  function mapLinks(p) {
+    var g = gcj(p.lat, p.lng);
+    var q = encodeURIComponent(p.name);
+    var links = el("p", "map-pop-links");
+    [
+      ["Apple", "https://maps.apple.com/?ll=" + p.lat + "," + p.lng + "&q=" + q],
+      ["Google", "https://www.google.com/maps/search/?api=1&query=" + p.lat + "," + p.lng],
+      ["Amap 高德", "https://uri.amap.com/marker?position=" + g[1] + "," + g[0] +
+        "&name=" + q + "&coordinate=gaode&callnative=1&src=tripmap"]
+    ].forEach(function (pair) {
+      var a = el("a", null, pair[0]);
+      a.href = pair[1];
+      a.target = "_blank";
+      a.rel = "noopener";
+      links.appendChild(a);
+    });
+    return links;
+  }
+
   // Popup content for a TRIP.places entry. Food names go green.
   function popup(p) {
     var pop = el("div", "map-pop");
@@ -81,6 +104,7 @@ window.GeoKit = (function () {
     pop.appendChild(el("p", "map-pop-meta",
       (CAT[p.cat] || p.cat) + " · " + legName(p.leg) + (p.day ? " · " + p.day : "")));
     if (p.note) pop.appendChild(el("p", "map-pop-note", p.note));
+    pop.appendChild(mapLinks(p));
     return pop;
   }
 
