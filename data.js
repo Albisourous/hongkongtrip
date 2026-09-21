@@ -93,7 +93,7 @@ const TRIP = {
     },
     {
       date: "Sep 29", day: "Tue", base: "Guangzhou → Shenzhen", stay: "Hyatt Place Shenzhen Dongmen (Laojie MTR) — all 6", legs: ["gz", "sz"],
-      notes: "Liwan walking day — everything through Liwan Lake sits within ~2 km. Bags stay at the Grand Hyatt; Canton Tower/Huacheng Sq is right by the hotel. Night HSR to Shenzhen — book it with the Sep 28 tickets. The Sep 29 SZ night still needs booking (~13,500 pts).",
+      notes: "Liwan walking day — everything through Liwan Lake sits within ~2 km. Bags stay at the Grand Hyatt; Canton Tower/Huacheng Sq is right by the hotel. Night HSR to Shenzhen — book it with the Sep 28 tickets.",
       checklist: [
         { t: "8:30am", task: "Dim sum — Guangzhou Restaurant or Dian Dou De" },
         { t: "10:00am", task: "Shamian Island — colonial streets" },
@@ -109,7 +109,7 @@ const TRIP = {
     },
     {
       date: "Sep 30", day: "Wed", base: "Shenzhen", stay: "Hyatt Place Shenzhen Dongmen (Laojie MTR) — all 6", legs: ["sz"],
-      notes: "Full Shenzhen day — both SZ nights at the Hyatt (Sep 30 booked, 13,500 pts; Sep 29 night still to book). Robotaxi needs a CN number or WeChat mini-program — fallback is a normal Didi. Watch for a Golden Week drone show over Shenzhen Bay.",
+      notes: "Full Shenzhen day — both SZ nights at the Hyatt Place Dongmen (booked, 13,500 pts each). Robotaxi needs a CN number or WeChat mini-program — fallback is a normal Didi. Watch for a Golden Week drone show over Shenzhen Bay.",
       checklist: [
         { t: "9:30am", task: "Huaqiangbei electronics markets — SEG + the component stalls" },
         { t: "12:00pm", task: "Lunch + OCT-LOFT / Nantou Old Town" },
