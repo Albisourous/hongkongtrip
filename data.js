@@ -244,6 +244,16 @@ const TRIP = {
     { name: "Lan Kwai Fong", leg: "hk1", cat: "eat", day: "Sep 27", lat: 22.2809, lng: 114.1553, note: "night out" },
     { name: "West Kowloon HSR station", leg: "hk1", cat: "move", day: "Sep 28", lat: 22.3034, lng: 114.1650 },
 
+    // Michelin-starred with veg options (all book-ahead)
+    { name: "Yat Tung Heen 逸東軒 — Eaton HK, Jordan", leg: "hk1", cat: "eat", day: "Sep 25–28 (opt)", lat: 22.3148, lng: 114.1713, note: "1★ Cantonese — veg + vegan dim sum · ~5 min from the Airbnb" },
+    { name: "Ming Court — Cordis, Mong Kok", leg: "hk1", cat: "eat", day: "Sep 27 (opt)", lat: 22.3169, lng: 114.1695, note: "Michelin-starred Cantonese — veg dishes · by Sneaker St" },
+    { name: "Yè Shanghai — Marco Polo, TST", leg: "hk1", cat: "eat", day: "Sep 25/27 (opt)", lat: 22.2948, lng: 114.1680, note: "1★ Shanghainese — kaofu, veg dumplings" },
+    { name: "Roganic — Lee Garden, Causeway Bay", leg: "hk1", cat: "eat", day: "Sep 25 (opt)", lat: 22.2797, lng: 114.1820, note: "1★ + Green ★ — veg tasting menu" },
+    { name: "Arcane — On Lan St, Central", leg: "hk1", cat: "eat", day: "Sep 27 (opt)", lat: 22.2813, lng: 114.1566, note: "1★ modern European — dedicated vegetarian menu" },
+    { name: "Feuille — Wellington St, Central", leg: "hk1", cat: "eat", day: "Sep 27 (opt)", lat: 22.2838, lng: 114.1553, note: "1★ + Green ★ — fully plant-based fine dining" },
+    { name: "Amber — Landmark Mandarin Oriental", leg: "hk1", cat: "eat", day: "Sep 27 (opt)", lat: 22.2804, lng: 114.1576, note: "3★ + Green ★ — veg mirror menus (~HK$2,058+)" },
+    { name: "Mora 摩 — Upper Lascar Row, Sheung Wan", leg: "hk1", cat: "eat", day: "Sep 27 (opt)", lat: 22.2854, lng: 114.1474, note: "1★ + Green ★ — tofu/soy-centric · veg menu needs 2 days notice" },
+
     // Guangzhou — gz
     { name: "Grand Hyatt Guangzhou", leg: "gz", cat: "stay", day: "Sep 28–29", lat: 23.1165, lng: 113.3244, note: "Zhujiang New Town" },
     { name: "Xiajiao Mei 虾饺妹 dim sum", leg: "gz", cat: "eat", day: "Sep 28", lat: 23.1145, lng: 113.2615, note: "Haizhu Plaza" },

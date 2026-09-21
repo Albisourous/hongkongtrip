@@ -98,7 +98,8 @@
     var m = L.marker(gcj(p.lat, p.lng), { icon: icon });
 
     var pop = el("div", "map-pop");
-    pop.appendChild(el("p", "map-pop-name", p.name));
+    pop.appendChild(el("p",
+      "map-pop-name" + (p.cat === "eat" ? " map-eat" : ""), p.name));
     pop.appendChild(el("p", "map-pop-meta",
       (CAT[p.cat] || p.cat) + " · " + legName(p.leg) + (p.day ? " · " + p.day : "")));
     if (p.note) pop.appendChild(el("p", "map-pop-note", p.note));
