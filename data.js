@@ -377,7 +377,7 @@ const TRIP = {
   // sleeps: bed capacity on a hotel — the Hotels tab flags shortfalls.
   // No frontedBy => informational only (everyone pays their own).
   costs: [
-    { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 456, frontedBy: "ehsan", exclude: ["kli"], settled: ["albin", "scott", "kj"], status: "booked", note: "$456/person confirmed by Ehsan · Kevin Li paid his own — splits across the other 8 · Albin, Scott + KJ already paid Ehsan" },
+    { id: "flights", leg: "hk1", cat: "Flight", label: "Round-trip flights SEA ↔ HKG (Delta)", total: null, perPerson: 456, frontedBy: "ehsan", exclude: ["kli", "brendan"], settled: ["albin", "scott", "kj"], status: "booked", note: "$456/person confirmed by Ehsan · Kevin Li + Brendan paid their own — splits across the other 7 · Albin, Scott + KJ already paid Ehsan" },
     { id: "hk1-hotel", leg: "hk1", cat: "Hotel", label: "\"Our Sweet & Lovely Home\" 4BR Airbnb, Yau Ma Tei / Nathan Rd", total: 1158.19, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 7, note: "Airbnb HM8YRKN5XN · host Wing · Onward Building, 528 Nathan Rd · in after 2pm / out by 11am · A21 → Man Ming Lane stop or Yau Ma Tei MTR exit D · paid Aug 18 · sleeps 7 but 9 attend — confirm rooming", url: "https://www.airbnb.com/rooms/37172099", linkLabel: "Airbnb — listing" },
     { id: "gz-hotel", leg: "gz", cat: "Hotel", label: "Grand Hyatt Guangzhou — 2× Twin (Zhujiang New Town)", total: 357, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 6, note: "Hyatt confs 40023B27689039 + 40023B27689093 · 15,000 pts total (7,500/room — $357 @2.38cpp) · 45sqm twin, 2 singles, 3 adults/room → 6 beds for all 6 · Sep 28–29, in 3pm / out 12pm · 12 Zhujiang West Rd, by Canton Tower / Huacheng Sq · on Albin's Hyatt account", url: "https://www.hyatt.com/grand-hyatt/en-US/guagh-grand-hyatt-guangzhou", linkLabel: "Hyatt — Grand Hyatt Guangzhou" },
     { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "Hyatt Place Shenzhen Dongmen — Sep 30 night, 3× Specialty Twin (Laojie MTR, Luohu)", total: 321.30, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 6, note: "Hyatt confs 56229190 + 14228517 + 45139912 · 13,500 pts (4,500/room — $321.30 @2.38cpp) · Sep 30–Oct 1, in 3pm / out 12pm · Laojie MTR exit H, turn left · breakfast incl up to 2/room · Sep 29 night = separate booking (sz-hotel-2)", url: "https://www.hyatt.com/hyatt-place/en-US/szxzs-hyatt-place-shenzhen-dongmen", linkLabel: "Hyatt — Hyatt Place Dongmen" },
@@ -397,7 +397,7 @@ const TRIP = {
   notes: [
     "All six enter Guangzhou Sep 28 for one night, then night-train to Shenzhen Sep 29 for two nights. Ehsan & Scott solo; Brendan heads home.",
     "Kevin Li skips Macau — own transit back to HK Oct 1, rejoins the group for the airport leg (SkyCity Marriott + flight home).",
-    "Flights fronted by Ehsan — $456/person, split across everyone except Kevin Li (paid his own); Albin, Scott + KJ already settled.",
+    "Flights fronted by Ehsan — $456/person, split across everyone except Kevin Li + Brendan (paid their own); Albin, Scott + KJ already settled.",
     "Sam's Tailor is personal spend — excluded.",
     "Points bookings: record points used AND cash-equivalent so the fronter is reimbursed fairly.",
     "Split is per leg: each person owes (leg shared costs) / (people on that leg).",
