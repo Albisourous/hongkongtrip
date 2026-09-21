@@ -43,7 +43,7 @@ const TRIP = {
     },
     {
       date: "Sep 25", day: "Fri", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei", legs: ["hk1"],
-      notes: "Mid-Autumn Festival. Buy Octopus cards at the airport. Airbnb check-in after 2pm — store bags first (host offers luggage storage).",
+      notes: "Mid-Autumn Festival night — and Sep 26 is the public holiday, so nightlife goes big two nights running. Fire Dragon runs ~3 nights (festival eve → day after), so Sep 26 is a backup if tonight fizzles. Lee Tung Avenue (Wan Chai) keeps a lantern display lit all festival week — photogenic at night. Buy Octopus cards at the airport. Airbnb check-in after 2pm — store bags first (host offers luggage storage).",
       checklist: [
         { t: "5:05am", task: "Land HKG · buy Octopus cards" },
         { t: "5:30am", task: "Bus A21 → Yau Ma Tei (~HK$34)" },
@@ -54,6 +54,7 @@ const TRIP = {
         { t: "5:45pm", task: "(opt) Monster Building (Yick Cheong) photo stop — Quarry Bay, 3 stops east of CWB; the stacked-facade IG shot" },
         { t: "7:00pm", task: "Victoria Park lantern carnival, Causeway Bay" },
         { t: "8:15pm", task: "Tai Hang Fire Dragon Dance — 5-min walk from Victoria Park", must: true },
+        { t: "late", task: "(opt) still up? festival night + holiday eve — LKF/Central bars go big (COA, Quinary, Iron Fairies) or karaoke at RedMR/Neway til late" },
       ],
     },
     {
@@ -67,6 +68,7 @@ const TRIP = {
         { t: "7:30pm", task: "(opt) Aqua Luna red-sail junk — boards TST Pier 1, sails through the 8pm Symphony of Lights (~45 min, ~HK$300) — Temple St still on after" },
         { t: "8:00pm", task: "Temple St Night Market — back in YMT by the Airbnb (or rooftop bar)" },
         { t: "late", task: "(opt) He-mu Spa 天沐·養生 — massage + sauna, Kimberley Rd TST, til 11pm · 9542 5956" },
+        { t: "late", task: "(opt) night-owl: Ozone bar, 118F ICC — world's highest bar (holiday Saturday) — or a RedMR/Neway karaoke room (~24h, priced per room)" },
       ],
     },
     {
@@ -81,7 +83,7 @@ const TRIP = {
         { t: "5:00pm", task: "MTR → Central — Mid-Levels Escalator (Chungking Express) on the way · Peak Tram up (arrive ~5:45 for golden hour)" },
         { t: "6:15pm", task: "Lugard Rd lookout — sunset → night skyline photo (~20-min walk each way)", must: true },
         { t: "8:00pm", task: "Tram down → Central — Symphony of Lights is visible from the Peak anyway" },
-        { t: "9:00pm", task: "LKF night out — walkable from the tram terminus" },
+        { t: "9:00pm", task: "LKF night out — COA (Asia's-50-Best #1 bar, expect a queue) · Quinary · Iron Fairies · clubs til late — walkable from the tram terminus" },
       ],
     },
     {
@@ -240,12 +242,15 @@ const TRIP = {
     { name: "Victoria Park lantern carnival", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.2817, lng: 114.1891, note: "Mid-Autumn Festival" },
     { name: "Tai Hang Fire Dragon Dance", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.2790, lng: 114.1920 },
     { name: "Monster Building — Yick Cheong, Quarry Bay", leg: "hk1", cat: "see", day: "Sep 25 (opt)", lat: 22.2844, lng: 114.2123, note: "stacked-facade photo spot" },
+    { name: "Lee Tung Avenue — lantern street", leg: "hk1", cat: "see", day: "Sep 25–27 (opt)", lat: 22.2768, lng: 114.1709, note: "Wan Chai · Mid-Autumn lantern display lit all week" },
     { name: "Sham Shui Po — Apliu St", leg: "hk1", cat: "shop", day: "Sep 26", lat: 22.3294, lng: 114.1620 },
     { name: "Golden Computer Arcade", leg: "hk1", cat: "shop", day: "Sep 26", lat: 22.3305, lng: 114.1616 },
     { name: "Shek O beach + village", leg: "hk1", cat: "see", day: "Sep 26 (opt)", lat: 22.2305, lng: 114.2500 },
     { name: "Mong Kok neon walk — Sai Yeung Choi St", leg: "hk1", cat: "see", day: "Sep 26", lat: 22.3169, lng: 114.1698, note: "Fallen Angels territory" },
     { name: "Temple St Night Market", leg: "hk1", cat: "see", day: "Sep 26", lat: 22.3097, lng: 114.1702 },
     { name: "He-mu Spa 天沐·養生", leg: "hk1", cat: "see", day: "Sep 26 (opt)", lat: 22.3008, lng: 114.1757, note: "massage + sauna · Kimberley Rd, TST · 12pm–11pm" },
+    { name: "Ozone — 118F ICC", leg: "hk1", cat: "eat", day: "Sep 26 (opt)", lat: 22.3035, lng: 114.1601, note: "world's highest bar" },
+    { name: "RedMR karaoke — TST", leg: "hk1", cat: "see", day: "Sep 25/26 (opt)", lat: 22.3002, lng: 114.1735, note: "~24h rooms · Knutsford Terrace area" },
     { name: "Kowloon Walled City Park", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.3320, lng: 114.1870, note: "exhibition — timed ticket" },
     { name: "Chi Lin Nunnery + Nan Lian Garden", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.3407, lng: 114.2054 },
     { name: "Choi Hung Estate — rainbow court", leg: "hk1", cat: "see", day: "Sep 27 (opt)", lat: 22.3349, lng: 114.2075, note: "the classic IG basketball court" },
@@ -255,7 +260,7 @@ const TRIP = {
     { name: "Mid-Levels Escalator", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2837, lng: 114.1548, note: "Chungking Express" },
     { name: "Peak Tram — Garden Rd terminus", leg: "hk1", cat: "move", day: "Sep 27", lat: 22.2778, lng: 114.1594, note: "timed ticket" },
     { name: "Lugard Rd lookout", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2783175, lng: 114.1465622, note: "sunset → night skyline" },
-    { name: "Lan Kwai Fong", leg: "hk1", cat: "eat", day: "Sep 27", lat: 22.2809, lng: 114.1553, note: "night out" },
+    { name: "Lan Kwai Fong", leg: "hk1", cat: "eat", day: "Sep 25/27", lat: 22.2809, lng: 114.1553, note: "COA · Quinary · Iron Fairies · clubs" },
     { name: "West Kowloon HSR station", leg: "hk1", cat: "move", day: "Sep 28", lat: 22.3034, lng: 114.1650 },
 
     // Michelin-starred with veg options (all book-ahead)

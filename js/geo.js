@@ -89,6 +89,11 @@ window.GeoKit = (function () {
   var ORD = { Sep: 0, Oct: 30 };
   function onDay(place, dateStr) {
     var spec = place.day || "";
+    // expand slash-lists that share a month: "Sep 25/27" → "Sep 25/Sep 27"
+    spec = spec.replace(/([A-Za-z]{3}\s*\d{1,2})((?:\s*\/\s*\d{1,2})+)/g,
+      function (all, head, tails) {
+        return head + tails.replace(/\d{1,2}/g, head.slice(0, 3) + " $&");
+      });
     if (spec.indexOf(dateStr) !== -1) return true;
     var m = spec.match(/([A-Za-z]{3})\s*(\d{1,2})\s*[–-]\s*([A-Za-z]{3})?\s*(\d{1,2})/);
     if (!m) return false;
