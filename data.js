@@ -137,7 +137,6 @@ const TRIP = {
         { t: "7:45am", task: "Metro Laojie → Shekou Port (~55 min) — or 2 Didis ~¥90/cab" },
         { t: "9:15am", task: "Arrive port 45 min early · ferry → Macau Outer Harbour (~60–70 min)", must: true },
         { t: "10:45am", task: "5-min taxi/shuttle → Casa Real, drop bags" },
-        { t: "11:15am", task: "(opt) Red Market wet market — ~15 min NW of the hotel" },
         { t: "12:00pm", task: "Ruins of St Paul's + Mount Fortress" },
         { t: "1:30pm", task: "Senado Sq → Rua da Felicidade — Macanese street-food lunch (ask for 斋 zhai)" },
         { t: "4:00pm", task: "A-Ma Temple + Barra waterfront — ~20-min walk south" },
@@ -288,7 +287,6 @@ const TRIP = {
     // Macau — mo
     { name: "Casa Real Hotel", leg: "mo", cat: "stay", day: "Oct 1–2", lat: 22.1953, lng: 113.5530 },
     { name: "Macau Outer Harbour ferry terminal", leg: "mo", cat: "move", day: "Oct 1", lat: 22.1972, lng: 113.5590 },
-    { name: "Red Market", leg: "mo", cat: "see", day: "Oct 1 (opt)", lat: 22.2035, lng: 113.5470 },
     { name: "Ruins of St Paul's + Mount Fortress", leg: "mo", cat: "see", day: "Oct 1", lat: 22.1976, lng: 113.5408 },
     { name: "Senado Square", leg: "mo", cat: "see", day: "Oct 1", lat: 22.1937, lng: 113.5397 },
     { name: "Rua da Felicidade", leg: "mo", cat: "eat", day: "Oct 1", lat: 22.1940, lng: 113.5380, note: "Macanese street food" },
