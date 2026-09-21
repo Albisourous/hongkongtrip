@@ -1,0 +1,78 @@
+/* Bingo page */
+
+.bingo-banner {
+  margin: 0 0 .4rem;
+  padding: .45rem .7rem;
+  border-radius: .5rem;
+  background: var(--green-bg);
+  color: var(--green);
+  font-weight: 700;
+  text-align: center;
+}
+
+.bingo-progress {
+  margin: 0 0 .75rem;
+  color: var(--muted);
+  font-size: .85rem;
+  text-align: center;
+}
+
+.bingo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .4rem;
+}
+
+.bingo-cell {
+  position: relative;
+  aspect-ratio: 1;
+  padding: .3rem;
+  border: 1px solid var(--border);
+  border-radius: .5rem;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: .62rem;
+  line-height: 1.25;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .15rem;
+  text-align: center;
+  hyphens: auto;
+  transition: background .15s, border-color .15s, transform .08s;
+}
+.bingo-cell:active { transform: scale(.96); }
+
+.bingo-check {
+  height: 1em;
+  font-weight: 800;
+  color: var(--green);
+  font-size: .95rem;
+}
+
+.bingo-cell-done {
+  background: var(--green-bg);
+  border-color: var(--green);
+}
+.bingo-cell-done .bingo-text { text-decoration: line-through; opacity: .75; }
+
+.bingo-cell-star {
+  border: 2px solid var(--amber);
+  background: var(--amber-bg);
+  font-weight: 700;
+}
+.bingo-cell-star.bingo-cell-done {
+  background: var(--green-bg);
+  border-color: var(--green);
+}
+
+.bingo-cell-win {
+  box-shadow: 0 0 0 2px var(--accent) inset;
+}
+
+@media (max-width: 26rem) {
+  .bingo-cell { font-size: .55rem; }
+}

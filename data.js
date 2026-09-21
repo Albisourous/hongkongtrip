@@ -334,6 +334,36 @@ const TRIP = {
     { name: "Hong Kong Intl Airport", leg: "hk2", cat: "move", day: "Oct 3", lat: 22.3080, lng: 113.9185, note: "DL0088 9:25am" },
   ],
 
+  // 5×5 trip bingo — center (index 12) is the signature star pose.
+  // Square state persists as hkbingo:{index} (syncs like hkcheck/hkbooked).
+  bingo: [
+    "Star Ferry harbour crossing",
+    "Drone-delivered coffee — Talent Park",
+    "Pony.ai robotaxi ride",
+    "Fly a drone in the DJI flagship cage",
+    "Bargain a market find under ¥100",
+    "Egg tart taste test — Margaret's vs Lord Stow's",
+    "Dim sum until the table surrenders",
+    "Choi Hung rainbow court photo",
+    "Monster Building stacked shot",
+    "Baiyun Mountain zipline descent",
+    "268 steps up to the Big Buddha",
+    "Ngong Ping 360 cabin ride",
+    "⭐ THE STAR POSE — all 9, auntie formation",
+    "Symphony of Lights from the harbour",
+    "Weirdest Huaqiangbei gadget found",
+    "Temple St fortune teller or odd souvenir",
+    "Karaoke room session",
+    "Group spa/massage stop",
+    "Hanfu dress-up at Yongqingfang",
+    "Tai Hang Fire Dragon sighting",
+    "Order a 斋 (zhai) Buddhist veg dish",
+    "Sneaker St pickup nobody needed",
+    "Liar's dice / cards on a train leg",
+    "Golden Week drone show over SZ Bay",
+    "Indoor karting — loser buys HeyTea",
+  ],
+
   flights: {
     note: "Fronted by Ehsan (Delta Main Basic) — $456/person confirmed; Kevin Li paid his own, so it splits across the other 8.",
     out: "DL2861 SEA→LAX + DL0089 LAX→HKG",
