@@ -37,8 +37,8 @@ const TRIP = {
       notes: "Redeye over the Pacific.",
       checklist: [
         { t: "3:00pm", task: "SEA — check bags through to HKG" },
-        { t: "5:40pm", task: "DL2861 SEA → LAX", must: true },
-        { t: "evening", task: "DL0089 LAX → HKG — sleep on the plane" },
+        { t: "5:40pm", task: "DL281 SEA → LAX", must: true },
+        { t: "evening", task: "DL0089 LAX → HKG (2h28m layover) — sleep on the plane" },
       ],
     },
     {
@@ -179,7 +179,7 @@ const TRIP = {
         { t: "6:00am", task: "Wake · free shuttle → HKG T1" },
         { t: "7:00am", task: "Check in / security" },
         { t: "7:45am", task: "(opt) Free mahjong-tile souvenir — HKG giveaway counter in departures, while it lasts" },
-        { t: "9:25am", task: "DL0088 HKG → LAX → DL1714 → SEA", must: true },
+        { t: "9:25am", task: "DL0088 HKG → LAX → DL304 → SEA — 1h58m LAX connection, don't linger", must: true },
       ],
     },
   ],
@@ -338,9 +338,9 @@ const TRIP = {
   ],
 
   flights: {
-    note: "Fronted by Ehsan (Delta Main Basic) — $456/person confirmed; Kevin Li paid his own, so it splits across the other 8.",
-    out: "DL2861 SEA→LAX + DL0089 LAX→HKG",
-    back: "DL0088 HKG→LAX + DL1714 LAX→SEA",
+    note: "Fronted by Ehsan (Delta Main Basic) — $456/person confirmed; Kevin Li + Brendan paid their own, so it splits across the other 7. Rebooked: SEA→LAX is now DL281, LAX→SEA now DL304 (1h58m layover after the schedule change).",
+    out: "DL281 SEA→LAX + DL0089 LAX→HKG",
+    back: "DL0088 HKG→LAX + DL304 LAX→SEA",
   },
 
   // frontedBy set => contributes to settlement. total => split evenly among
