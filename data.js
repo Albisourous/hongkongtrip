@@ -97,11 +97,11 @@ const TRIP = {
     },
     {
       date: "Sep 29", day: "Tue", base: "Guangzhou → Shenzhen", stay: "Hyatt Place Shenzhen Dongmen (Laojie MTR) — all 6", legs: ["gz", "sz"],
-      notes: "Baiyun Mountain in the morning — cableway runs ~9:00–18:00 from Yuntai Garden (south gate), Didi ~30 min each way. Liwan loop compressed to Shamian → Shangxiajiu → Yongqingfang on foot; Chen Clan Academy, Guangxiao Temple and Liwan Lake become optional. Bags stay at the Grand Hyatt; Canton Tower is right by the hotel. Night HSR to Shenzhen — book it with the Sep 28 tickets.",
+      notes: "Baiyun Mountain in the morning — cableway runs ~9:00–18:00 from Yuntai Garden (south gate), Didi ~30 min each way. The 白云飞索 zipline (1,500m, ~¥150–260, 10:00–18:30, stops selling ~17:00) runs down from near the cable-car top — cable up + zipline down is the play; combo tickets exist. Liwan loop compressed to Shamian → Shangxiajiu → Yongqingfang on foot; Chen Clan Academy, Guangxiao Temple and Liwan Lake become optional. Bags stay at the Grand Hyatt; Canton Tower is right by the hotel. Night HSR to Shenzhen — book it with the Sep 28 tickets.",
       checklist: [
         { t: "8:00am", task: "Dim sum — Guangzhou Restaurant or Dian Dou De" },
         { t: "9:00am", task: "Didi/taxi → Baiyun Mountain south gate, Yuntai Garden (~30 min)" },
-        { t: "9:30am", task: "Baiyun Mountain cable car up → Moxing Ridge summit views → cable car down (~2.5h)", must: true },
+        { t: "9:30am", task: "Baiyun Mountain: cable car up → Moxing Ridge views → 白云飞索 ZIPLINE down (~1.5km high-speed, ~¥150–260, buy at 荡胸亭 near the top; 40–90kg, ages 12–60)", must: true },
         { t: "12:30pm", task: "Taxi → Liwan · lunch — (opt) Guangxiao Temple veg, oldest temple in GZ" },
         { t: "2:00pm", task: "Shamian Island — colonial streets" },
         { t: "3:15pm", task: "Shangxiajiu pedestrian street — snack stroll north through Liwan (~15–20-min walk)" },
@@ -266,7 +266,7 @@ const TRIP = {
     { name: "Beijing Rd pedestrian street", leg: "gz", cat: "see", day: "Sep 28", lat: 23.1225, lng: 113.2650, note: "ancient road under glass" },
     { name: "Kinbo + Zhanxi markets", leg: "gz", cat: "shop", day: "Sep 28", lat: 23.1487, lng: 113.2570, note: "by GZ Railway Stn · bargain hard" },
     { name: "Tianzi Pier — Pearl River cruise", leg: "gz", cat: "see", day: "Sep 28", lat: 23.1163, lng: 113.2670 },
-    { name: "Baiyun Mountain cableway — Yuntai Garden", leg: "gz", cat: "see", day: "Sep 29", lat: 23.1831, lng: 113.2932, note: "cable car up → Moxing Ridge summit" },
+    { name: "Baiyun Mountain — cableway + 白云飞索 zipline", leg: "gz", cat: "see", day: "Sep 29", lat: 23.1831, lng: 113.2932, note: "cable car up → Moxing Ridge → zipline down (~1.5km)" },
     { name: "Shamian Island", leg: "gz", cat: "see", day: "Sep 29", lat: 23.1083, lng: 113.2403 },
     { name: "Shangxiajiu Pedestrian Street", leg: "gz", cat: "shop", day: "Sep 29", lat: 23.1179, lng: 113.2485, note: "snack stroll through Liwan" },
     { name: "Chen Clan Academy", leg: "gz", cat: "see", day: "Sep 29 (opt)", lat: 23.1209, lng: 113.2461 },
