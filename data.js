@@ -12,7 +12,7 @@ const TRIP = {
     { id: "ehsan", name: "Ehsan", legs: ["hk1", "mo", "hk2"] }, // solo in China
     { id: "scott", name: "Scott", legs: ["hk1", "mo", "hk2"] }, // same as Ehsan
     { id: "brendan", name: "Brendan", legs: ["hk1"] }, // first HK leg only
-    { id: "kli", name: "Kevin Li", legs: ["hk1", "gz", "sz", "hk2"] }, // skips Macau — own transit back to HK Oct 1, rejoins for the airport leg
+    { id: "kli", name: "Kevin Li", legs: ["hk1", "gz", "sz"] }, // skips Macau + the airport leg — own transit back to HK Oct 1, doesn't stay at SkyCity
     { id: "shruthik", name: "Shruthik", legs: ["hk1", "gz", "sz", "mo", "hk2"] },
     { id: "wesley", name: "Wesley", legs: ["hk1", "gz", "sz", "mo", "hk2"] },
   ],
@@ -356,7 +356,7 @@ const TRIP = {
     { id: "sz-hotel", leg: "sz", cat: "Hotel", label: "Hyatt Place Shenzhen Dongmen — Sep 30 night, 3× Specialty Twin (Laojie MTR, Luohu)", total: 321.30, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 6, note: "Hyatt confs 56229190 + 14228517 + 45139912 · 13,500 pts (4,500/room — $321.30 @2.38cpp) · Sep 30–Oct 1, in 3pm / out 12pm · Laojie MTR exit H, turn left · breakfast incl up to 2/room · Sep 29 night = separate booking (sz-hotel-2)", url: "https://www.hyatt.com/hyatt-place/en-US/szxzs-hyatt-place-shenzhen-dongmen", linkLabel: "Hyatt — Hyatt Place Dongmen" },
     { id: "sz-hotel-2", leg: "sz", cat: "Hotel", label: "Hyatt Place Shenzhen Dongmen — Sep 29 night, 3× Specialty Twin (Laojie MTR, Luohu)", total: 321.30, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 6, note: "Hyatt confs 37134482 + 29032314 + 31333538 · 13,500 pts (4,500/room — $321.30 @2.38cpp) · Sep 29–30, in 3pm / out 12pm · Laojie MTR exit H, turn left · breakfast incl up to 2/room", url: "https://www.hyatt.com/hyatt-place/en-US/szxzs-hyatt-place-shenzhen-dongmen", linkLabel: "Hyatt — Hyatt Place Dongmen" },
     { id: "mo-hotel", leg: "mo", cat: "Hotel", label: "Casa Real Hotel — Studio, 2 Twin Beds (Macau Peninsula)", total: 319.05, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 6, note: "Expedia · 2 rooms $216.12 ($108.06/room) + taxes $47.24 + extra guests $66.50 − coupon $10.81 · non-refundable · 'sleeps 3' = 2 twins, 3rd shares (no rollaway) — 2 rooms sleep 6 but 7 attend, confirm 7th spot · Oct 1–2", url: "https://www.expedia.com/Macau-Hotels-Casa-Real-Hotel.h2219745.Hotel-Information?chkin=2026-10-01&chkout=2026-10-02", linkLabel: "Expedia — Casa Real Hotel" },
-    { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: 820.84, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 8, note: "Expedia itin 73521256411437 · 2 rooms, 2 double beds each · paid Aug 13 · in 3pm / out 12pm · 7 adults booked but 8 attend — confirm 8th bed", url: "https://www.marriott.com/en-us/hotels/hkgap-hong-kong-skycity-marriott-hotel/overview/", linkLabel: "Marriott — SkyCity" },
+    { id: "hk2-hotel", leg: "hk2", cat: "Hotel", label: "Hong Kong SkyCity Marriott (airport)", total: 820.84, perPerson: null, frontedBy: "albin", status: "booked", sleeps: 8, note: "Expedia itin 73521256411437 · 2 rooms, 2 double beds each · paid Aug 13 · in 3pm / out 12pm · 7 adults booked — covers all 7 attending hk2", url: "https://www.marriott.com/en-us/hotels/hkgap-hong-kong-skycity-marriott-hotel/overview/", linkLabel: "Marriott — SkyCity" },
 
     { id: "a21", leg: "hk1", cat: "Transport", label: "Bus A21 · HKG → Yau Ma Tei", total: null, perPerson: 4.30, frontedBy: null, status: null, note: "~HK$34 · first bus ~05:30" },
     { id: "hsr-gz", leg: "gz", cat: "Transport", label: "HSR West Kowloon → Guangzhou South", total: null, perPerson: 27, frontedBy: null, status: null, note: "~HK$215 · ~1h · passport ticket · all 6" },
@@ -369,7 +369,7 @@ const TRIP = {
 
   notes: [
     "All six enter Guangzhou Sep 28 for one night, then night-train to Shenzhen Sep 29 for two nights. Ehsan & Scott solo; Brendan heads home.",
-    "Kevin Li skips Macau — own transit back to HK Oct 1, rejoins the group for the airport leg (SkyCity Marriott + flight home).",
+    "Kevin Li skips Macau and the airport leg — own transit back to HK Oct 1; SkyCity's 7 booked adults now match the 7 attending hk2.",
     "Flights fronted by Ehsan — $456/person, split across everyone except Kevin Li + Brendan (paid their own); Albin, Scott + KJ already settled.",
     "Sam's Tailor is personal spend — excluded.",
     "Points bookings: record points used AND cash-equivalent so the fronter is reimbursed fairly.",

@@ -14,10 +14,10 @@
   (booked, confs 56229190 + 14228517 + 45139912, 13,500 pts = $321.30). Sep 30
   is a full Shenzhen day — Huaqiangbei morning, Nanshan tech run
   (DJI / Talent Park / robotaxi) afternoon, COCO Park / Dongmen evening.
-- **Kevin Li skips Macau** — legs now `["hk1", "gz", "sz", "hk2"]`. He
-  transits back to HK on his own Oct 1 and rejoins the group for the airport
-  leg (SkyCity Marriott Oct 2 → flight home Oct 3). Note: hk2 headcount is 8
-  but the Marriott was booked as 2 rooms (4+3) — confirm rooming.
+- **Kevin Li skips Macau and the airport leg** — legs now
+  `["hk1", "gz", "sz"]`. He transits back to HK on his own Oct 1 and does
+  not stay at SkyCity or rejoin for Oct 2–3. That drops hk2 headcount to
+  7, matching the Marriott's 7 booked adults — rooming resolved.
 - **Macau hotel booked: Casa Real Hotel** — Studio 2 Twin Beds, Oct 1–2,
   $319.05 all-in on Expedia (2 rooms $216.12 + taxes $47.24 + extra
   guests $66.50 − coupon $10.81), paid under Albin →
@@ -32,8 +32,8 @@
 - **SkyCity Marriott confirmed** — Expedia itin `73521256411437`, 2 rooms
   ("Room, 2 Double Beds" each), Oct 2–3, $820.84 all-in paid Aug 13 under
   Albin → `costs["hk2-hotel"].total`. Check-in from 3pm, out 12pm.
-  Reservation lists 7 adults while hk2 headcount is 8 — still need to
-  confirm where the 8th person sleeps.
+  Reservation lists 7 adults — now matches the 7 attending hk2 (Kevin Li
+  dropped off the leg).
 - **Shenzhen hotel booked: Hyatt Place Dongmen** — Albin's Hyatt account,
   confs `56229190` + `14228517` + `45139912`, 3× Specialty Twin Sep 30–Oct 1,
   13,500 pts total (4,500/room) → `costs["sz-hotel"]` with $321.30
@@ -46,9 +46,7 @@
 | Item | Where it lands in `data.js` |
 |---|---|
 | Macau rooming — Casa Real booked ($319.05, Albin) but 2 rooms sleep 6 while 7 attend mo — confirm 7th spot or add a 3rd room | `costs["mo-hotel"].note` + `sleeps` + maybe `people` |
-| SkyCity Marriott rooming — reservation lists 7 adults, 8 attend hk2 | `costs["hk2-hotel"].note` + maybe `people` |
 | HK1 Airbnb rooming — sleeps 7, 9 attend | `costs["hk1-hotel"].note` + maybe `people` |
-| HK2 SkyCity rooming — 8 attend, booked 4+3 | `costs["hk2-hotel"].note` |
 | Who fronts remaining bookings | `frontedBy` on the above |
 
 ## Rules of engagement

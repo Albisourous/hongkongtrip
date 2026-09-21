@@ -53,7 +53,7 @@ checklist logic can be recovered with `git show aec6870:app.js`.
   night at the Grand Hyatt), then night-train to Shenzhen on Sep 29 —
   everyone on `sz` needs the Sep 29 + Sep 30 hotel nights. Brendan
   attends `hk1` only; Ehsan & Scott skip mainland (solo); Kevin Li skips
-  `mo` but rejoins for `hk2`.
+  `mo` and `hk2` — own way back to HK after Shenzhen.
 - Settlement shows fronted/owes/net per person plus a "who to pay" line
   per fronter (flights → Ehsan, hotels → Albin) — no payment suggestions
   or netting. Who has paid is tracked via `settled: [ids]` in data.js.
@@ -122,6 +122,5 @@ sums match the cost table, settlement balances sum to ~$0.
 ## Outstanding TBDs (collect from trip owner)
 
 - Macau rooming — Casa Real booked ($319.05, fronted by Albin), 2 rooms sleep 6 but 7 attend mo — confirm 7th spot or 3rd room
-- SkyCity Marriott rooming — 2 rooms booked for 7 adults ($820.84, Expedia 73521256411437) but 8 attend hk2
 - HK1 Airbnb sleeps 7 but 9 people attend that leg — confirm rooming
 - HSR + ferry tickets still to buy — Sep 28 WK→GZ + Sep 29 GZ→SZ (on sale 15 days out), Shekou→Macau ferry (required at border). Macau→HK is now the HZMB Gold Bus + B4 to HKIA — walk-up, nothing to book (Airport Direct coach is an airside option needing an eligible onward flight)

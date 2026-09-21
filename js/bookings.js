@@ -1,7 +1,7 @@
 /* Bookings page — what still needs booking + who sleeps where, night by night.
    Consecutive days sharing a `stay` string form one hotel block; a block's
    sleepers are the people whose legs cover those nights, so anyone split
-   off (Brendan, Ehsan & Scott mid-trip, Kevin Li in Macau) drops out. */
+   off (Brendan, Ehsan & Scott mid-trip, Kevin Li after Shenzhen) drops out. */
 (() => {
   "use strict";
 
@@ -339,14 +339,6 @@
   const REQUIRED = [
     ...TRIP.costs.filter(c => c.status === "to-book").map(hotelItem),
     ...roomingItems,
-    {
-      id: "room-hk2-adults", urgent: true, legs: ["hk2"],
-      title: "Confirm 8th bed — SkyCity Marriott",
-      cost: "7 adults booked / 8 attend",
-      when: "Oct 2",
-      why: "Reservation lists 7 adults but hk2 headcount is 8 — add the 8th to the booking or sort a spot",
-      url: "https://www.marriott.com/en-us/hotels/hkgap-hong-kong-skycity-marriott-hotel/overview/", linkLabel: "Marriott — SkyCity",
-    },
     {
       id: "prep-passports", urgent: true, legs: ["hk1"],
       title: "Passports valid 6+ months — all 9",
