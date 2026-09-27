@@ -372,7 +372,7 @@
       id: "hsr-ticket", urgent: true, legs: ["gz", "sz"],
       title: "HSR tickets · West Kowloon → Guangzhou → Shenzhen",
       cost: hsr.cost,
-      when: "Opens 15 days out (~Sep 13) · WKL→GZ Sep 28 am · GZ→SZ Sep 29 night",
+      when: "Opens 15 days out (~Sep 13) · WKL→GZ Sep 28 pm · GZ→SZ Sep 29 night",
       why: hsr.detail,
       url: hsr.url, linkLabel: hsr.linkLabel,
     },
