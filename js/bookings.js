@@ -318,7 +318,7 @@
   const hsr = res("HSR");
   const ferryIn = res("Ferry SZ→Macau");
   const busOut = res("Bus Macau→HK");
-  const walled = (day("Sep 27").checklist || []).find(i => /walled city/i.test(i.task)) || {};
+  const walled = (day("Sep 28").checklist || []).find(i => /walled city|yamen/i.test(i.task)) || {};
 
   // Hotels whose bed count can't cover their leg's headcount.
   const roomingItems = TRIP.costs
@@ -396,7 +396,7 @@
       id: "walled-city", urgent: true, legs: ["hk1"],
       title: "Kowloon Walled City exhibition — timed ticket",
       cost: "free",
-      when: `Sep 27 · ${walled.t || "morning"}`,
+      when: `Sep 28 · ${walled.t || "early morning"}`,
       why: walled.task,
       url: null, linkLabel: null,
     },
