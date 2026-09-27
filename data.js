@@ -87,7 +87,6 @@ const TRIP = {
         { t: "1:00pm", task: "Lunch in Mong Kok — (opt) Ming Court @ Cordis (1★ Cantonese, veg dishes) or a cha chaan teng" },
         { t: "2:00pm", task: "(opt) Sam's Tailor pickup — Burlington House, TST — last chance before mainland" },
         { t: "2:45pm", task: "Star Ferry TST → Central — the cheap classic crossing" },
-        { t: "3:00pm", task: "(opt) Monster Building — Yick Cheong courtyard, Quarry Bay — ~15-min stacked-facade photo, then 1 stop back west" },
         { t: "3:30pm", task: "Causeway Bay — Victoria Park fitness zone — HK's famous calisthenics park: free bars, street-workout crew trains ~5pm" },
         { t: "4:00pm", task: "Ding ding tram west → Central, upper-deck front seat (~HK$3 on Octopus) — or MTR if the tram slot is tight" },
         { t: "4:15pm", task: "(opt) Hop off early — Mid-Levels Escalator → Tai Kwun compound (free) / Man Mo Temple incense coils" },
@@ -300,7 +299,7 @@ const TRIP = {
     { name: "Star Ferry pier + TST harbourfront", leg: "hk1", cat: "see", day: "Sep 25/26", lat: 22.2937, lng: 114.1687, note: "Aqua Luna junk boards TST Pier 1 ~7:30pm Sep 26" },
     { name: "Victoria Park lantern carnival", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.2817, lng: 114.1891, note: "Mid-Autumn Festival" },
     { name: "Tai Hang Fire Dragon Dance", leg: "hk1", cat: "see", day: "Sep 25", lat: 22.2790, lng: 114.1920 },
-    { name: "Monster Building — Yick Cheong, Quarry Bay", leg: "hk1", cat: "see", day: "Sep 27 (opt)", lat: 22.2844, lng: 114.2123, note: "stacked-facade photo spot" },
+
     { name: "Lee Tung Avenue — lantern street", leg: "hk1", cat: "see", day: "Sep 25–27 (opt)", lat: 22.2768, lng: 114.1709, note: "Wan Chai · Mid-Autumn lantern display lit all week" },
     { name: "Sham Shui Po — Apliu St", leg: "hk1", cat: "shop", day: "Sep 26", lat: 22.3294, lng: 114.1620 },
     { name: "Golden Computer Arcade", leg: "hk1", cat: "shop", day: "Sep 26", lat: 22.3305, lng: 114.1616 },
