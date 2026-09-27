@@ -317,7 +317,7 @@ const TRIP = {
     { name: "Kowloon City — Thai lunch", leg: "hk1", cat: "eat", day: "Sep 28", lat: 22.3305, lng: 114.1868 },
     { name: "Sneaker St — Fa Yuen St", leg: "hk1", cat: "shop", day: "Sep 27", lat: 22.3187, lng: 114.1703 },
     { name: "Sino Centre + In's Point", leg: "hk1", cat: "shop", day: "Sep 27", lat: 22.3170, lng: 114.1700, note: "anime/figures" },
-    { name: "Victoria Park fitness zone — CWB", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2828, lng: 114.1905, note: "HK's famous calisthenics park — crew ~5pm" },
+    { name: "Victoria Park fitness zone — CWB", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2814, lng: 114.1927, note: "HK's famous calisthenics park — bars by the football pitches, Hing Fat St side · crew ~5pm" },
     { name: "Mid-Levels Escalator", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2837, lng: 114.1548, note: "Chungking Express" },
     { name: "Tai Kwun — former Central Police Station", leg: "hk1", cat: "see", day: "Sep 27 (opt)", lat: 22.2816, lng: 114.1547, note: "colonial compound, free entry" },
     { name: "Man Mo Temple — Hollywood Rd", leg: "hk1", cat: "see", day: "Sep 27 (opt)", lat: 22.2844, lng: 114.1502, note: "hanging incense coils" },
