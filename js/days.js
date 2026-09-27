@@ -211,5 +211,27 @@
     show(current, false);
   });
 
-  show(0, false);
+  // Land on today's day; off-trip dates snap to the nearest day.
+  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function todayIndex() {
+    var now = new Date();
+    var stamp = MONTHS[now.getMonth()] + " " + now.getDate();
+    for (var i = 0; i < TRIP.days.length; i++) {
+      if (TRIP.days[i].date === stamp) return i;
+    }
+    var best = 0;
+    var bestDist = Infinity;
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    TRIP.days.forEach(function (day, i) {
+      var p = day.date.split(" ");
+      var mi = MONTHS.indexOf(p[0]);
+      if (mi < 0) return;
+      var dist = Math.abs(new Date(now.getFullYear(), mi, +p[1]) - today);
+      if (dist < bestDist) { bestDist = dist; best = i; }
+    });
+    return best;
+  }
+
+  show(todayIndex(), true);
 })();
