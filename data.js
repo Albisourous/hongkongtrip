@@ -83,7 +83,6 @@ const TRIP = {
       notes: "North-Kowloon cluster moved to Sep 28 morning — shopping is done; today is Mong Kok → TST (Sam's Tailor pickup — last chance before mainland) → Star Ferry → Causeway Bay for Victoria Park's famous street-workout zone → ding ding back west → Peak/LKF → back to Kowloon for the last-night neon + Ozone run (it's on the way home to YMT). Peak Tram queues run ~30–45 min at dusk — buy the timed ticket ahead; the escalator/Tai Kwun stop only fits if the 4:30 slot is met. Pack tonight: checkout + the early KWC sprint is tomorrow.",
       checklist: [
         { t: "10:00am", task: "Slow morning — cha chaan teng breakfast, pack" },
-        { t: "11:00am", task: "Sneaker St — Fa Yuen St, Mong Kok" },
         { t: "12:00pm", task: "Sino Centre + In's Point — anime/figures, Mong Kok" },
         { t: "1:00pm", task: "Lunch in Mong Kok — (opt) Ming Court @ Cordis (1★ Cantonese, veg dishes) or a cha chaan teng" },
         { t: "2:00pm", task: "(opt) Sam's Tailor pickup — Burlington House, TST — last chance before mainland" },
@@ -315,7 +314,6 @@ const TRIP = {
     { name: "Chi Lin Nunnery + Nan Lian Garden", leg: "hk1", cat: "see", day: "Sep 28", lat: 22.3407, lng: 114.2054 },
     { name: "Choi Hung Estate — rainbow court", leg: "hk1", cat: "see", day: "Sep 28 (opt)", lat: 22.3349, lng: 114.2075, note: "the classic IG basketball court" },
     { name: "Kowloon City — Thai lunch", leg: "hk1", cat: "eat", day: "Sep 28", lat: 22.3305, lng: 114.1868 },
-    { name: "Sneaker St — Fa Yuen St", leg: "hk1", cat: "shop", day: "Sep 27", lat: 22.3187, lng: 114.1703 },
     { name: "Sino Centre + In's Point", leg: "hk1", cat: "shop", day: "Sep 27", lat: 22.3170, lng: 114.1700, note: "anime/figures" },
     { name: "Victoria Park fitness zone — CWB", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2814, lng: 114.1927, note: "HK's famous calisthenics park — bars by the football pitches, Hing Fat St side · crew ~5pm" },
     { name: "Mid-Levels Escalator", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2837, lng: 114.1548, note: "Chungking Express" },
