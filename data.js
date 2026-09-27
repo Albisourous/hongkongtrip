@@ -80,20 +80,15 @@ const TRIP = {
     },
     {
       date: "Sep 27", day: "Sun", base: "Hong Kong", stay: "Airbnb, Yau Ma Tei", legs: ["hk1"],
-      notes: "North-Kowloon cluster moved to Sep 28 morning — shopping is done; today is Mong Kok → TST (Sam's Tailor pickup — last chance before mainland) → Star Ferry → Causeway Bay for Victoria Park's famous street-workout zone → ding ding back west → Peak/LKF → back to Kowloon for the last-night neon + Ozone run (it's on the way home to YMT). Peak Tram queues run ~30–45 min at dusk — buy the timed ticket ahead; the escalator/Tai Kwun stop only fits if the 4:30 slot is met. Pack tonight: checkout + the early KWC sprint is tomorrow.",
+      notes: "North-Kowloon cluster moved to Sep 28 morning — shopping + the Peak are done; the rest of today is Star Ferry → Causeway Bay for Victoria Park's famous street-workout zone → ding ding back west → LKF → back to Kowloon for the last-night neon + Ozone run (it's on the way home to YMT). Pack tonight: checkout + the early KWC sprint is tomorrow.",
       checklist: [
         { t: "10:00am", task: "Slow morning — cha chaan teng breakfast, pack" },
-        { t: "12:00pm", task: "Sino Centre + In's Point — anime/figures, Mong Kok" },
         { t: "1:00pm", task: "Lunch in Mong Kok — (opt) Ming Court @ Cordis (1★ Cantonese, veg dishes) or a cha chaan teng" },
         { t: "2:00pm", task: "(opt) Sam's Tailor pickup — Burlington House, TST — last chance before mainland" },
         { t: "2:45pm", task: "Star Ferry TST → Central — the cheap classic crossing" },
         { t: "3:30pm", task: "Causeway Bay — Victoria Park fitness zone — HK's famous calisthenics park: free bars, street-workout crew trains ~5pm" },
-        { t: "4:00pm", task: "Ding ding tram west → Central, upper-deck front seat (~HK$3 on Octopus) — or MTR if the tram slot is tight" },
+        { t: "4:00pm", task: "Ding ding tram west → Central, upper-deck front seat (~HK$3 on Octopus) — or MTR if it's tight" },
         { t: "4:15pm", task: "(opt) Hop off early — Mid-Levels Escalator → Tai Kwun compound (free) / Man Mo Temple incense coils" },
-        { t: "4:30pm", task: "Peak Tram up — Garden Rd terminus, timed ticket" },
-        { t: "5:45pm", task: "Golden hour at the top" },
-        { t: "6:15pm", task: "Lugard Rd lookout — sunset → night skyline photo (~20-min walk each way)", must: true },
-        { t: "8:00pm", task: "Tram down → Central — the 8pm Symphony of Lights is visible from the Peak anyway" },
         { t: "8:45pm", task: "LKF night out — COA (Asia's-50-Best #1 bar, expect a queue) · Quinary · Iron Fairies · clubs" },
         { t: "10:45pm", task: "MTR/taxi → Mong Kok neon walk — Sai Yeung Choi St / Argyle (Fallen Angels territory)", must: true },
         { t: "12:00am", task: "(opt) Ozone — 118F ICC, world's highest bar — ~10 min from Mong Kok" },
@@ -318,8 +313,7 @@ const TRIP = {
     { name: "Mid-Levels Escalator", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2837, lng: 114.1548, note: "Chungking Express" },
     { name: "Tai Kwun — former Central Police Station", leg: "hk1", cat: "see", day: "Sep 27 (opt)", lat: 22.2816, lng: 114.1547, note: "colonial compound, free entry" },
     { name: "Man Mo Temple — Hollywood Rd", leg: "hk1", cat: "see", day: "Sep 27 (opt)", lat: 22.2844, lng: 114.1502, note: "hanging incense coils" },
-    { name: "Peak Tram — Garden Rd terminus", leg: "hk1", cat: "move", day: "Sep 27", lat: 22.2778, lng: 114.1594, note: "timed ticket" },
-    { name: "Lugard Rd lookout", leg: "hk1", cat: "see", day: "Sep 27", lat: 22.2783175, lng: 114.1465622, note: "sunset → night skyline" },
+
     { name: "Lan Kwai Fong", leg: "hk1", cat: "eat", day: "Sep 25/27", lat: 22.2809, lng: 114.1553, note: "COA · Quinary · Iron Fairies · clubs" },
     { name: "West Kowloon HSR station", leg: "hk1", cat: "move", day: "Sep 28", lat: 22.3034, lng: 114.1650 },
 
