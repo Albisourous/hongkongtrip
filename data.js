@@ -361,7 +361,7 @@ const TRIP = {
     { name: "K1 Speed — Shekou Sea World", leg: "sz", cat: "see", day: "Sep 30–Oct 1 (opt)", lat: 22.4845, lng: 113.9160, note: "indoor electric karting · til ~10pm · 10 min from the port" },
     { name: "COCO Park", leg: "sz", cat: "eat", day: "Sep 30", lat: 22.5345, lng: 114.0530 },
     { name: "OCT-LOFT / Nantou (fallback)", leg: "sz", cat: "see", day: "Sep 30", lat: 22.5360, lng: 113.9880 },
-    { name: "XDS flagship — Bagualing, Futian", leg: "sz", cat: "shop", day: "Oct 1 (opt)", lat: 22.5632, lng: 114.0962, note: "X-Lab RS7/AD7 — XDS hometown flagship · 八卦二路旭飞花园A栋106 (coords approx — search in Amap)" },
+    { name: "XDS flagship — Bagualing, Futian", leg: "sz", cat: "shop", day: "Oct 1 (opt)", lat: 22.5632, lng: 114.0962, note: "X-Lab RS7/AD7 — in-city flagship · 八卦二路旭飞花园A栋106 (coords approx — search in Amap) · the China Rides video shop is the global flagship cycling station at XDS HQ, Guangming — ~1hr+ north" },
     { name: "Shekou Cruise Homeport", leg: "sz", cat: "move", day: "Oct 1", lat: 22.4679, lng: 113.9048, note: "ferry → Macau" },
     { name: "Futian station", leg: "sz", cat: "move", day: "Sep 28", lat: 22.5390, lng: 114.0530 },
 
