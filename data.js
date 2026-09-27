@@ -176,7 +176,7 @@ const TRIP = {
         { t: "9:00am", task: "Slow morning" },
         { t: "9:45am", task: "Checkout — bags at Hyatt Place Dongmen" },
         { t: "10:00am", task: "Flex block — Huaqiangbei round 2, Dongmen, Free Sky deck (opens ~10am), or anything missed on Sep 30" },
-        { t: "10:00am", task: "(opt) XDS flagship visit — Bagualing, Futian (~15 min taxi) — X-Lab RS7 stock/price check, hometown brand" },
+        { t: "10:00am", task: "(opt) XDS flagship visit — Bagualing, Futian (~15 min taxi) — X-Lab RS7/AD7 stock/price check, hometown brand" },
         { t: "12:30pm", task: "Lunch" },
         { t: "1:00pm", task: "(opt) Alps Ice World ski/snowboard @ Window of the World (opens ~12pm wkdays, ~¥90–110/2h)" },
         { t: "1:00pm", task: "(opt) K1 Speed e-karts @ Shekou Sea World — 10 min from the port" },
@@ -253,7 +253,7 @@ const TRIP = {
     { cat: "Taobao hometown labels", detail: "Flagships sitting on the route itself — Shenzhen: ROARINGWILD, the OG Chinese streetwear brand (techy tailoring). Guangzhou: Crying Center 哭喊中心 · OPICLOTH (minimal) · MASONPRINCE (bold/surreal) · PSO Brand · CONP 苏五口 (conceptual) · OLD ORDER (chunky sneakers) · Mountain Fever 高山热 (gorpcore) · Kailas 凯乐石 (premium outdoor).", cost: "¥100–1k", url: "https://www.taobao.com", linkLabel: "taobao.com" },
     { cat: "Taobao sneakers + basics", detail: "FOOT INDUSTRY 足下工业 — premium minimal sneakers · Kaalixto — chunky skate-style · EQUALIZER — basketball · Naturehike 挪客 — camping gear · NEIWAI 内外 — loungewear · Bananain 蕉内 — basics/underwear.", cost: "¥80–1.5k", url: "https://www.taobao.com", linkLabel: "taobao.com" },
     { cat: "Taobao outdoor — indie", detail: "Under-the-radar CN outdoor labels: UPPERVOID 二普纬度 — Shanghai technical outdoor, Arc'teryx/Klättermusen-tier shells (~¥1.5–2.5k) + the HOVER recovery camp shoe · Repsycle — eco trekking gear: hemp + merino tees, soft-shells, hippie vibe · Loose End — garment-dyed zipless jerseys, cycling-to-gorpcore crossover · Mountain Fever 高山热 — GZ gorpcore (also under hometown labels).", cost: "¥200–4.5k", url: "https://www.taobao.com", linkLabel: "taobao.com" },
-    { cat: "Bike — XDS X-Lab RS7", detail: "Buy points: SZ flagship (Bagualing, Futian — XDS's hometown, ~15 min from the Dongmen hotel, fits the Oct 1 flex block) — mainland ~¥10–15k by build (105 mech ≈ ¥10–12k, Di2 ¥14,999) · The Bicycle Shop HK — RS7 105 + Branta C50 @ HK$12,800 (~$1,640), WhatsApp +852 62180747 for stock · US baseline: xds.co sells 105 mech at $2,099 shipped. Flying it: bike = a normal checked bag on Delta — needs a protective container (shop carton free → sign limited-release; hard case HK$800–1,500 skips it), ≤50 lbs, ≤115 linear in (a bike box is ~98\"); extra-bag fee ~$100+ if beyond allowance. The real cost is the schlep — an SZ buy drags a 140cm box through Shekou ferry → Macau → HZMB bus before it flies; HK buy on Oct 2 = box → taxi → HKIA.", cost: "~$1,400–2,100", url: "https://bicycleshophk.com/en/products/xds-x-lab-rs7-105%E6%A9%9F%E6%A2%B0%E4%BB%B6-%E7%A2%9F%E5%88%B924%E9%80%9F%E5%85%AC%E8%B7%AF%E8%BB%8A-branta-c50-base-%E8%BC%AA%E7%B5%84", linkLabel: "Bicycle Shop HK — RS7" },
+    { cat: "Bike — XDS X-Lab (RS7 / AD7)", detail: "Frames: RS7 = all-round lightweight (~HK$12,800 / ~$1,640 for 105 mech + Branta C50) · AD7 = aero race geo (HK$17,800 / ~$2,275 for 105 Di2 + C45 SL carbon — overseas dealers ask ~US$2,700+). Buy points: SZ flagship (Bagualing, Futian — XDS's hometown, ~15 min from the Dongmen hotel, fits the Oct 1 flex block) — mainland ~¥10–15k by build · The Bicycle Shop HK — WhatsApp +852 62180747 for stock · US baseline: xds.co sells RS7 105 mech at $2,099 shipped. Flying it: bike = a normal checked bag on Delta — needs a protective container (shop carton free → sign limited-release; hard case HK$800–1,500 skips it), ≤50 lbs, ≤115 linear in (a bike box is ~98\"); extra-bag fee ~$100+ if beyond allowance. The real cost is the schlep — an SZ buy drags a 140cm box through Shekou ferry → Macau → HZMB bus before it flies; HK buy on Oct 2 = box → taxi → HKIA.", cost: "~$1,600–2,300", url: "https://bicycleshophk.com/en/products/xds-x-lab-ad7-105-di2-%E7%A2%9F%E5%88%B924%E9%80%9F%E5%85%AC%E8%B7%AF%E8%BB%8A-branta-c45-sl-%E8%BC%AA%E7%B5%84", linkLabel: "Bicycle Shop HK — AD7" },
   ],
 
   // Non-booking checks to verify — rendered on Bookings as a Reminders
@@ -280,7 +280,7 @@ const TRIP = {
     { id: "typhoon", legs: ["mo", "hk2"], title: "Typhoon-season check",
       when: "Week of Sep 21 + before ferries",
       why: "Late Sep is still typhoon season — check HKO/CMA warnings; flights and the Shekou/Macau ferries can be delayed or cancelled." },
-    { id: "xlab-bike", legs: ["sz", "hk2"], title: "X-Lab RS7 — pick a buy point + box plan",
+    { id: "xlab-bike", legs: ["sz", "hk2"], title: "X-Lab RS7/AD7 — pick a buy point + box plan",
       when: "Decide by Oct 1 (SZ flagship window) or Oct 2 (HK window)",
       why: "Buying = hauling a bike box for the rest of the trip. Cleanest: HK on Oct 2 — shop boxes it, taxi to SkyCity, check it as a bag Oct 3 (compare vs US $2,099 on xds.co first). SZ flagship is likely cheaper but the box rides ferry → Macau → HZMB bus before it flies. Confirm stock by WhatsApp/WeChat before detouring." },
   ],
@@ -361,7 +361,7 @@ const TRIP = {
     { name: "K1 Speed — Shekou Sea World", leg: "sz", cat: "see", day: "Sep 30–Oct 1 (opt)", lat: 22.4845, lng: 113.9160, note: "indoor electric karting · til ~10pm · 10 min from the port" },
     { name: "COCO Park", leg: "sz", cat: "eat", day: "Sep 30", lat: 22.5345, lng: 114.0530 },
     { name: "OCT-LOFT / Nantou (fallback)", leg: "sz", cat: "see", day: "Sep 30", lat: 22.5360, lng: 113.9880 },
-    { name: "XDS flagship — Bagualing, Futian", leg: "sz", cat: "shop", day: "Oct 1 (opt)", lat: 22.5632, lng: 114.0962, note: "X-Lab RS7 — XDS hometown flagship · 八卦二路旭飞花园A栋106 (coords approx — search in Amap)" },
+    { name: "XDS flagship — Bagualing, Futian", leg: "sz", cat: "shop", day: "Oct 1 (opt)", lat: 22.5632, lng: 114.0962, note: "X-Lab RS7/AD7 — XDS hometown flagship · 八卦二路旭飞花园A栋106 (coords approx — search in Amap)" },
     { name: "Shekou Cruise Homeport", leg: "sz", cat: "move", day: "Oct 1", lat: 22.4679, lng: 113.9048, note: "ferry → Macau" },
     { name: "Futian station", leg: "sz", cat: "move", day: "Sep 28", lat: 22.5390, lng: 114.0530 },
 
